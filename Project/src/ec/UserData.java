@@ -29,9 +29,19 @@ public class UserData extends HttpServlet {
 
 		// セッション開始
 		HttpSession session = request.getSession();
+
 		try {
+			// TODO 未実装：ログインセッションがない場合、ログイン画面にリダイレクトさせる
+			if (session.getAttribute("loginId") == null){
+				// if (session == null){
+				// session = request.getSession(true);
+				// ログインのサーブレットにリダイレクト
+				response.sendRedirect("Login");
+			}else {
+
 			// ログイン時に取得したユーザーIDをセッションから取得
 			int userId = (int) session.getAttribute("userId");
+
 			// 更新確認画面から戻ってきた場合Sessionから取得。それ以外はuserIdでユーザーを取得
 			UserDataBeans udb = session.getAttribute("returnUDB") == null ? UserDAO.getUserDataBeansByUserId(userId) : (UserDataBeans) EcHelper.cutSessionAttribute(session, "returnUDB");
 
@@ -44,13 +54,16 @@ public class UserData extends HttpServlet {
 			request.setAttribute("udb", udb);
 			request.setAttribute("bdbhList", bdbhList);
 
-			request.getRequestDispatcher(EcHelper.USER_DATA_PAGE).forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/userdata.jsp").forward(request, response);
+
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("errorMessage", e.toString());
 			response.sendRedirect("Error");
 		}
+
 	}
 
 }

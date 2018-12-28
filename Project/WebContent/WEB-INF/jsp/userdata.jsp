@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,6 +79,9 @@
 									<td class="center">${bdbhList.totalPrice}円</td>
 								</tr>
 								<%-- <tr>
+								・スレッドtitle
+								・投稿時間
+								・カテゴリ内容								
 									<td class="center"><a href="UserBuyHistoryDetail?buy_id=2" class="btn-floating btn waves-effect waves-light "> <i class="material-icons">details</i></a></td>
 									<td class="center">${bdbhList.buyDate}</td>
 									<td class="center">${bdbhList.deliveryMethodName}</td>

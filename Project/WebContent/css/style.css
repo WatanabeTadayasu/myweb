@@ -1,0 +1,218 @@
+
+.head {
+background-color: #666666;
+color: #FFFFFF;
+}
+
+
+form {/*真ん中の要素*/
+
+  padding: 50px;
+  margin-left: 50px
+  }
+
+body {/*真ん中の要素*/
+
+  padding: 50px;
+  margin: 50px;
+  }
+
+ .topicpost{
+ 	/* display: inline-block;
+	vertical-align: middle; */
+	width:600px;
+	height:100px;
+ 	margin: 10px 100px;
+ 	background: skyblue
+ }
+
+ .topicpost h1 {
+
+	text-align: center;/*一応BOX内の文字も中央寄せ*/
+	padding: 20px 0px;
+}
+
+ .recommend1 {
+
+ 	margin: 0px 20px 30px 0px;
+
+}
+
+.recommend2 {
+
+ 	margin: 0px 20px 30px 0px;
+
+}
+
+.recommend3 {
+
+ 	margin: 0px 20px 30px 0px;
+
+}
+
+div.recommend1 {
+display: inline-block;
+vertical-align: middle;
+	width: 300px;
+  	height: 200px;
+ 	background: skyblue
+}
+
+div.recommend2 {
+	display: inline-block;
+	vertical-align: middle;
+	width: 300px;
+ 	height: 200px;
+  	background: skyblue
+}
+
+div.recommend3 {
+	display: inline-block;
+	vertical-align: middle;
+	width: 300px;
+  	height: 200px;
+  	background: skyblue
+}
+
+.form-post {
+
+	width:500px;
+}
+
+.btn {
+ 	width:100px;
+	height:50px;
+ 	margin: 10px 10px;
+
+}
+
+.delete {
+	float: right;
+	margin: 40px 150px 0px 0px;
+	/* text-align: right; */
+}
+
+.header{
+	margin: 10px 0px;
+	padding:5px;
+}
+
+.wrapper{
+    min-height: 100vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+.footer{
+    width: 100%;
+    background-color: #89c7de;
+    color: #fff;
+    text-align: left;
+    padding: 20px 0px 10px 0px;
+
+ 	position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}
+
+.rankingtitle h1 {
+
+	padding: 20px 0px;
+}
+
+
+.nav {
+	padding:30px 0px;
+	background-color: #7FFFD4;
+}
+
+.box_0{
+	color: #FFF;
+ 	width:800px;
+	height:100px;
+ 	margin: 70px 100px 70px 5px;
+
+}
+
+.box_1,
+.box_2,
+.box_3,
+.box_4,
+.box_5,
+.box_6,
+.box_7{
+ color: #FFF;
+ width:800px;
+ height:100px;
+ margin: 30px 100px 30px 5px;
+ padding: 10px 5px;
+
+}
+
+.box_0 {
+ background-color: #808080;
+
+}
+
+.box_1 {
+ background-color: #f09199;
+
+}
+
+.box_2{
+ background-color: #ec6d71;
+}
+
+.box_3{
+ background-color: #c3d825;
+}
+
+.box_4{
+ background-color: #2ca9e1;
+}
+
+.box_5{
+ background-color: #fef263;
+}
+
+.box_6{
+ background-color: #3eb370;
+}
+
+.box_7{
+ background-color: #aa4c8f;
+}
+
+.ranking{
+
+	margin: 30px 20px 30px 20px;
+	padding: 10px 5px;
+	background-color: #FFFF66
+
+}
+
+.square_btn{
+    display: inline-block;
+    margin: 10px 0px;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+.square_btn:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+.card-content{
+
+	background-color: #FFFF66
+
+}
+
+#666666
+#808080

@@ -27,7 +27,7 @@ public class DeliveryMethodDAO {
 		try {
 			con = DBManager.getConnection();
 
-			st = con.prepareStatement("SELECT * FROM m_delivery_method");
+			st = con.prepareStatement("SELECT * FROM m_thread_category");
 
 			ResultSet rs = st.executeQuery();
 
@@ -36,7 +36,7 @@ public class DeliveryMethodDAO {
 				DeliveryMethodDataBeans dmdb = new DeliveryMethodDataBeans();
 				dmdb.setId(rs.getInt("id"));
 				dmdb.setName(rs.getString("name"));
-				dmdb.setPrice(rs.getInt("price"));
+//				dmdb.setPrice(rs.getInt("price"));
 				deliveryMethodDataBeansList.add(dmdb);
 			}
 

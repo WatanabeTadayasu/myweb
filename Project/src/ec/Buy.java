@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.DeliveryMethodDataBeans;
-import beans.ItemDataBeans;
 import dao.DeliveryMethodDAO;
 
 /**
@@ -30,7 +29,7 @@ public class Buy extends HttpServlet {
 		try {
 
 			Boolean isLogin = session.getAttribute("isLogin") != null ? (Boolean) session.getAttribute("isLogin") : false;
-			ArrayList<ItemDataBeans> cart = (ArrayList<ItemDataBeans>) session.getAttribute("cart");
+//			ArrayList<ItemDataBeans> cart = (ArrayList<ItemDataBeans>) session.getAttribute("cart");
 
 			if (!isLogin) {
 				// Sessionにリターンページ情報を書き込む
@@ -38,14 +37,20 @@ public class Buy extends HttpServlet {
 				// Login画面にリダイレクト
 				response.sendRedirect("Login");
 
-			} else if (cart.size() == 0) {
-				request.setAttribute("cartActionMessage", "購入する商品がありません");
-				request.getRequestDispatcher(EcHelper.CART_PAGE).forward(request, response);
+//			} else if (cart.size() == 0) {
+//				request.setAttribute("cartActionMessage", "購入する商品がありません");
+//				request.getRequestDispatcher(EcHelper.CART_PAGE).forward(request, response);
+//			} else {
+//				// 配送方法をDBから取得
+//				ArrayList<DeliveryMethodDataBeans> dMDBList = DeliveryMethodDAO.getAllDeliveryMethodDataBeans();
+//				request.setAttribute("dmdbList", dMDBList);
+//				request.getRequestDispatcher(EcHelper.BUY_PAGE).forward(request, response);
+
 			} else {
 				// 配送方法をDBから取得
 				ArrayList<DeliveryMethodDataBeans> dMDBList = DeliveryMethodDAO.getAllDeliveryMethodDataBeans();
 				request.setAttribute("dmdbList", dMDBList);
-				request.getRequestDispatcher(EcHelper.BUY_PAGE).forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/jsp/post.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
