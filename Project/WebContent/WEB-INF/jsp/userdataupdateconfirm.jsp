@@ -19,17 +19,23 @@
 						<form action="UserDataUpdateResult" method="POST">
 							<div class="row">
 								<div class="input-field col s6">
+									<input type="text" name="login_id_update" value="${udb.loginId}" readonly> <label>ログインID</label>
+								</div>
+								<div class="input-field col s6">
 									<input type="text" name="user_name_update" value="${udb.name}" readonly> <label>名前</label>
 								</div>
 								<div class="input-field col s6">
-									<input type="text" name="login_id_update" value="${udb.loginId}" readonly> <label>ログインID</label>
+									<input type="text" name="password_update" value="${udb.password}" readonly> <label>パスワード</label>
+								</div>
+								<div class="input-field col s6">
+									<input type="text" name="birthdate_update" value="${udb.birthdate}" readonly> <label>生年月日</label>
 								</div>
 							</div>
-							<div class="row">
+							<%-- <div class="row">
 								<div class="input-field col s12">
 									<input type="text" name="user_address_update" value="${udb.address}" readonly> <label>住所</label>
 								</div>
-							</div>
+							</div> --%>
 							<div class="row">
 								<div class="col s12">
 									<p class="center-align">上記内容で更新してよろしいでしょうか?</p>

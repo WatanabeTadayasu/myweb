@@ -24,19 +24,33 @@
 								<p class="red-text center-align">${validationMessage}</p>
 							</c:if>
 							<br> <br>
+
+							<!-- public UserDataBeans(int id, String loginId, String name, String password, String birthdate) { -->
+
 							<div class="row">
+								<div class="input-field col s6">
+									<input type="text" name="login_id" value="${udb.loginId}" readonly> <label>ログインID</label>
+								</div>
 								<div class="input-field col s6">
 									<input type="text" name="user_name" value="${udb.name}"> <label>名前</label>
 								</div>
 								<div class="input-field col s6">
-									<input type="text" name="login_id" value="${udb.loginId}"> <label>ログインID</label>
+									<input type="text" name="password" value="${udb.password}"> <label>パスワード</label>
+								</div>
+								<div class="input-field col s6">
+									<input type="text" name="birthdate" value="${udb.birthdate}"> <label>生年月日</label>
+								</div>
+							</div>
+							<%-- <div class="row">
+								<div class="input-field col s12">
+									<input type="text" name="user_address" value="${udb.address}"> <label>住所</label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="input-field col s12">
 									<input type="text" name="user_address" value="${udb.address}"> <label>住所</label>
 								</div>
-							</div>
+							</div> --%>
 							<div class="row">
 								<div class="col s12">
 									<button class="btn  waves-effect waves-light  col s4 offset-s4" type="submit" name="action">更新</button>

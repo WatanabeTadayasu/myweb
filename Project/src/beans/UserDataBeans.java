@@ -17,6 +17,7 @@ public class UserDataBeans implements Serializable {
 	private String updateDate;
 	private String password1;
 	private String birthdate1;
+	private String Address;
 
 	// コンストラクタ
 	public UserDataBeans() {
@@ -75,14 +76,6 @@ public class UserDataBeans implements Serializable {
 		this.name = name;
 	}
 
-	public String getAddress() {
-		return birthdate;
-	}
-
-	public void setAddress(String address) {
-		this.birthdate = address;
-	}
-
 	public String getLoginId() {
 		return loginId;
 	}
@@ -125,14 +118,15 @@ public class UserDataBeans implements Serializable {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
-	public UserDataBeans(int id2, String loginId2, String name2, String birthdate, String password2, String createDate,
-			String updateDate) {
+	public UserDataBeans(int id, String loginId, String name, String password, String birthdate) {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
-	public UserDataBeans(String loginIdData, String nameData) {
-		// TODO 自動生成されたコンストラクター・スタブ
-	}
+	// ログインセッションを保存するためのコンストラクタ
+		public UserDataBeans(String loginId, String name) {
+			this.loginId = loginId;
+			this.name = name;
+		}
 
 	public UserDataBeans(String loginId2) {
 		// TODO 自動生成されたコンストラクター・スタブ
@@ -142,5 +136,25 @@ public class UserDataBeans implements Serializable {
 			String updateDate) {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
+
+	// 全てのデータをセットするコンストラクタ
+		public UserDataBeans(int id, String loginId, String name, String birthdate, String password, String createDate,
+				String updateDate) {
+			this.id = id;
+			this.loginId = loginId;
+			this.name = name;
+			this.birthdate = birthdate;
+			this.password = password;
+			this.createDate = createDate;
+			this.updateDate = updateDate;
+		}
+
+		public String getAddress() {
+			return Address;
+		}
+
+		public void setAddress(String Address) {
+			this.Address = Address;
+		}
 
 }

@@ -18,17 +18,15 @@
 				<div class="card grey lighten-5">
 					<div class="card-content">
 						<div class="row">
-							<div class="input-field col s6">
-								<input type="text" value="${udb.name}" readonly> <label>名前</label>
-							</div>
-							<div class="input-field col s6">
-								<input type="text" value="${udb.loginId}" readonly> <label>ログインID</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s12">
-								<input type="text" value="${udb.address}" readonly> <label>住所</label>
-							</div>
+								<div class="input-field col s6">
+									<input type="text" value="${udb.name}" readonly> <label>名前</label>
+								</div>
+								<div class="input-field col s6">
+									<input type="text" value="${udb.password}" readonly> <label>パスワード</label>
+								</div>
+								<div class="input-field col s6">
+									<input type="text" value="${udb.birthdate}" readonly> <label>生年月日</label>
+								</div>
 						</div>
 						<div class="row">
 							<div class="col s12">

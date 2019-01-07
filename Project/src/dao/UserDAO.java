@@ -114,7 +114,7 @@ public class UserDAO {
             conn = DBManager.getConnection();
 
             // SELECT文を準備
-            String sql = "SELECT * FROM user WHERE login_id = ? and password = ?";
+            String sql = "SELECT * FROM t_user WHERE login_id = ? and login_password = ?";
 
             // SELECTを実行し、結果表を取得
             PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -209,14 +209,15 @@ public class UserDAO {
 		PreparedStatement st = null;
 		try {
 			con = DBManager.getConnection();
-			st = con.prepareStatement("SELECT id,name, login_id, address FROM t_user WHERE id =" + userId);
+			st = con.prepareStatement("SELECT id, login_id, login_password, name, birth_date, FROM t_user WHERE id =" + userId);
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
 				udb.setId(rs.getInt("id"));
-				udb.setName(rs.getString("name"));
 				udb.setLoginId(rs.getString("login_id"));
-				udb.setAddress(rs.getString("address"));
+				udb.setPassword(rs.getString("login_password"));
+				udb.setName(rs.getString("name"));
+				udb.setBirthdate(rs.getString("birth_date"));
 			}
 
 			st.close();
@@ -251,22 +252,22 @@ public class UserDAO {
 		try {
 
 			con = DBManager.getConnection();
-			st = con.prepareStatement("UPDATE t_user SET name=?, login_id=?, address=? WHERE id=?;");
+			st = con.prepareStatement("UPDATE t_user SET name=?, login_password=?, birth_date=? WHERE id=?;");
 			st.setString(1, udb.getName());
-			st.setString(2, udb.getLoginId());
-			st.setString(3, udb.getAddress());
+			st.setString(2, udb.getPassword());
+			st.setString(3, udb.getBirthdate());
 			st.setInt(4, udb.getId());
 			st.executeUpdate();
 			System.out.println("update has been completed");
 
-			st = con.prepareStatement("SELECT name, login_id, address FROM t_user WHERE id=" + udb.getId());
+			st = con.prepareStatement("SELECT name, login_password, birth_date FROM t_user WHERE id=" + udb.getId());
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
 
 				updatedUdb.setName(rs.getString("name"));
-				updatedUdb.setLoginId(rs.getString("login_id"));
-				updatedUdb.setAddress(rs.getString("address"));
+				updatedUdb.setPassword(rs.getString("login_password"));
+				updatedUdb.setBirthdate(rs.getString("birth_date"));
 			}
 
 			st.close();
@@ -342,7 +343,7 @@ public class UserDAO {
 	            conn = DBManager.getConnection();
 
 	            // SELECT文を準備
-	            String sql = "DELETE FROM user WHERE login_id = ?";
+	            String sql = "DELETE FROM t_user WHERE login_id = ?";
 
 	             // SELECTを実行し、結果表を取得
 	            PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -385,7 +386,7 @@ public class UserDAO {
 	            conn = DBManager.getConnection();
 
 	            // SELECT文を準備
-	            String sql = "SELECT * FROM user WHERE id = ?";
+	            String sql = "SELECT * FROM t_user WHERE id = ?";
 
 	            // SELECTを実行し、結果表を取得
 	            PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -499,7 +500,7 @@ public class UserDAO {
 
             // SELECT文を準備
             // TODO: 未実装：管理者以外を取得するようSQLを変更する
-            String sql = "SELECT * FROM user WHERE login_id != 'admin'";
+            String sql = "SELECT * FROM t_user WHERE login_id != 'admin'";
 
              // SELECTを実行し、結果表を取得
             Statement stmt = conn.createStatement();
@@ -512,7 +513,7 @@ public class UserDAO {
                 String loginId = rs.getString("login_id");
                 String name = rs.getString("name");
                 String birthdate = rs.getString("birth_date");
-                String password = rs.getString("password");
+                String password = rs.getString("login_password");
                 String createDate = rs.getString("create_date");
                 String updateDate = rs.getString("update_date");
                 UserDataBeans user = new UserDataBeans(id, loginId, name, birthdate, password, createDate, updateDate);
