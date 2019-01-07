@@ -74,11 +74,11 @@ public class EcHelper {
 	 * @param target
 	 * @return
 	 */
-	public static String getSha256(String target) {
+	public static String getMd5(String target) {
 		MessageDigest md = null;
 		StringBuffer buf = new StringBuffer();
 		try {
-			md = MessageDigest.getInstance("SHA-256");
+			md = MessageDigest.getInstance("MD5");
 			md.update(target.getBytes());
 			byte[] digest = md.digest();
 

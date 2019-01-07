@@ -81,7 +81,7 @@
 								<%-- <tr>
 								・スレッドtitle
 								・投稿時間
-								・カテゴリ内容								
+								・カテゴリ内容
 									<td class="center"><a href="UserBuyHistoryDetail?buy_id=2" class="btn-floating btn waves-effect waves-light "> <i class="material-icons">details</i></a></td>
 									<td class="center">${bdbhList.buyDate}</td>
 									<td class="center">${bdbhList.deliveryMethodName}</td>
@@ -95,5 +95,8 @@
 			</div>
 		</div>
 	</div>
+
+<a href="UserListServlet">戻る</a>
+
 </body>
 </html>

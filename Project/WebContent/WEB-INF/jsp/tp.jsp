@@ -31,8 +31,8 @@
     <span style="border-bottom: solid 5px blue;">新規登録</span></a>
   </li>
    <li class="nav-item">
-    <a class="nav-link" href="UserData">
-    <span style="border-bottom: solid 5px blue;">ユーザー情報</span></a>
+    <a class="nav-link" href="UserListServlet">
+    <span style="border-bottom: solid 5px blue;">ユーザー一覧</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="Login">

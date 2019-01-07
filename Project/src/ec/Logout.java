@@ -20,11 +20,12 @@ public class Logout extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.setAttribute("isLogin", false);
-		session.removeAttribute("userId");
-		request.getRequestDispatcher(EcHelper.LOGOUT_PAGE).forward(request, response);
-	}
+		// ログイン時に保存したセッション内のユーザ情報を削除
+		session.removeAttribute("userInfo");
 
+		// ログインのサーブレットにリダイレクト
+		response.sendRedirect("LoginServlet");
+		}
 
 
 }
