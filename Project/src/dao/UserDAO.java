@@ -40,12 +40,13 @@ public class UserDAO {
 		PreparedStatement st = null;
 		try {
 			con = DBManager.getConnection();
-			st = con.prepareStatement("INSERT INTO t_user(name,login_id,address,login_password,create_date) VALUES(?,?,?,?,?)");
+			st = con.prepareStatement("INSERT INTO t_user(name,login_id,login_password,birth_date,create_date,update_date) VALUES(?,?,?,?,?,?)");
 			st.setString(1, udb.getName());
 			st.setString(2, udb.getLoginId());
-			st.setString(3, udb.getAddress());
-			st.setString(4, EcHelper.getMd5(udb.getPassword()));
+			st.setString(3, EcHelper.getMd5(udb.getPassword()));
+			st.setString(4, udb.getBirthdate());
 			st.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+			st.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
 			st.executeUpdate();
 			System.out.println("inserting user has been completed");
 		} catch (SQLException e) {
@@ -149,7 +150,7 @@ public class UserDAO {
 
     /*idに紐づくユーザー情報を返す*/
 
-    public UserDataBeans findByLoginInfo(int id) {
+    public UserDataBeans findByDetailInfo(int id) {
         Connection conn = null;
 
         try {
@@ -157,7 +158,7 @@ public class UserDAO {
             conn = DBManager.getConnection();
 
             // SELECT文を準備
-            String sql = "SELECT * FROM user WHERE id = ?";
+            String sql = "SELECT * FROM t_user WHERE id = ?";
 
             // SELECTを実行し、結果表を取得
             PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -172,7 +173,7 @@ public class UserDAO {
                 String loginId = rs.getString("login_id");
                 String name = rs.getString("name");
                 String birthdate = rs.getString("birth_date");
-                String password = rs.getString("password");
+                String password = rs.getString("login_password");
                 String createDate = rs.getString("create_date");
                 String updateDate = rs.getString("update_date");
                 return new UserDataBeans(loginId, name, birthdate, password, createDate, updateDate);
@@ -209,7 +210,7 @@ public class UserDAO {
 		PreparedStatement st = null;
 		try {
 			con = DBManager.getConnection();
-			st = con.prepareStatement("SELECT id, login_id, login_password, name, birth_date, FROM t_user WHERE id =" + userId);
+			st = con.prepareStatement("SELECT id, login_id, login_password, name, birth_date, FROM t_user WHERE id=" + userId);
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
@@ -235,6 +236,8 @@ public class UserDAO {
 		return udb;
 	}
 
+
+
 	/**
 	 * ユーザー情報の更新処理を行う。
 	 *
@@ -252,15 +255,16 @@ public class UserDAO {
 		try {
 
 			con = DBManager.getConnection();
-			st = con.prepareStatement("UPDATE t_user SET name=?, login_password=?, birth_date=? WHERE id=?;");
+			st = con.prepareStatement("UPDATE t_user SET name=?, login_password=?, birth_date=?, update_date=? WHERE login_id=?;");
 			st.setString(1, udb.getName());
 			st.setString(2, udb.getPassword());
 			st.setString(3, udb.getBirthdate());
-			st.setInt(4, udb.getId());
+			st.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
+			st.setString(5, udb.getLoginId());
 			st.executeUpdate();
 			System.out.println("update has been completed");
 
-			st = con.prepareStatement("SELECT name, login_password, birth_date FROM t_user WHERE id=" + udb.getId());
+			st = con.prepareStatement("SELECT name, login_password, birth_date, update_date FROM t_user WHERE login_id=" + udb.getLoginId());
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
@@ -268,6 +272,7 @@ public class UserDAO {
 				updatedUdb.setName(rs.getString("name"));
 				updatedUdb.setPassword(rs.getString("login_password"));
 				updatedUdb.setBirthdate(rs.getString("birth_date"));
+				updatedUdb.setUpdateDate(rs.getString("update_date"));
 			}
 
 			st.close();
@@ -282,6 +287,52 @@ public class UserDAO {
 			}
 		}
 	}
+
+	/*idに紐づくユーザー情報を返す*/
+
+    public UserDataBeans findByLoginInfo(int userId) {
+        Connection conn = null;
+
+        try {
+            // データベースへ接続
+            conn = DBManager.getConnection();
+
+            // SELECT文を準備
+            String sql = "SELECT * FROM t_user WHERE id = ?";
+
+            // SELECTを実行し、結果表を取得
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+            pStmt.setInt(1, userId);
+            ResultSet rs = pStmt.executeQuery();
+
+         // 主キーに紐づくレコードは1件のみなので、rs.next()は1回だけ行う
+            if (!rs.next()) {
+                return null;
+            }
+
+                String loginId = rs.getString("login_id");
+                String name = rs.getString("name");
+                String birthdate = rs.getString("birth_date");
+                String password = rs.getString("login_password");
+                /*String createDate = rs.getString("create_date");*/
+                String updateDate = rs.getString("update_date");
+                return new UserDataBeans(loginId, name, birthdate, password, updateDate);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        }
+    }
 
 	/**
 	 * loginIdの重複チェック
@@ -431,7 +482,7 @@ public class UserDAO {
             conn = DBManager.getConnection();
 
             // SELECT文を準備
-            String sql = "SELECT * FROM user WHERE login_id != 'admin'";
+            String sql = "SELECT * FROM t_user WHERE login_id != 'admin'";
 
             if(!loginIdP.equals("")) {
             	sql += " AND login_id = '" + loginIdP  + "'" ;
@@ -462,10 +513,10 @@ public class UserDAO {
                 String loginId = rs.getString("login_id");
                 String name = rs.getString("name");
                 String birthdate = rs.getString("birth_date");
-                String password = rs.getString("password");
+                /*String password = rs.getString("password");*/
                 String createDate = rs.getString("create_date");
                 String updateDate = rs.getString("update_date");
-                UserDataBeans user = new UserDataBeans(id, loginId, name, birthdate, password, createDate, updateDate);
+                UserDataBeans user = new UserDataBeans(id, loginId, name, birthdate/*, password*/, createDate, updateDate);
 
                 userList.add(user);
             }

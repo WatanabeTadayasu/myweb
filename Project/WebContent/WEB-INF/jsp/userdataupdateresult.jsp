@@ -36,7 +36,7 @@
 						<div class="row">
 							<div class="col s12">
 								<p class="center-align">
-									<a href="UserData" class="btn waves-effect waves-light  col s4 offset-s4">ユーザー情報へ</a>
+									<a href="UserListServlet" class="btn waves-effect waves-light  col s4 offset-s4">ユーザー一覧へ</a>
 								</p>
 							</div>
 						</div>

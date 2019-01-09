@@ -107,16 +107,15 @@ public class UserDataBeans implements Serializable {
 	 * @param loginId
 	 * @param address
 	 */
-	public void setUpdateUserDataBeansInfo(String name, String loginId, String address, int id) {
+	public void setUpdateUserDataBeansInfo(String name, String loginId, String password, String birthdate/*, int id*/) {
 		this.name = name;
 		this.loginId = loginId;
-		this.birthdate = address;
-		this.id = id;
+		this.password = password;
+		this.birthdate = birthdate;
+		/*this.id = id;*/
 	}
 
-	public UserDataBeans(String loginId, String name, String birthdate, String birthdate1) {
-		// TODO 自動生成されたコンストラクター・スタブ
-	}
+
 
 	public UserDataBeans(int id, String loginId, String name, String password, String birthdate) {
 		// TODO 自動生成されたコンストラクター・スタブ
@@ -128,13 +127,15 @@ public class UserDataBeans implements Serializable {
 			this.name = name;
 		}
 
-	public UserDataBeans(String loginId2) {
-		// TODO 自動生成されたコンストラクター・スタブ
-	}
 
-	public UserDataBeans(String loginId2, String name2, String birthdate, String password2, String createDate,
+	public UserDataBeans(String loginId, String name, String birthdate, String password, String createDate,
 			String updateDate) {
-		// TODO 自動生成されたコンストラクター・スタブ
+		this.loginId = loginId;
+		this.name = name;
+		this.birthdate = birthdate;
+		this.password = password;
+		this.createDate = createDate;
+		this.updateDate = updateDate;
 	}
 
 	// 全てのデータをセットするコンストラクタ
@@ -149,6 +150,18 @@ public class UserDataBeans implements Serializable {
 			this.updateDate = updateDate;
 		}
 
+		// 検索のデータをセットするコンストラクタ
+		public UserDataBeans(int id, String loginId, String name, String birthdate, String createDate,
+				String updateDate) {
+				this.id = id;
+				this.loginId = loginId;
+				this.name = name;
+				this.birthdate = birthdate;
+				this.createDate = createDate;
+				this.updateDate = updateDate;
+			}
+
+
 		public String getAddress() {
 			return Address;
 		}
@@ -156,5 +169,49 @@ public class UserDataBeans implements Serializable {
 		public void setAddress(String Address) {
 			this.Address = Address;
 		}
+
+		public UserDataBeans(String loginId, String name, String birthdate, String password, String updateDate) {
+			this.loginId = loginId;
+			this.name = name;
+			this.birthdate = birthdate;
+			this.password = password;
+			this.updateDate = updateDate;
+		}
+
+		// 登録セッションを保存するためのコンストラクタ
+		public UserDataBeans(String loginId, String name, String birthdate, String password) {
+			this.loginId = loginId;
+			this.name = name;
+			this.birthdate = birthdate;
+			this.password = password;
+		}
+
+
+
+		// 登録セッションを保存するためのコンストラクタ
+		public void UserDataBeans1(String loginId) {
+			this.loginId = loginId;
+		}
+
+		// 登録セッションを保存するためのコンストラクタ
+		public void UserDataBeans2(String name) {
+			this.name = name;
+		}
+
+		// 登録セッションを保存するためのコンストラクタ
+		public void UserDataBeans3(String birthdate) {
+			this.birthdate = birthdate;
+		}
+
+		// 登録セッションを保存するためのコンストラクタ
+		public void UserDataBeans4( String password) {
+			this.password = password;
+		}
+
+		//削除セッションを保存するためのコンストラクタ
+				public UserDataBeans(String loginId) {
+					this.loginId = loginId;
+				}
+
 
 }

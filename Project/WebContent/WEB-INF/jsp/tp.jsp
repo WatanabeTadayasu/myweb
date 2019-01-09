@@ -39,6 +39,10 @@
     <span style="border-bottom: solid 5px blue;">ログイン</span></a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="Logout">
+    <span style="border-bottom: solid 5px blue;">ログアウト</span></a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" href="Buy">
     <span style="border-bottom: solid 5px blue;">投稿</span></a>
   </li>

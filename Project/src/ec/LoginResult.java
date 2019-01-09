@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.UserDataBeans;
 import dao.UserDAO;
 
 /**
@@ -31,39 +32,34 @@ public class LoginResult extends HttpServlet {
 			String loginId = request.getParameter("login_id");
 			String password = request.getParameter("password");
 
-			//ユーザーIDを取得
-			int userId = UserDAO.getUserId(loginId, password);
+//			//ユーザーIDを取得
+//			int userId = UserDAO.getUserId(loginId, password);
 
-//			// リクエストパラメータの入力項目を取得
-//			String loginId = request.getParameter("login_id");
-//			String password = request.getParameter("password");
-//
-//			// 暗号化処理の呼び出し
-//	        UserDAO rs = new UserDAO();
-//	        String result = rs.hash(password);
-//
-//			// リクエストパラメータの入力項目を引数に渡して、Daoのメソッドを実行
-//			UserDAO userDao = new UserDAO();
-//			User userId = userDao.findByLoginInfo(loginId, result);
+			// 暗号化処理の呼び出し
+	        UserDAO rs = new UserDAO();
+	        String result = rs.hash(password);
+
+			// リクエストパラメータの入力項目を引数に渡して、Daoのメソッドを実行
+			UserDAO userDao = new UserDAO();
+			UserDataBeans userId = userDao.findByLoginInfo(loginId, result);
+
 
 			//ユーザーIDが取得できたなら
-			if (userId != 0) {
+			if (userId != null) {
 				session.setAttribute("isLogin", true);
 				session.setAttribute("userId", userId);
-
-				response.sendRedirect("UserListServlet");
 //				//ログイン前のページを取得
 //				String returnStrUrl = (String) EcHelper.cutSessionAttribute(session, "returnStrUrl");
 //
 //				//ログイン前ページにリダイレクト。指定がない場合Index
 //				response.sendRedirect(returnStrUrl!=null?returnStrUrl:"Index");
+
+				response.sendRedirect("Index");
 			} else {
 				session.setAttribute("loginId", loginId);
 				session.setAttribute("loginErrorMessage", "入力内容が正しくありません");
 				response.sendRedirect("Login");
 			}
-
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("errorMessage", e.toString());

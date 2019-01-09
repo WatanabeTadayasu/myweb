@@ -31,16 +31,16 @@ public class RegistConfirm extends HttpServlet {
 		HttpSession session = request.getSession();
 		try {
 			String inputUserName = request.getParameter("user_name");
-			String inputUserAddress = request.getParameter("user_address");
 			String inputLoginId = request.getParameter("login_id");
 			String inputPassword = request.getParameter("password");
 			String inputConfirmPassword = request.getParameter("confirm_password");
+			String inputUserBirthdate = request.getParameter("user_birth_date");
 
 			UserDataBeans udb = new UserDataBeans();
 			udb.setName(inputUserName);
-			udb.setAddress(inputUserAddress);
 			udb.setLoginId(inputLoginId);
 			udb.setPassword(inputPassword);
+			udb.setBirthdate(inputUserBirthdate);
 
 			String validationMessage = "";
 

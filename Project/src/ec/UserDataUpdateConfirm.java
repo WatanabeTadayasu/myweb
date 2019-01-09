@@ -33,7 +33,7 @@ public class UserDataUpdateConfirm extends HttpServlet {
 
 			//入力フォームから受け取った値をBeans偽っと
 			UserDataBeans udb = new UserDataBeans();
-			udb.setUpdateUserDataBeansInfo(request.getParameter("user_name"),request.getParameter("login_id"),request.getParameter("user_address"), (int) session.getAttribute("userId"));
+			udb.setUpdateUserDataBeansInfo(request.getParameter("user_name"), request.getParameter("password"), request.getParameter("birthdate"), request.getParameter("login_id")/*, (int) session.getAttribute("userId")*/);
 
 
 			//ログインIDの入力規則チェック 英数字 ハイフン アンダースコアのみ入力可能

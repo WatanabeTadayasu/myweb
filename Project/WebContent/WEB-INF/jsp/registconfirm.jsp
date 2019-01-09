@@ -26,17 +26,17 @@
 							</div>
 							<div class="row">
 								<div class="input-field col s10 offset-s1">
-									<input type="text" name="user_address" value="${udb.address}" readonly> <label>住所</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s10 offset-s1">
 									<input type="text" name="login_id" value="${udb.loginId}" readonly> <label>ログインID</label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="input-field col s10 offset-s1">
 									<input type="password" name="password" value="${udb.password}" readonly> <label>パスワード</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s10 offset-s1">
+									<input type="text" name="user_birth_date" value="${udb.birthdate}" readonly> <label>生年月日</label>
 								</div>
 							</div>
 							<div class="row">

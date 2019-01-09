@@ -29,14 +29,14 @@ public class RegistResult extends HttpServlet {
 		try {
 
 			String inputUserName = request.getParameter("user_name");
-			String inputUserAddress = request.getParameter("user_address");
 			String inputLoginId = request.getParameter("login_id");
 			String inputPassword = request.getParameter("password");
+			String inputUserBirthdate = request.getParameter("user_birth_date");
 			UserDataBeans udb = new UserDataBeans();
 			udb.setName(inputUserName);
-			udb.setAddress(inputUserAddress);
 			udb.setLoginId(inputLoginId);
 			udb.setPassword(inputPassword);
+			udb.setBirthdate(inputUserBirthdate);
 
 			// 登録が確定されたかどうか確認するための変数
 			String confirmed = request.getParameter("confirm_button");

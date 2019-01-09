@@ -22,7 +22,7 @@
 
   <div class="form-post">
     <label for="exampleFormControlInput1">ログインID</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="名前">
+    <input type="text" class="form-control" id="exampleFormControlInput1" value="${udb.loginId}" readonly>
   </div>
 
   <div class="form-post">

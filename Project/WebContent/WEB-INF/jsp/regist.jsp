@@ -32,11 +32,6 @@
 							</div>
 							<div class="row">
 								<div class="input-field col s10 offset-s1">
-									<input value="${udb.address}" name="user_address" type="text" required> <label>住所</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="input-field col s10 offset-s1">
 									<input value="${udb.loginId}" name="login_id" type="text" required> <label>ログインID</label>
 								</div>
 							</div>
@@ -48,6 +43,11 @@
 							<div class="row">
 								<div class="input-field col s10 offset-s1">
 									<input name="confirm_password" type="password" required> <label>パスワード（確認用）</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s10 offset-s1">
+									<input value="${udb.birthdate}" name="user_birth_date" type="text" required> <label>生年月日</label>
 								</div>
 							</div>
 							<div class="row">

@@ -16,9 +16,9 @@
 <div align="right">
 <header class="head">
 
-${userInfo.name} さん
+${userId.name} さん
 
-<a href="LogoutServlet">ログアウト</a>
+<a href="Logout">ログアウト</a>
 </header>
 </div>
 
@@ -82,20 +82,20 @@ ${userInfo.name} さん
                      <td>${UserDataBeans.birthdate}</td>
                      <!-- TODO 未実装；ログインボタンの表示制御を行う -->
 
-           <c:if test="${userInfo.loginId == 'admin'}">
+           <c:if test="${userId.loginId == 'admin'}">
 			<td>
 
              <a class="btn btn-primary" href="UserDetailServlet?userId=${UserDataBeans.id}">詳細</a>
              <a class="btn btn-success" href="UserData?userId=${UserDataBeans.id}">更新</a>
-             <a class="btn btn-danger" href ="UserDeleteServlet?id=${UserDataBeans.id}">削除</a>
+             <a class="btn btn-danger" href ="UserDeleteServlet?userId=${UserDataBeans.id}">削除</a>
 
              </td>
 			</c:if>
-				<c:if test="${userInfo.loginId != 'admin'}">
+				<c:if test="${userId.loginId != 'admin'}">
 				<td>
                 <a class="btn btn-primary" href="UserDetailServlet?userId=${UserDataBeans.id}">詳細</a>
 
-                	<c:if test="${userInfo.loginId == UserDataBeans.loginId}">
+                	<c:if test="${userId.loginId == UserDataBeans.loginId}">
                		<a class="btn btn-success" href="UserData?userId=${UserDataBeans.id}">更新</a>
                 	</c:if>
 

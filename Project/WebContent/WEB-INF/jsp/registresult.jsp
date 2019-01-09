@@ -25,12 +25,12 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s10 offset-s1">
-								<input type="text" value="${udb.address}" readonly> <label>住所</label>
+								<input type="text" value="${udb.loginId}" readonly> <label>ログインID</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s10 offset-s1">
-								<input type="text" value="${udb.loginId}" readonly> <label>ログインID</label>
+								<input type="text" value="${udb.birthdate}" readonly> <label>生年月日</label>
 							</div>
 						</div>
 						<div class="row">

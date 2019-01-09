@@ -31,7 +31,7 @@ public class UserDataUpdateResult extends HttpServlet {
 
 			// 入力フォームから受け取った値をUserDataBeansにセット
 			UserDataBeans udb = new UserDataBeans();
-			udb.setUpdateUserDataBeansInfo(request.getParameter("user_name_update"), request.getParameter("login_id_update"), request.getParameter("user_address_update"), (int) session.getAttribute("userId"));
+			udb.setUpdateUserDataBeansInfo(request.getParameter("user_name_update"), request.getParameter("password_update"), request.getParameter("birthdate_update"), request.getParameter("login_id_update")/*, (int) session.getAttribute("userId")*/);
 
 			// 確定ボタンが押されたかを確認する変数
 			String confirmed = request.getParameter("confirmButton");

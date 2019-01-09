@@ -16,7 +16,7 @@
 			<div class="col s6 offset-s3">
 				<div class="card grey lighten-5">
 					<div class="card-content">
-						<form action="Login" method="POST">
+						<form action="LoginResult" method="POST">
 							<div class="row">
 								<c:if test="${loginErrorMessage != null}">
 									<p class="red-text center-align">${loginErrorMessage}</p>
