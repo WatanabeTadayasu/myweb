@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.DeliveryMethodDataBeans;
-import beans.UserDataBeans;
 import dao.DeliveryMethodDAO;
-import dao.UserDAO;
 
 /**
  * 商品購入画面
@@ -28,9 +26,6 @@ public class Buy extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// セッション
 		HttpSession session = request.getSession();
-
-		// URLからGETパラメータとしてIDを受け取る
-		int userId = (int) session.getAttribute("userId");
 
 		try {
 
@@ -50,10 +45,12 @@ public class Buy extends HttpServlet {
 				// 配送方法をDBから取得
 				ArrayList<DeliveryMethodDataBeans> dMDBList = DeliveryMethodDAO.getAllDeliveryMethodDataBeans();
 
+				/*投稿メソッド
+				int id = (int) session.getAttribute("userId");
+				UserDAO UserDAO = new UserDAO();
+				UserDataBeans udb = UserDAO.findByDetailInfo(id);
 
-				UserDataBeans udb = UserDAO.getUserDataBeansByUserId(userId);
-
-				request.setAttribute("udb", udb);
+				request.setAttribute("udb", udb);*/
 				request.setAttribute("dmdbList", dMDBList);
 				request.getRequestDispatcher("/WEB-INF/jsp/post.jsp").forward(request, response);
 

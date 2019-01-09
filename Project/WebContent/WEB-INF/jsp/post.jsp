@@ -22,7 +22,7 @@
 
   <div class="form-post">
     <label for="exampleFormControlInput1">ログインID</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" value="${udb.loginId}" readonly>
+    <input type="text" class="form-control" id="exampleFormControlInput1" value="${userId.loginId}" readonly>
   </div>
 
   <div class="form-post">
@@ -53,7 +53,7 @@
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
   </div>
 
-  <a class="btn btn-primary" href="UserDetailServlet?id=${user.id}">投稿</a>
+  <a class="btn btn-primary" href="UserDetailServlet?id=${userId.loginId}">投稿</a>
 
 </form>
 
