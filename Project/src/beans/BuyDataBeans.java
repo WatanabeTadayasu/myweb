@@ -10,11 +10,10 @@ import java.io.Serializable;
 public class BuyDataBeans  implements Serializable {
 	private int id;
 	private int userId;
-	private int totalPrice;
-	private int delivertMethodId;
-	private String buyDate;
-	private String deliveryMethodName;
-	private int deliveryMethodPrice;
+	private int threadCategoryId;
+	private String threadTitle;
+	private String threadText;
+	private String createDate;
 
 
 	public int getId() {
@@ -29,40 +28,36 @@ public class BuyDataBeans  implements Serializable {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public int getTotalPrice() {
-		return totalPrice;
+	public int getThreadCategoryId() {
+		return threadCategoryId;
 	}
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setThreadCategoryId(int threadCategoryId) {
+		this.threadCategoryId = threadCategoryId;
 	}
-	public int getDelivertMethodId() {
-		return delivertMethodId;
+	public String getThreadTitle() {
+		return threadTitle;
 	}
-	public void setDelivertMethodId(int delivertMethodId) {
-		this.delivertMethodId = delivertMethodId;
+	public void setThreadTitle(String threadTitle) {
+		this.threadTitle = threadTitle;
 	}
-	public String getBuyDate() {
-		return buyDate;
+	public String getThreadText() {
+		return threadText;
 	}
-	public void setBuyDate(String sDate) {
-		this.buyDate = sDate;
+	public void setThreadText(String threadText) {
+		this.threadText = threadText;
 	}
-	public String getDeliveryMethodName() {
-		return deliveryMethodName;
+	public String getCreateDate() {
+		return createDate;
 	}
-	public void setDeliveryMethodName(String deliveryMethodName) {
-		this.deliveryMethodName = deliveryMethodName;
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
 	}
+
+
 //	public String getFormatDate() {
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
 //		return sdf.format(buyDate);
 //	}
 
-	public int getDeliveryMethodPrice() {
-		return deliveryMethodPrice;
-	}
-	public void setDeliveryMethodPrice(int deliveryMethodPrice) {
-		this.deliveryMethodPrice = deliveryMethodPrice;
-	}
 
 }
