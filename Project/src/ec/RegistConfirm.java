@@ -30,6 +30,7 @@ public class RegistConfirm extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		try {
+
 			String inputUserName = request.getParameter("user_name");
 			String inputLoginId = request.getParameter("login_id");
 			String inputPassword = request.getParameter("password");

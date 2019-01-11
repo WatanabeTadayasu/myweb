@@ -1,43 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href = "css/style.css">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>購入完了</title>
+
 </head>
 <body>
 
-<div class="box_0">
-
-	<h1>題名.本文</h1>
-	<p>ここにコメントここにコメントここにコメントここにコメントここにコメント</p>
-	<a href="#" class="square_btn">良いでしょう</a>
-</div>
-
-<div class="box_1">
-
-	<h2>靴</h2>
-       <p>ここにコメントここにコメントここにコメントここにコメント</p>
-
-</div>
-
-<form>
 
   <div class="form-post">
-    <label for="exampleFormControlInput1">名前</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="名前">
+    <label for="exampleFormControlInput1">ログインID</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="user_id" value="${bdb.userId}" readonly>
+  </div>
+
+  <div class="form-post">
+    <label for="exampleFormControlInput1">タイトル</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="thread_title" value="${bdb.threadTitle}" readonly>
   </div>
 
   <div class="form-post">
     <label for="exampleFormControlTextarea1">本文</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    <textarea ${bdb.threadText} class="form-control" id="exampleFormControlTextarea1" name="thread_text" rows="5" readonly></textarea>
   </div>
 
-  <a class="btn btn-primary" href="UserDetailServlet?id=${user.id}">コメント</a>
+		<div class="row">
+			<div class="col s12">
+				<p class="center-align">上記内容で登録しました。</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12">
+				<p class="center-align">
+					<a href="Index" class="btn waves-effect waves-light  col s8 offset-s2">トップページへ</a>
+				</p>
+			</div>
+		</div>
 
-</form>
+
 
 </body>
 </html>

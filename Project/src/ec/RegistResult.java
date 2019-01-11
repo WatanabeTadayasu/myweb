@@ -32,6 +32,7 @@ public class RegistResult extends HttpServlet {
 			String inputLoginId = request.getParameter("login_id");
 			String inputPassword = request.getParameter("password");
 			String inputUserBirthdate = request.getParameter("user_birth_date");
+
 			UserDataBeans udb = new UserDataBeans();
 			udb.setName(inputUserName);
 			udb.setLoginId(inputLoginId);

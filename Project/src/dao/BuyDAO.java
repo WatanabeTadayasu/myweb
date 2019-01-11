@@ -32,13 +32,12 @@ public class BuyDAO {
 		try {
 			con = DBManager.getConnection();
 			st = con.prepareStatement(
-					"INSERT INTO t_thread(id,user_id,thread_title,thread_text,thread_category_id,create_date) VALUES (?,?,?,?,?,cast(now() as datetime))"
+					"INSERT INTO t_thread(user_id,thread_title,thread_text,thread_category_id,create_date) VALUES (?,?,?,?,cast(now() as datetime))"
 					 , Statement.RETURN_GENERATED_KEYS);
-			st.setInt(2, bdb.getId());
 			st.setInt(1, bdb.getUserId());
 			st.setString(2, bdb.getThreadTitle());
-			st.setString(2, bdb.getThreadText());
-			st.setInt(2, bdb.getThreadCategoryId());
+			st.setString(3, bdb.getThreadText());
+			st.setInt(4, bdb.getThreadCategoryId());
 			//st.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
 			st.executeUpdate();
 
@@ -76,7 +75,7 @@ public class BuyDAO {
 			st = con.prepareStatement(
 					"SELECT * FROM t_thread"
 							+ " JOIN m_thread_category"
-							+ " ON t_buy.thread_category_id = m_thread_category.id"
+							+ " ON t_thread.thread_category_id = m_thread_category.id"
 							+ " WHERE t_thread.id = ?");
 			st.setInt(1, buyId);
 
@@ -89,6 +88,7 @@ public class BuyDAO {
 				bdb.setThreadTitle(rs.getString("threadTitle"));
 				bdb.setThreadText(rs.getString("threadText"));
 				bdb.setThreadCategoryId(rs.getInt("threadCategoryId"));
+				bdb.setThreadCategoryName(rs.getString("name"));
 
 				//bdb.setBuyDate(rs.getTimestamp("create_date"));
 

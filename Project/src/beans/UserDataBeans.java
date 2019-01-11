@@ -18,6 +18,7 @@ public class UserDataBeans implements Serializable {
 	private String password1;
 	private String birthdate1;
 	private String Address;
+	private int threadCategoryId;
 
 	// コンストラクタ
 	public UserDataBeans() {
@@ -211,6 +212,14 @@ public class UserDataBeans implements Serializable {
 		//削除セッションを保存するためのコンストラクタ
 				public UserDataBeans(String loginId) {
 					this.loginId = loginId;
+				}
+
+				public int getThreadCategoryId() {
+					return threadCategoryId;
+				}
+
+				public void setThreadCategoryId(int threadCategoryId) {
+					this.threadCategoryId = threadCategoryId;
 				}
 
 

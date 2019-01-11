@@ -12,7 +12,7 @@
 
 <div class = "header">
 
-<h1>keiziban</h1>
+<h1>掲示板</h1>
 <ul class="nav">
   <li class="nav-item">
     <a class="nav-link" href="#">
@@ -43,7 +43,7 @@
     <span style="border-bottom: solid 5px blue;">ログアウト</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="Buy">
+    <a class="nav-link" href="Post">
     <span style="border-bottom: solid 5px blue;">投稿</span></a>
   </li>
 </ul>
@@ -52,18 +52,22 @@
 
 <div class="box_d">
 
-<!-- <c:if test="${userInfo.loginId == 'admin'}"> -->
+		<!-- <c:if test="${userInfo.loginId == 'admin'}"> -->
 			<div class="delete">
              <a class="btn btn-danger" href ="UserDeleteServlet?id=${user.id}">削除</a>
 			</div>
 		<!-- </c:if> -->
 
-<div class="box_1">
-      <h2><a href="https://saruwakakun.com/">うどん</a></h2>
-       <p>ここにコメントここにコメントここにコメントここにコメント</p>
-</div>
+			<div class="box_1">
+				<h2>
+					<a href="https://saruwakakun.com/">うどん
+						${resultBDB.threadTitle}</a>
+				</h2>
+				<p>ここにコメントここにコメントここにコメントここにコメント
+				${resultBDB.threadText}</p>
+			</div>
 
-<!-- <c:if test="${userInfo.loginId == 'admin'}"> -->
+			<!-- <c:if test="${userInfo.loginId == 'admin'}"> -->
 			<div class="delete">
              <a class="btn btn-danger" href ="UserDeleteServlet?id=${user.id}">削除</a>
 			</div>

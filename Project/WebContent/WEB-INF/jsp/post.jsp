@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href = "css/style.css">
@@ -18,11 +18,17 @@
 
 </div>
 
-<form>
+<c:if test="${validationMessage != null}">
+	    <div class="alert alert-danger" role="alert">
+		  ${validationMessage}
+		</div>
+	</c:if>
+
+<form action="PostConfirm" method="POST">
 
   <div class="form-post">
     <label for="exampleFormControlInput1">ログインID</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" value="${userId.loginId}" readonly>
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="user_id" value="${userId.loginId}" readonly>
   </div>
 
   <div class="form-post">
@@ -45,15 +51,20 @@
 
   <div class="form-post">
     <label for="exampleFormControlInput1">タイトル</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="タイトル">
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="thread_title" placeholder="タイトル">
   </div>
 
   <div class="form-post">
     <label for="exampleFormControlTextarea1">本文</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="thread_text" rows="5"></textarea>
   </div>
 
-  <a class="btn btn-primary" href="UserDetailServlet?id=${userId.loginId}">投稿</a>
+		<div class="form-post">
+			<div class="col s12">
+				<button class="btn  waves-effect waves-light  col s4 offset-s4"
+					type="submit" name="action">投稿</button>
+			</div>
+		</div>
 
 </form>
 

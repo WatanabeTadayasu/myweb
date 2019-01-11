@@ -65,7 +65,7 @@ public class DeliveryMethodDAO {
 		try {
 			con = DBManager.getConnection();
 
-			st = con.prepareStatement("SELECT * FROM m_delivery_method WHERE id = ?");
+			st = con.prepareStatement("SELECT * FROM m_thread_category WHERE id = ?");
 			st.setInt(1, inputDeliveryMethodId);
 
 			ResultSet rs = st.executeQuery();
@@ -75,7 +75,7 @@ public class DeliveryMethodDAO {
 
 			dmdb.setId(rs.getInt("id"));
 			dmdb.setName(rs.getString("name"));
-			dmdb.setPrice(rs.getInt("price"));
+//			dmdb.setPrice(rs.getInt("price"));
 
 			}
 
@@ -107,12 +107,12 @@ public class DeliveryMethodDAO {
 			con = DBManager.getConnection();
 
 			st = con.prepareStatement(
-					"SELECT m_delivery_method.name,"
-					+ " m_delivery_method.price"
-					+ " FROM t_buy"
-					+ " JOIN m_delivery_method"
-					+ " ON m_delivery_method.id = t_buy.delivery_method_id"
-					+ " WHERE t_buy.id = ?");
+					"SELECT m_thread_category.name"
+//					+ " m_delivery_method.price"
+					+ " FROM t_thread"
+					+ " JOIN m_thread_category"
+					+ " ON m_thread_category.id = t_thread.thread_category_id"
+					+ " WHERE t_thread.id = ?");
 			st.setInt(1, buyId);
 
 			ResultSet rs = st.executeQuery();
@@ -120,7 +120,7 @@ public class DeliveryMethodDAO {
 
 			while (rs.next()) {
 				dmdb.setName(rs.getString("name"));
-				dmdb.setPrice(rs.getInt("m_delivery_method.price"));
+//				dmdb.setPrice(rs.getInt("m_delivery_method.price"));
 
 			}
 

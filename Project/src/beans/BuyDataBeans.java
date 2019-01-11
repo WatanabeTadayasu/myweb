@@ -14,7 +14,7 @@ public class BuyDataBeans  implements Serializable {
 	private String threadTitle;
 	private String threadText;
 	private String createDate;
-
+	private String threadCategoryName;
 
 	public int getId() {
 		return id;
@@ -51,6 +51,12 @@ public class BuyDataBeans  implements Serializable {
 	}
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
+	}
+	public String getThreadCategoryName() {
+		return threadCategoryName;
+	}
+	public void setThreadCategoryName(String threadCategoryName) {
+		this.threadCategoryName = threadCategoryName;
 	}
 
 
