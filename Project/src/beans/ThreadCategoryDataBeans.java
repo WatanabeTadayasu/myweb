@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author d-yamaguchi
  *
  */
-public class DeliveryMethodDataBeans implements Serializable {
+public class ThreadCategoryDataBeans implements Serializable {
 
 	private int id;
 	private String name;

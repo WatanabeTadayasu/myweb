@@ -27,12 +27,12 @@
 <form action="PostConfirm" method="POST">
 
   <div class="form-post">
-    <label for="exampleFormControlInput1">ログインID</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="user_id" value="${userId.loginId}" readonly>
+    <label>ログインID</label>
+    <input type="text" class="form-control" name="user_id" value="${userId.loginId}" readonly>
   </div>
 
   <div class="form-post">
-    <label for="exampleFormControlSelect1">カテゴリ選択</label>
+    <label>カテゴリ選択</label>
     <select name="thread_category_id">
 	<c:forEach var="dmdb" items="${dmdbList}" >
 		<option value="${dmdb.id}">${dmdb.name}</option>
@@ -50,13 +50,13 @@
   </div>
 
   <div class="form-post">
-    <label for="exampleFormControlInput1">タイトル</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="thread_title" placeholder="タイトル">
+    <label>タイトル</label>
+    <input type="text" class="form-control" name="thread_title" placeholder="タイトル">
   </div>
 
   <div class="form-post">
-    <label for="exampleFormControlTextarea1">本文</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" name="thread_text" rows="5"></textarea>
+    <label>本文</label>
+    <textarea class="form-control" name="thread_text" rows="5"></textarea>
   </div>
 
 		<div class="form-post">

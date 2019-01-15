@@ -7,21 +7,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import base.DBManager;
-import beans.DeliveryMethodDataBeans;
+import beans.ThreadCategoryDataBeans;
 
 /**
  *
  * @author d-yamaguchi
  *
  */
-public class DeliveryMethodDAO {
+public class ThreadCategoryDAO {
 
 	/**
 	 * DBに登録されている配送方法を取得
 	 * @return {DeliveryMethodDataBeans}
 	 * @throws SQLException
 	 */
-	public static ArrayList<DeliveryMethodDataBeans> getAllDeliveryMethodDataBeans() throws SQLException {
+	public static ArrayList<ThreadCategoryDataBeans> getAllThreadCategoryDataBeans() throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -31,18 +31,18 @@ public class DeliveryMethodDAO {
 
 			ResultSet rs = st.executeQuery();
 
-			ArrayList<DeliveryMethodDataBeans> deliveryMethodDataBeansList = new ArrayList<DeliveryMethodDataBeans>();
+			ArrayList<ThreadCategoryDataBeans> threadCategoryDataBeansList = new ArrayList<ThreadCategoryDataBeans>();
 			while (rs.next()) {
-				DeliveryMethodDataBeans dmdb = new DeliveryMethodDataBeans();
-				dmdb.setId(rs.getInt("id"));
-				dmdb.setName(rs.getString("name"));
+				ThreadCategoryDataBeans tcdb = new ThreadCategoryDataBeans();
+				tcdb.setId(rs.getInt("id"));
+				tcdb.setName(rs.getString("name"));
 //				dmdb.setPrice(rs.getInt("price"));
-				deliveryMethodDataBeansList.add(dmdb);
+				threadCategoryDataBeansList.add(tcdb);
 			}
 
 			System.out.println("searching all DeliveryMethodDataBeans has been completed");
 
-			return deliveryMethodDataBeansList;
+			return threadCategoryDataBeansList;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			throw new SQLException(e);
@@ -59,29 +59,29 @@ public class DeliveryMethodDAO {
 	 * @return DeliveryMethodDataBeans
 	 * @throws SQLException
 	 */
-	public static DeliveryMethodDataBeans getDeliveryMethodDataBeansByID(int inputDeliveryMethodId) throws SQLException {
+	public static ThreadCategoryDataBeans getThreadCategoryDataBeansByID(int inputThreadCategoryId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
 			con = DBManager.getConnection();
 
 			st = con.prepareStatement("SELECT * FROM m_thread_category WHERE id = ?");
-			st.setInt(1, inputDeliveryMethodId);
+			st.setInt(1, inputThreadCategoryId);
 
 			ResultSet rs = st.executeQuery();
 
-			DeliveryMethodDataBeans dmdb = new DeliveryMethodDataBeans();
+			ThreadCategoryDataBeans tcdb = new ThreadCategoryDataBeans();
 			if (rs.next()) {
 
-			dmdb.setId(rs.getInt("id"));
-			dmdb.setName(rs.getString("name"));
+			tcdb.setId(rs.getInt("id"));
+			tcdb.setName(rs.getString("name"));
 //			dmdb.setPrice(rs.getInt("price"));
 
 			}
 
 			System.out.println("searching DeliveryMethodDataBeans by DeliveryMethodID has been completed");
 
-			return dmdb;
+			return tcdb;
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -100,7 +100,7 @@ public class DeliveryMethodDAO {
      *             配送方法の情報に対応するデータを持つJavaBeans
      * @throws SQLException
      */
-	public static DeliveryMethodDataBeans getDeliveryMethodDataBeansByBuyId(int buyId) throws SQLException {
+	public static ThreadCategoryDataBeans getThreadCategoryDataBeansByBuyId(int buyId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -116,16 +116,16 @@ public class DeliveryMethodDAO {
 			st.setInt(1, buyId);
 
 			ResultSet rs = st.executeQuery();
-			DeliveryMethodDataBeans dmdb = new DeliveryMethodDataBeans();
+			ThreadCategoryDataBeans tcdb = new ThreadCategoryDataBeans();
 
 			while (rs.next()) {
-				dmdb.setName(rs.getString("name"));
+				tcdb.setName(rs.getString("name"));
 //				dmdb.setPrice(rs.getInt("m_delivery_method.price"));
 
 			}
 
 			System.out.println("searching DeliveryMethodDataBeans by BuyID has been completed");
-			return dmdb;
+			return tcdb;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			throw new SQLException(e);

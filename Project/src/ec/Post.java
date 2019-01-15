@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.DeliveryMethodDataBeans;
-import dao.DeliveryMethodDAO;
+import beans.ThreadCategoryDataBeans;
+import dao.ThreadCategoryDAO;
 
 /**
  * Servlet implementation class Post
@@ -51,7 +51,7 @@ public class Post extends HttpServlet {
 //					request.getRequestDispatcher(EcHelper.CART_PAGE).forward(request, response);
 				} else {
 					// 配送方法をDBから取得
-					ArrayList<DeliveryMethodDataBeans> dMDBList = DeliveryMethodDAO.getAllDeliveryMethodDataBeans();
+					ArrayList<ThreadCategoryDataBeans> dMDBList = ThreadCategoryDAO.getAllThreadCategoryDataBeans();
 
 					/*投稿メソッド
 					int id = (int) session.getAttribute("userId");

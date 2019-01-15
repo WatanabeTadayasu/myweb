@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.BuyDataBeans;
-import beans.DeliveryMethodDataBeans;
-import dao.DeliveryMethodDAO;
+import beans.PostDataBeans;
+import beans.ThreadCategoryDataBeans;
+import dao.ThreadCategoryDAO;
 
 /**
  * 購入商品確認画面
@@ -29,7 +29,7 @@ public class BuyConfirm extends HttpServlet {
 			int inputThreadCategoryId = Integer.parseInt(request.getParameter("thread_category_id"));
 			//選択されたIDをもとに配送方法Beansを取得
 			//DeliveryMethodDataBeans userSelectDMB = DeliveryMethodDAO.getDeliveryMethodDataBeansByID(inputDeliveryMethodId);
-			DeliveryMethodDataBeans dmdb = DeliveryMethodDAO.getDeliveryMethodDataBeansByID(inputThreadCategoryId);
+			ThreadCategoryDataBeans dmdb = ThreadCategoryDAO.getThreadCategoryDataBeansByID(inputThreadCategoryId);
 //			//買い物かご
 //			ArrayList<ItemDataBeans> cartIDBList = (ArrayList<ItemDataBeans>) session.getAttribute("cart");
 //			//合計金額
@@ -40,7 +40,7 @@ public class BuyConfirm extends HttpServlet {
 			String inputThreadTitle = request.getParameter("thread_title");
 			String inputThreadText = request.getParameter("thread_text");
 
-			BuyDataBeans bdb = new BuyDataBeans();
+			PostDataBeans bdb = new PostDataBeans();
 			bdb.setUserId((int) session.getAttribute("userId"));
 			bdb.setThreadTitle(inputThreadTitle);
 			bdb.setThreadText(inputThreadText);

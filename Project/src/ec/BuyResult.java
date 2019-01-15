@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.BuyDataBeans;
-import dao.BuyDAO;
+import beans.PostDataBeans;
+import dao.PostDAO;
 
 /**
  * 購入完了画面
@@ -31,7 +31,7 @@ public class BuyResult extends HttpServlet {
 			String inputThreadText = request.getParameter("thread_text");
 			int inputThreadCategoryId = Integer.parseInt(request.getParameter("thread_category_id"));
 
-			BuyDataBeans bdb = new BuyDataBeans();
+			PostDataBeans bdb = new PostDataBeans();
 			bdb.setUserId((int) session.getAttribute("userId"));
 			bdb.setThreadTitle(inputThreadTitle);
 			bdb.setThreadText(inputThreadText);
@@ -49,10 +49,10 @@ public class BuyResult extends HttpServlet {
 
 			case "regist":
 				// 購入情報を登録
-				int buyId = BuyDAO.insertBuy(bdb);
+				int buyId = PostDAO.insertBuy(bdb);
 
 				/* ====購入完了ページ表示用==== */
-				BuyDataBeans resultBDB = BuyDAO.getBuyDataBeansByBuyId(buyId);
+				PostDataBeans resultBDB = PostDAO.getBuyDataBeansByBuyId(buyId);
 
 				request.setAttribute("bdb", bdb);
 				session.setAttribute("resultBDB", resultBDB);

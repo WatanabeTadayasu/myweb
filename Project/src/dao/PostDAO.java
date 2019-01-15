@@ -10,14 +10,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import base.DBManager;
-import beans.BuyDataBeans;
+import beans.PostDataBeans;
 
 /**
  *
  * @author d-yamaguchi
  *
  */
-public class BuyDAO {
+public class PostDAO {
 
 	/**
 	 * 購入情報登録処理
@@ -25,7 +25,7 @@ public class BuyDAO {
 	 * @return
 	 * @throws SQLException 呼び出し元にスローさせるため
 	 */
-	public static int insertBuy(BuyDataBeans bdb) throws SQLException {
+	public static int insertBuy(PostDataBeans bdb) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		int autoIncKey = -1;
@@ -66,7 +66,7 @@ public class BuyDAO {
 	 * @throws SQLException
 	 * 				呼び出し元にスローさせるため
 	 */
-	public static  BuyDataBeans getBuyDataBeansByBuyId(int buyId) throws SQLException {
+	public static  PostDataBeans getBuyDataBeansByBuyId(int buyId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -81,7 +81,7 @@ public class BuyDAO {
 
 			ResultSet rs = st.executeQuery();
 
-			BuyDataBeans bdb = new BuyDataBeans();
+			PostDataBeans bdb = new PostDataBeans();
 			if (rs.next()) {
 				bdb.setId(rs.getInt("id"));
 				bdb.setUserId(rs.getInt("user_id"));
@@ -126,7 +126,7 @@ public class BuyDAO {
 	 * @throws SQLException
 	 * 				呼び出し元にスローさせるため
 	 */
-	public static  ArrayList<BuyDataBeans> getBuyDataBeansHistory() throws SQLException {
+	public static  ArrayList<PostDataBeans> getBuyDataBeansHistory() throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -139,10 +139,10 @@ public class BuyDAO {
 							+ " order by t_thread.id desc");
 			ResultSet rs = st.executeQuery();
 
-			ArrayList<BuyDataBeans> buyDataBeansList = new ArrayList<BuyDataBeans>();
+			ArrayList<PostDataBeans> buyDataBeansList = new ArrayList<PostDataBeans>();
 
 			while (rs.next()) {
-				BuyDataBeans bdb = new BuyDataBeans();
+				PostDataBeans bdb = new PostDataBeans();
 				bdb.setId(rs.getInt("id"));
 				bdb.setUserId(rs.getInt("user_id"));
 				bdb.setThreadTitle(rs.getString("threadTitle"));

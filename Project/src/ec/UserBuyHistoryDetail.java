@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.BuyDataBeans;
 import beans.ItemDataBeans;
-import dao.BuyDAO;
+import beans.PostDataBeans;
 import dao.BuyDetailDAO;
+import dao.PostDAO;
 
 /**
  * 購入履歴画面
@@ -33,7 +33,7 @@ public class UserBuyHistoryDetail extends HttpServlet {
 			int pageNum = Integer.parseInt(request.getParameter("page_num")==null?"1":request.getParameter("page_num"));
 
 			//購入詳細情報、購入情報を取得
-			BuyDataBeans bdbbb = BuyDAO.getBuyDataBeansByBuyId(id);
+			PostDataBeans bdbbb = PostDAO.getBuyDataBeansByBuyId(id);
 
 			// 購入アイテム情報
 			ArrayList<ItemDataBeans> buyIDBList = BuyDetailDAO.getItemDataBeansListByBuyId(id);
