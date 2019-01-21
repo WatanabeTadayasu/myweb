@@ -34,6 +34,8 @@ public class Index extends HttpServlet {
 				session.removeAttribute("searchWord");
 			}else {
 
+
+
 			request.getRequestDispatcher("/WEB-INF/jsp/tp.jsp").forward(request, response);
 			}
 		} catch (Exception e) {

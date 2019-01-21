@@ -93,46 +93,46 @@ public class ThreadCategoryDAO {
 		}
 	}
 
-	/**
-     *購入IDによる配送方法検索
-     * @param buyId
-     * @return dmdb DeliveryMethodDataBeans
-     *             配送方法の情報に対応するデータを持つJavaBeans
-     * @throws SQLException
-     */
-	public static ThreadCategoryDataBeans getThreadCategoryDataBeansByBuyId(int buyId) throws SQLException {
-		Connection con = null;
-		PreparedStatement st = null;
-		try {
-			con = DBManager.getConnection();
-
-			st = con.prepareStatement(
-					"SELECT m_thread_category.name"
-//					+ " m_delivery_method.price"
-					+ " FROM t_thread"
-					+ " JOIN m_thread_category"
-					+ " ON m_thread_category.id = t_thread.thread_category_id"
-					+ " WHERE t_thread.id = ?");
-			st.setInt(1, buyId);
-
-			ResultSet rs = st.executeQuery();
-			ThreadCategoryDataBeans tcdb = new ThreadCategoryDataBeans();
-
-			while (rs.next()) {
-				tcdb.setName(rs.getString("name"));
-//				dmdb.setPrice(rs.getInt("m_delivery_method.price"));
-
-			}
-
-			System.out.println("searching DeliveryMethodDataBeans by BuyID has been completed");
-			return tcdb;
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			throw new SQLException(e);
-		} finally {
-			if (con != null) {
-				con.close();
-			}
-		}
-	}
+//	/**
+//     *購入IDによる配送方法検索
+//     * @param buyId
+//     * @return dmdb DeliveryMethodDataBeans
+//     *             配送方法の情報に対応するデータを持つJavaBeans
+//     * @throws SQLException
+//     */
+//	public static ThreadCategoryDataBeans getThreadCategoryDataBeansByBuyId(int buyId) throws SQLException {
+//		Connection con = null;
+//		PreparedStatement st = null;
+//		try {
+//			con = DBManager.getConnection();
+//
+//			st = con.prepareStatement(
+//					"SELECT m_thread_category.name"
+////					+ " m_delivery_method.price"
+//					+ " FROM t_thread"
+//					+ " JOIN m_thread_category"
+//					+ " ON m_thread_category.id = t_thread.thread_category_id"
+//					+ " WHERE t_thread.id = ?");
+//			st.setInt(1, buyId);
+//
+//			ResultSet rs = st.executeQuery();
+//			ThreadCategoryDataBeans tcdb = new ThreadCategoryDataBeans();
+//
+//			while (rs.next()) {
+//				tcdb.setName(rs.getString("name"));
+////				dmdb.setPrice(rs.getInt("m_delivery_method.price"));
+//
+//			}
+//
+//			System.out.println("searching DeliveryMethodDataBeans by BuyID has been completed");
+//			return tcdb;
+//		} catch (SQLException e) {
+//			System.out.println(e.getMessage());
+//			throw new SQLException(e);
+//		} finally {
+//			if (con != null) {
+//				con.close();
+//			}
+//		}
+//	}
 }

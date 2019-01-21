@@ -59,17 +59,55 @@ public class UserDAO {
 		}
 	}
 
+//	/**
+//	 * ユーザーIDを取得
+//	 *
+//	 * @param loginId
+//	 *            ログインID
+//	 * @param password
+//	 *            パスワード
+//	 * @return int ログインIDとパスワードが正しい場合対象のユーザーID 正しくない||登録されていない場合0
+//	 * @throws SQLException
+//	 *             呼び出し元にスロー
+//	 */
+//	public static int getUserId(String loginId, String password) throws SQLException {
+//		Connection con = null;
+//		PreparedStatement st = null;
+//		try {
+//			con = DBManager.getConnection();
+//
+//			st = con.prepareStatement("SELECT * FROM t_user WHERE login_id = ?");
+//			st.setString(1, loginId);
+//
+//			ResultSet rs = st.executeQuery();
+//
+//			int userId = 0;
+//			while (rs.next()) {
+//				if (EcHelper.getMd5(password).equals(rs.getString("login_password"))) {
+//					userId = rs.getInt("id");
+//					System.out.println("login succeeded");
+//					break;
+//				}
+//			}
+//
+//			System.out.println("searching userId by loginId has been completed");
+//			return userId;
+//		} catch (SQLException e) {
+//			System.out.println(e.getMessage());
+//			throw new SQLException(e);
+//		} finally {
+//			if (con != null) {
+//				con.close();
+//			}
+//		}
+//	}
+
 	/**
-	 * ユーザーIDを取得
-	 *
-	 * @param loginId
-	 *            ログインID
-	 * @param password
-	 *            パスワード
-	 * @return int ログインIDとパスワードが正しい場合対象のユーザーID 正しくない||登録されていない場合0
-	 * @throws SQLException
-	 *             呼び出し元にスロー
-	 */
+     * ログインIDとパスワードに紐づくユーザ情報を返す
+     * @param loginId
+     * @param password
+     * @return
+     */
 	public static int getUserId(String loginId, String password) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
@@ -102,51 +140,61 @@ public class UserDAO {
 		}
 	}
 
-	/**
-     * ログインIDとパスワードに紐づくユーザ情報を返す
-     * @param loginId
-     * @param password
-     * @return
-     */
-    public UserDataBeans findByLoginInfo(String loginId, String result) {
-        Connection conn = null;
-        try {
-            // データベースへ接続
-            conn = DBManager.getConnection();
 
-            // SELECT文を準備
-            String sql = "SELECT * FROM t_user WHERE login_id = ? and login_password = ?";
-
-            // SELECTを実行し、結果表を取得
-            PreparedStatement pStmt = conn.prepareStatement(sql);
-            pStmt.setString(1, loginId);
-            pStmt.setString(2, result);
-            ResultSet rs = pStmt.executeQuery();
-
-            // 主キーに紐づくレコードは1件のみなので、rs.next()は1回だけ行う
-            if (!rs.next()) {
-                return null;
-            }
-
-            String loginIdData = rs.getString("login_id");
-            String nameData = rs.getString("name");
-            return new UserDataBeans(loginIdData, nameData);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            // データベース切断
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-        }
-    }
+//	/**
+//     * ログインIDとパスワードに紐づくユーザ情報を返す
+//     * @param loginId
+//     * @param password
+//     * @return
+//     */
+//    public int findByLoginInfo(String loginId, String result) {
+//        Connection conn = null;
+//        try {
+//            // データベースへ接続
+//            conn = DBManager.getConnection();
+//
+//            // SELECT文を準備
+//            String sql = "SELECT * FROM t_user WHERE login_id = ? and login_password = ?";
+//
+//            // SELECTを実行し、結果表を取得
+//            PreparedStatement pStmt = conn.prepareStatement(sql);
+//            pStmt.setString(1, loginId);
+//            pStmt.setString(2, result);
+//            ResultSet rs = pStmt.executeQuery();
+//
+//            int userId = 0;
+//
+//            // 主キーに紐づくレコードは1件のみなので、rs.next()は1回だけ行う
+//            if (!rs.next()) {
+//            	userId = rs.getInt("id");
+//    			System.out.println("login succeeded");
+////                String nameData = rs.getString("name");
+//                return userId;
+//            }
+//
+////            userId = rs.getInt("id");
+////			System.out.println("login succeeded");
+//////            String nameData = rs.getString("name");
+////            return userId;
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
+////            return null;
+//        } finally {
+//            // データベース切断
+//            if (conn != null) {
+//                try {
+//                    conn.close();
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                    System.out.println(e.getMessage());
+////                    return null;
+//                }
+//            }
+//        }
+//		return 0;
+//    }
 
     /*idに紐づくユーザー情報を返す*/
 

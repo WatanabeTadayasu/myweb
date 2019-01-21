@@ -43,16 +43,16 @@ public class PostResult extends HttpServlet {
 
 		try {
 
+			String inputuserLoginId = request.getParameter("user_login_id");
 			String inputThreadTitle = request.getParameter("thread_title");
 			String inputThreadText = request.getParameter("thread_text");
-			int inputThreadCategoryId = Integer.parseInt(request.getParameter("thread_category_id"));
+			String inputThreadCategoryName = request.getParameter("thread_category_name");
 
 			PostDataBeans bdb = new PostDataBeans();
-			bdb.setUserId((int) session.getAttribute("userId"));
+			bdb.setUserId(inputuserLoginId);
 			bdb.setThreadTitle(inputThreadTitle);
 			bdb.setThreadText(inputThreadText);
-			bdb.setThreadCategoryId(inputThreadCategoryId);
-
+			bdb.setThreadCategoryName(inputThreadCategoryName);
 
 			// 登録が確定されたかどうか確認するための変数
 			String confirmed = request.getParameter("confirm_button");
@@ -60,7 +60,7 @@ public class PostResult extends HttpServlet {
 			switch (confirmed) {
 			case "cancel":
 				session.setAttribute("bdb", bdb);
-				response.sendRedirect("Buy");
+				response.sendRedirect("Post");
 				break;
 
 			case "regist":

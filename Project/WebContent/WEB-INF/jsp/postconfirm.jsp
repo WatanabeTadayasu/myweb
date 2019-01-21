@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>購入確認</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href = "css/style.css">
+<title>投稿確認</title>
 
 </head>
 <body>
@@ -12,23 +14,23 @@
 <form action="PostResult" method="POST">
 
   <div class="form-post">
-    <label for="exampleFormControlInput1">ログインID</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="user_id" placeholder="${userId.loginId}" value="${bdb.userId}" readonly>
+    <label>ログインID</label>
+    <input type="text" class="form-control" name="user_login_id" placeholder="${udb.loginId}" value="${udb.loginId}" readonly>
   </div>
 
   <div class="form-post">
-    <label for="exampleFormControlSelect1">カテゴリ</label>
-	<input type="text" class="form-control" id="exampleFormControlInput1" name="thread_category_id" placeholder="${dmdb.name}" value="${dmdb.id}" readonly>
+    <label>カテゴリ</label>
+	<input type="text" class="form-control" name="thread_category_id" value="${userSelectDMB.name}" placeholder="${userSelectDMB.name}" readonly>
   </div>
 
   <div class="form-post">
-    <label for="exampleFormControlInput1">タイトル</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="thread_title" value="${bdb.threadTitle}" readonly>
+    <label>タイトル</label>
+    <input type="text" class="form-control" name="thread_title" value="${bdb.threadTitle}" readonly>
   </div>
 
   <div class="form-post">
-    <label for="exampleFormControlTextarea1">本文</label>
-    <textarea ${bdb.threadText} class="form-control" id="exampleFormControlTextarea1" name="thread_text" rows="5" readonly></textarea>
+    <label>本文</label>
+    <textarea class="form-control" name="thread_text" rows="5" readonly>${bdb.threadText}</textarea>
   </div>
 
 		<div class="row">
@@ -88,7 +90,7 @@
 									<tr>
 										<td class="center"></td>
 										<td class="center">合計</td>
-										<td class="center">${bdb.totalPrice}円</td>
+										<td class="center">${userSelectDMB.name}円</td>
 									</tr>
 								</tbody>
 							</table>

@@ -9,8 +9,7 @@ import java.io.Serializable;
  */
 public class PostDataBeans  implements Serializable {
 	private int id;
-	private int userId;
-	private int threadCategoryId;
+	private String userId;
 	private String threadTitle;
 	private String threadText;
 	private String createDate;
@@ -22,17 +21,11 @@ public class PostDataBeans  implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-	public int getThreadCategoryId() {
-		return threadCategoryId;
-	}
-	public void setThreadCategoryId(int threadCategoryId) {
-		this.threadCategoryId = threadCategoryId;
 	}
 	public String getThreadTitle() {
 		return threadTitle;

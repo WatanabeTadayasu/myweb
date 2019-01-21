@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>購入完了</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href = "css/style.css">
+<title>投稿完了</title>
 
 </head>
 <body>
@@ -12,17 +14,17 @@
 
   <div class="form-post">
     <label for="exampleFormControlInput1">ログインID</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="user_id" value="${bdb.userId}" readonly>
+    <input type="text" class="form-control" name="user_id" value="${resultBDB.userId}" readonly>
   </div>
 
   <div class="form-post">
     <label for="exampleFormControlInput1">タイトル</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="thread_title" value="${bdb.threadTitle}" readonly>
+    <input type="text" class="form-control" name="thread_title" value="${resultBDB.threadTitle}" readonly>
   </div>
 
   <div class="form-post">
     <label for="exampleFormControlTextarea1">本文</label>
-    <textarea ${bdb.threadText} class="form-control" id="exampleFormControlTextarea1" name="thread_text" rows="5" readonly></textarea>
+    <textarea class="form-control" name="thread_text" rows="5" readonly>${resultBDB.threadText}</textarea>
   </div>
 
 		<div class="row">

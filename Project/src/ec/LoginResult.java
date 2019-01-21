@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.UserDataBeans;
 import dao.UserDAO;
 
 /**
@@ -35,17 +34,17 @@ public class LoginResult extends HttpServlet {
 //			//ユーザーIDを取得
 //			int userId = UserDAO.getUserId(loginId, password);
 
-			// 暗号化処理の呼び出し
-	        UserDAO rs = new UserDAO();
-	        String result = rs.hash(password);
+//			// 暗号化処理の呼び出し
+//	        UserDAO rs = new UserDAO();
+//	        String result = rs.hash(password);
 
 			// リクエストパラメータの入力項目を引数に渡して、Daoのメソッドを実行
-			UserDAO userDao = new UserDAO();
-			UserDataBeans userId = userDao.findByLoginInfo(loginId, result);
+//			UserDAO userDao = new UserDAO();
+			int userId = UserDAO.getUserId(loginId, password);
 
 
 			//ユーザーIDが取得できたなら
-			if (userId != null) {
+			if (userId != 0) {
 				session.setAttribute("isLogin", true);
 				session.setAttribute("userId", userId);
 //				//ログイン前のページを取得

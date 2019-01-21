@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.ThreadCategoryDataBeans;
+import beans.UserDataBeans;
 import dao.ThreadCategoryDAO;
+import dao.UserDAO;
 
 /**
  * Servlet implementation class Post
@@ -53,12 +55,12 @@ public class Post extends HttpServlet {
 					// 配送方法をDBから取得
 					ArrayList<ThreadCategoryDataBeans> dMDBList = ThreadCategoryDAO.getAllThreadCategoryDataBeans();
 
-					/*投稿メソッド
+					/*投稿メソッド*/
 					int id = (int) session.getAttribute("userId");
 					UserDAO UserDAO = new UserDAO();
 					UserDataBeans udb = UserDAO.findByDetailInfo(id);
 
-					request.setAttribute("udb", udb);*/
+					session.setAttribute("udb", udb);
 					request.setAttribute("dmdbList", dMDBList);
 					request.getRequestDispatcher("/WEB-INF/jsp/post.jsp").forward(request, response);
 

@@ -40,32 +40,39 @@ public class PostConfirm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("utf-8");
+
 		HttpSession session = request.getSession();
+
 		try {
 			//選択された配送方法IDを取得
 			int inputThreadCategoryId = Integer.parseInt(request.getParameter("thread_category_id"));
 			//選択されたIDをもとに配送方法Beansを取得
 			//DeliveryMethodDataBeans userSelectDMB = DeliveryMethodDAO.getDeliveryMethodDataBeansByID(inputDeliveryMethodId);
-			ThreadCategoryDataBeans dmdb = ThreadCategoryDAO.getThreadCategoryDataBeansByBuyId(inputThreadCategoryId);
+			ThreadCategoryDataBeans dmdb = ThreadCategoryDAO.getThreadCategoryDataBeansByID(inputThreadCategoryId);
 //			//買い物かご
 //			ArrayList<ItemDataBeans> cartIDBList = (ArrayList<ItemDataBeans>) session.getAttribute("cart");
 //			//合計金額
 //			int totalPrice = EcHelper.getTotalItemPrice(cartIDBList) + dmdb.getPrice();
 //
-			int threadCategoryId = dmdb.getId();
 
+
+			String threadCategoryName = dmdb.getName();
+
+			String inputuserLoginId = request.getParameter("user_login_id");
 			String inputThreadTitle = request.getParameter("thread_title");
 			String inputThreadText = request.getParameter("thread_text");
 
 			PostDataBeans bdb = new PostDataBeans();
-			bdb.setUserId((int) session.getAttribute("userId"));
+			bdb.setUserId(inputuserLoginId);
 			bdb.setThreadTitle(inputThreadTitle);
 			bdb.setThreadText(inputThreadText);
-			bdb.setThreadCategoryId(threadCategoryId);
+			bdb.setThreadCategoryName(threadCategoryName);
 
 //			int userId = (int) session.getAttribute("userId");
 
-//			DeliveryMethodDataBeans selectDMB = new DeliveryMethodDataBeans();
+//			ThreadCategoryDataBeans selectDMB = new ThreadCategoryDataBeans();
 //			bdb.setDeliveryMethodId(userSelectDMB.getId());
 //			bdb.setDeliveryMethodName(userSelectDMB.getName());
 //			bdb.setDeliveryMethodPrice(userSelectDMB.getPrice());
@@ -86,7 +93,7 @@ public class PostConfirm extends HttpServlet {
 			} else {
 				session.setAttribute("bdb", bdb);
 				session.setAttribute("validationMessage", validationMessage);
-				response.sendRedirect("Buy");
+				response.sendRedirect("Post");
 			}
 
 		} catch (Exception e) {
