@@ -108,14 +108,22 @@ public class UserDataBeans implements Serializable {
 	 * @param loginId
 	 * @param address
 	 */
-	public void setUpdateUserDataBeansInfo(String name, String loginId, String password, String birthdate/*, int id*/) {
-		this.name = name;
+	public void setUpdateUserDataBeansInfo(String loginId, String name, String password, String password1, String birthdate/*, int id*/) {
 		this.loginId = loginId;
+		this.name = name;
 		this.password = password;
+		this.password1 = password1;
 		this.birthdate = birthdate;
 		/*this.id = id;*/
 	}
 
+	public void setUpdateUserDataBeansResult(String loginId, String name, String password, String birthdate/*, int id*/) {
+		this.loginId = loginId;
+		this.name = name;
+		this.password = password;
+		this.birthdate = birthdate;
+		/*this.id = id;*/
+	}
 
 
 	public UserDataBeans(int id, String loginId, String name, String password, String birthdate) {
@@ -140,11 +148,11 @@ public class UserDataBeans implements Serializable {
 	}
 
 	// 全てのデータをセットするコンストラクタ
-		public UserDataBeans(int id, String loginId, String name, String birthdate, String password, String createDate,
+		public UserDataBeans(int id, String name, String loginId, String birthdate, String password, String createDate,
 				String updateDate) {
 			this.id = id;
-			this.loginId = loginId;
 			this.name = name;
+			this.loginId = loginId;
 			this.birthdate = birthdate;
 			this.password = password;
 			this.createDate = createDate;
@@ -162,6 +170,14 @@ public class UserDataBeans implements Serializable {
 				this.updateDate = updateDate;
 			}
 
+		// 更新セッションを保存するためのコンストラクタ
+		public UserDataBeans(String loginId, String name, String birthdate, String password, String updateDate) {
+			this.name = name;
+			this.birthdate = birthdate;
+			this.password = password;
+			this.loginId = loginId;
+			this.updateDate = updateDate;
+		}
 
 		public String getAddress() {
 			return Address;
@@ -169,14 +185,6 @@ public class UserDataBeans implements Serializable {
 
 		public void setAddress(String Address) {
 			this.Address = Address;
-		}
-
-		public UserDataBeans(String loginId, String name, String birthdate, String password, String updateDate) {
-			this.loginId = loginId;
-			this.name = name;
-			this.birthdate = birthdate;
-			this.password = password;
-			this.updateDate = updateDate;
 		}
 
 		// 登録セッションを保存するためのコンストラクタ

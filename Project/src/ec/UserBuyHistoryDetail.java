@@ -1,7 +1,6 @@
 package ec;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.ItemDataBeans;
 import beans.PostDataBeans;
-import dao.BuyDetailDAO;
 import dao.PostDAO;
 
 /**
@@ -35,12 +32,12 @@ public class UserBuyHistoryDetail extends HttpServlet {
 			//購入詳細情報、購入情報を取得
 			PostDataBeans bdbbb = PostDAO.getBuyDataBeansByBuyId(id);
 
-			// 購入アイテム情報
-			ArrayList<ItemDataBeans> buyIDBList = BuyDetailDAO.getItemDataBeansListByBuyId(id);
+//			// 購入アイテム情報
+//			ArrayList<ItemDataBeans> buyIDBList = BuyDetailDAO.getItemDataBeansListByBuyId(id);
 
 			//リクエストパラメーターにセット
 			request.setAttribute("bdbbb", bdbbb);
-			request.setAttribute("buyIDBList", buyIDBList);
+//			request.setAttribute("buyIDBList", buyIDBList);
 			request.setAttribute("pageNum", pageNum);
 
 			request.getRequestDispatcher(EcHelper.USER_BUY_HISTORY_DETAIL_PAGE).forward(request, response);

@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public class PostDataBeans  implements Serializable {
 	private int id;
+	private int threadCategoryId;
 	private String userId;
 	private String threadTitle;
 	private String threadText;
@@ -50,6 +51,12 @@ public class PostDataBeans  implements Serializable {
 	}
 	public void setThreadCategoryName(String threadCategoryName) {
 		this.threadCategoryName = threadCategoryName;
+	}
+	public int getThreadCategoryId() {
+		return threadCategoryId;
+	}
+	public void setThreadCategoryId(int threadCategoryId) {
+		this.threadCategoryId = threadCategoryId;
 	}
 
 

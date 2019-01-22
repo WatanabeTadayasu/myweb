@@ -39,6 +39,9 @@ public class PostResult extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("utf-8");
+
 		HttpSession session = request.getSession();
 
 		try {
@@ -46,13 +49,13 @@ public class PostResult extends HttpServlet {
 			String inputuserLoginId = request.getParameter("user_login_id");
 			String inputThreadTitle = request.getParameter("thread_title");
 			String inputThreadText = request.getParameter("thread_text");
-			String inputThreadCategoryName = request.getParameter("thread_category_name");
+			int inputThreadCategoryId = Integer.parseInt(request.getParameter("thread_category_id"));
 
 			PostDataBeans bdb = new PostDataBeans();
 			bdb.setUserId(inputuserLoginId);
 			bdb.setThreadTitle(inputThreadTitle);
 			bdb.setThreadText(inputThreadText);
-			bdb.setThreadCategoryName(inputThreadCategoryName);
+			bdb.setThreadCategoryId(inputThreadCategoryId);
 
 			// 登録が確定されたかどうか確認するための変数
 			String confirmed = request.getParameter("confirm_button");

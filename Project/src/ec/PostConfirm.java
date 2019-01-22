@@ -57,7 +57,7 @@ public class PostConfirm extends HttpServlet {
 //			int totalPrice = EcHelper.getTotalItemPrice(cartIDBList) + dmdb.getPrice();
 //
 
-
+			int threadCategoryId = dmdb.getId();
 			String threadCategoryName = dmdb.getName();
 
 			String inputuserLoginId = request.getParameter("user_login_id");
@@ -68,6 +68,7 @@ public class PostConfirm extends HttpServlet {
 			bdb.setUserId(inputuserLoginId);
 			bdb.setThreadTitle(inputThreadTitle);
 			bdb.setThreadText(inputThreadText);
+			bdb.setThreadCategoryId(threadCategoryId);
 			bdb.setThreadCategoryName(threadCategoryName);
 
 //			int userId = (int) session.getAttribute("userId");

@@ -4,14 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>購入履歴詳細</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href = "css/style.css">
+<title>投稿履歴詳細</title>
 </head>
 <body>
 	<br>
 	<br>
 	<div class="container">
 		<div class="row center">
-			<h4 class=" col s12 light">購入詳細</h4>
+			<h4 class=" col s12 light">投稿詳細</h4>
 		</div>
 		<!--  購入 -->
 		<div class="row">
@@ -21,16 +23,23 @@
 						<table>
 							<thead>
 								<tr>
-									<th class="center" style="width: 20%;">購入日時</th>
-									<th class="center">配送方法</th>
-									<th class="center" style="width: 20%">合計金額</th>
+									<th class="center" style="width: 20%;">タイトル</th>
+									<th class="center">本文</th>
 								</tr>
 							</thead>
+
+							<!-- private int id;
+	private int threadCategoryId;
+	private String userId;
+	private String threadTitle;
+	private String threadText;
+	private String createDate;
+	private String threadCategoryName; -->
+
 							<tbody>
 								<tr>
-									<td class="center">${bdbbb.buyDate}</td>
-									<td class="center">${bdbbb.deliveryMethodName}</td>
-									<td class="center">${bdbbb.totalPrice}円</td>
+									<td class="center">${bdbbb.threadTitle}</td>
+									<td class="center">${bdbbb.threadText}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -46,8 +55,8 @@
 						<table class="bordered">
 							<thead>
 								<tr>
-									<th class="center">商品名</th>
-									<th class="center" style="width: 20%">単価</th>
+									<th class="center" style="width: 20%">商品名</th>
+									<th class="center">単価</th>
 								</tr>
 							</thead>
 
@@ -63,8 +72,8 @@
 									</tr>
 								</c:forEach>
 								<tr>
-									<td class="center">${bdbbb.deliveryMethodName}</td>
-									<td class="center">${bdbbb.deliveryMethodPrice}円</td>
+									<td class="center">${bdbbb.threadTitle}</td>
+									<td class="center">${bdbbb.threadText}円</td>
 								</tr>
 								<!-- <tr>
 									<td class="center">サンプル商品名2</td>
@@ -85,5 +94,7 @@
 			</div>
 		</div>
 	</div>
+
+	<a href="UserListServlet">戻る</a>
 </body>
 </html>

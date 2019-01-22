@@ -32,12 +32,12 @@ public class PostDAO {
 		try {
 			con = DBManager.getConnection();
 			st = con.prepareStatement(
-					"INSERT INTO t_thread(user_login_id,thread_title,thread_text,thread_category_name,create_date) VALUES (?,?,?,?,now())"
+					"INSERT INTO t_thread(user_login_id,thread_title,thread_text,thread_category_id,create_date) VALUES (?,?,?,?,now())"
 					 , Statement.RETURN_GENERATED_KEYS);
 			st.setString(1, bdb.getUserId());
 			st.setString(2, bdb.getThreadTitle());
 			st.setString(3, bdb.getThreadText());
-			st.setString(4, bdb.getThreadCategoryName());
+			st.setInt(4, bdb.getThreadCategoryId());
 			//st.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
 			st.executeUpdate();
 
@@ -85,9 +85,10 @@ public class PostDAO {
 			if (rs.next()) {
 				bdb.setId(rs.getInt("id"));
 				bdb.setUserId(rs.getString("user_login_id"));
-				bdb.setThreadTitle(rs.getString("threadTitle"));
-				bdb.setThreadText(rs.getString("threadText"));
-				bdb.setThreadCategoryName(rs.getString("thread_category_name"));
+				bdb.setThreadTitle(rs.getString("thread_title"));
+				bdb.setThreadText(rs.getString("thread_text"));
+				bdb.setThreadCategoryId(rs.getInt("thread_category_id"));
+				bdb.setThreadCategoryName(rs.getString("name"));
 
 				//bdb.setBuyDate(rs.getTimestamp("create_date"));
 
@@ -125,7 +126,7 @@ public class PostDAO {
 	 * @throws SQLException
 	 * 				呼び出し元にスローさせるため
 	 */
-	public static  ArrayList<PostDataBeans> getBuyDataBeansHistory() throws SQLException {
+	public static ArrayList<PostDataBeans> getBuyDataBeansHistory() throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -144,9 +145,10 @@ public class PostDAO {
 				PostDataBeans bdb = new PostDataBeans();
 				bdb.setId(rs.getInt("id"));
 				bdb.setUserId(rs.getString("user_login_id"));
-				bdb.setThreadTitle(rs.getString("threadTitle"));
-				bdb.setThreadText(rs.getString("threadText"));
-				bdb.setThreadCategoryName(rs.getString("thread_category_name"));
+				bdb.setThreadTitle(rs.getString("thread_title"));
+				bdb.setThreadText(rs.getString("thread_text"));
+				bdb.setThreadCategoryId(rs.getInt("thread_category_id"));
+				bdb.setThreadCategoryName(rs.getString("name"));
 
 				//bdb.setBuyDate(rs.getTimestamp("create_date"));
 

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.UserDataBeans;
-import dao.UserDAO;
 
 /**
  * ユーザー情報更新入力内容確認画面
@@ -31,18 +30,22 @@ public class UserDataUpdateConfirm extends HttpServlet {
 			//エラーメッセージを格納する変数
 			String validationMessage = "";
 
-			//入力フォームから受け取った値をBeans偽っと
+			//入力フォームから受け取った値をBeansにセット
 			UserDataBeans udb = new UserDataBeans();
-			udb.setUpdateUserDataBeansInfo(request.getParameter("user_name"), request.getParameter("password"), request.getParameter("birthdate"), request.getParameter("login_id")/*, (int) session.getAttribute("userId")*/);
+			udb.setUpdateUserDataBeansInfo(request.getParameter("login_id"), request.getParameter("user_name"), request.getParameter("password"), request.getParameter("password1"), request.getParameter("birthdate")/*, (int) session.getAttribute("userId")*/);
 
 
-			//ログインIDの入力規則チェック 英数字 ハイフン アンダースコアのみ入力可能
-			if (!EcHelper.isLoginIdValidation(udb.getLoginId())) {
-				validationMessage = "半角英数とハイフン、アンダースコアのみ入力できます";
-			}
-			//loginIdの重複をチェック
-			if ( UserDAO.isOverlapLoginId(udb.getLoginId(),(int) session.getAttribute("userId"))) {
-				validationMessage = "ほかのユーザーが使用中のログインIDです";
+//			//ログインIDの入力規則チェック 英数字 ハイフン アンダースコアのみ入力可能
+//			if (!EcHelper.isLoginIdValidation(udb.getLoginId())) {
+//				validationMessage = "半角英数とハイフン、アンダースコアのみ入力できます";
+//			}
+//			//loginIdの重複をチェック
+//			if ( UserDAO.isOverlapLoginId(udb.getLoginId(),(int) session.getAttribute("userId"))) {
+//				validationMessage = "ほかのユーザーが使用中のログインIDです";
+//			}
+			//パスワードチェック
+			if (!udb.getPassword().equals(udb.getPassword1())) {
+				validationMessage = "パスワードが異なっています。";
 			}
 
 			//バリデーションエラーメッセージがないなら確認画面へ

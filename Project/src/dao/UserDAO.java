@@ -294,6 +294,7 @@ public class UserDAO {
 	 * @throws SQLException
 	 *             呼び出し元にcatchさせるためにスロー
 	 */
+	@SuppressWarnings("unused")
 	public static void updateUser(UserDataBeans udb) throws SQLException {
 		// 更新された情報をセットされたJavaBeansのリスト
 		UserDataBeans updatedUdb = new UserDataBeans();
@@ -312,11 +313,32 @@ public class UserDAO {
 			st.executeUpdate();
 			System.out.println("update has been completed");
 
-			st = con.prepareStatement("SELECT name, login_password, birth_date, update_date FROM t_user WHERE login_id=" + udb.getLoginId());
-			ResultSet rs = st.executeQuery();
+			// SELECT文を準備
+            String sql = "SELECT ";
+
+            if(!udb.getName().equals("")) {
+            	sql += " name,";
+            }
+
+            if(!udb.getPassword().equals("")) {
+            	sql += " login_password,";
+            }
+
+            if(!udb.getBirthdate().equals("")) {
+            	sql += " birth_date";
+            }
+
+            if(!udb.getLoginId().equals("")) {
+            	sql += " FROM t_user WHERE login_id = " + udb.getLoginId();
+            }
+
+
+			/*st = con.prepareStatement("SELECT name, login_password, birth_date, update_date FROM t_user WHERE login_id=" + udb.getLoginId());*/
+            Statement stmt = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
 
 			while (rs.next()) {
-
+				updatedUdb.setLoginId(rs.getString("login_id"));
 				updatedUdb.setName(rs.getString("name"));
 				updatedUdb.setPassword(rs.getString("login_password"));
 				updatedUdb.setBirthdate(rs.getString("birth_date"));
@@ -609,13 +631,13 @@ public class UserDAO {
             // Userインスタンスに設定し、ArrayListインスタンスに追加
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String loginId = rs.getString("login_id");
                 String name = rs.getString("name");
+                String loginId = rs.getString("login_id");
                 String birthdate = rs.getString("birth_date");
                 String password = rs.getString("login_password");
                 String createDate = rs.getString("create_date");
                 String updateDate = rs.getString("update_date");
-                UserDataBeans user = new UserDataBeans(id, loginId, name, birthdate, password, createDate, updateDate);
+                UserDataBeans user = new UserDataBeans(id, name, loginId, birthdate, password, createDate, updateDate);
 
                 userList.add(user);
             }

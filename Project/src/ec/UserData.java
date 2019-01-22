@@ -1,6 +1,7 @@
 package ec;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.PostDataBeans;
 import beans.UserDataBeans;
+import dao.PostDAO;
 import dao.UserDAO;
 
 /**
@@ -52,11 +55,11 @@ public class UserData extends HttpServlet {
 			// 入力された内容に誤りがあったとき等に表示するエラーメッセージを格納する
 			String validationMessage = (String) EcHelper.cutSessionAttribute(session, "validationMessage");
 
-//			ArrayList<BuyDataBeans> bdbhList = BuyDAO.getBuyDataBeansHistory();
+			ArrayList<PostDataBeans> bdbhList = PostDAO.getBuyDataBeansHistory();
 
 			request.setAttribute("validationMessage", validationMessage);
 			request.setAttribute("udb", udb);
-//			request.setAttribute("bdbhList", bdbhList);
+			request.setAttribute("bdbhList", bdbhList);
 
 			request.getRequestDispatcher("/WEB-INF/jsp/userdata.jsp").forward(request, response);
 

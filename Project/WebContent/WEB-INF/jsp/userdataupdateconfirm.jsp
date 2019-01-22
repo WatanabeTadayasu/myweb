@@ -3,6 +3,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href = "css/style.css">
 <title>ユーザー情報/更新確認</title>
 </head>
 <body>
@@ -18,17 +20,26 @@
 					<div class="card-content">
 						<form action="UserDataUpdateResult" method="POST">
 							<div class="row">
-								<div class="input-field col s6">
-									<input type="text" name="login_id_update" value="${udb.loginId}" readonly> <label>ログインID</label>
+								<div class="form-group col-md-6">
+									 <label>ログインID</label><input type="text" name="login_id_update"
+										value="${udb.loginId}" readonly>
 								</div>
-								<div class="input-field col s6">
-									<input type="text" name="user_name_update" value="${udb.name}" readonly> <label>名前</label>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-6">
+									 <label>名前</label><input type="text" name="user_name_update" value="${udb.name}" readonly>
 								</div>
-								<div class="input-field col s6">
-									<input type="text" name="password_update" value="${udb.password}" readonly> <label>パスワード</label>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-6">
+									<label>パスワード</label><input type="text" name="password_update"
+										value="${udb.password}" readonly>
 								</div>
-								<div class="input-field col s6">
-									<input type="text" name="birthdate_update" value="${udb.birthdate}" readonly> <label>生年月日</label>
+							</div>
+							<div class="row">
+								 <label>生年月日</label><div class="form-group col-md-6">
+									<input type="text" name="birthdate_update"
+										value="${udb.birthdate}" readonly>
 								</div>
 							</div>
 							<%-- <div class="row">

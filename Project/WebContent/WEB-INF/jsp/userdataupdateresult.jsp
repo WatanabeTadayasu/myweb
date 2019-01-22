@@ -3,6 +3,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href = "css/style.css">
 <title>ユーザー情報更新完了</title>
 </head>
 <body>
@@ -18,15 +20,21 @@
 				<div class="card grey lighten-5">
 					<div class="card-content">
 						<div class="row">
-								<div class="input-field col s6">
-									<input type="text" value="${udb.name}" readonly> <label>名前</label>
-								</div>
-								<div class="input-field col s6">
-									<input type="text" value="${udb.password}" readonly> <label>パスワード</label>
-								</div>
-								<div class="input-field col s6">
-									<input type="text" value="${udb.birthdate}" readonly> <label>生年月日</label>
-								</div>
+							<div class="input-field col s6">
+								<label>名前</label><input type="text" value="${udb.name}" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<label>パスワード</label><input type="text" value="${udb.password}"
+									readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<label>生年月日</label><input type="text" value="${udb.birthdate}"
+									readonly>
+							</div>
 						</div>
 						<div class="row">
 							<div class="col s12">

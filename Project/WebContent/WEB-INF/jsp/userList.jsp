@@ -16,7 +16,7 @@
 <div align="right">
 <header class="head">
 
-${userId.name} さん
+
 
 <a href="Logout">ログアウト</a>
 </header>
@@ -82,7 +82,7 @@ ${userId.name} さん
                      <td>${UserDataBeans.birthdate}</td>
                      <!-- TODO 未実装；ログインボタンの表示制御を行う -->
 
-           <c:if test="${userId.loginId == 'admin'}">
+           <c:if test="${userId == 1}">
 			<td>
 
              <a class="btn btn-primary" href="UserDetailServlet?userId=${UserDataBeans.id}">詳細</a>
@@ -91,11 +91,11 @@ ${userId.name} さん
 
              </td>
 			</c:if>
-				<c:if test="${userId.loginId != 'admin'}">
+				<c:if test="${userId != 1}">
 				<td>
                 <a class="btn btn-primary" href="UserDetailServlet?userId=${UserDataBeans.id}">詳細</a>
 
-                	<c:if test="${userId.loginId == UserDataBeans.loginId}">
+                	<c:if test="${userId == UserDataBeans.id}">
                		<a class="btn btn-success" href="UserData?userId=${UserDataBeans.id}">更新</a>
                 	</c:if>
 
