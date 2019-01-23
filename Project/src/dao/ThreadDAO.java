@@ -7,14 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import base.DBManager;
-import beans.ItemDataBeans;
+import beans.ThreadDataBeans;
 
-/**
- *
- * @author d-yamaguchi
- *
- */
-public class ItemDAO {
+public class ThreadDAO {
 
 
 
@@ -24,7 +19,7 @@ public class ItemDAO {
 	 * @return <ItemDataBeans>
 	 * @throws SQLException
 	 */
-	public static ArrayList<ItemDataBeans> getRandItem(int limit) throws SQLException {
+	public static ArrayList<ThreadDataBeans> getRandItem(int limit) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -35,10 +30,10 @@ public class ItemDAO {
 
 			ResultSet rs = st.executeQuery();
 
-			ArrayList<ItemDataBeans> itemList = new ArrayList<ItemDataBeans>();
+			ArrayList<ThreadDataBeans> itemList = new ArrayList<ThreadDataBeans>();
 
 			while (rs.next()) {
-				ItemDataBeans item = new ItemDataBeans();
+				ThreadDataBeans item = new ThreadDataBeans();
 				item.setId((int)rs.getInt("id"));
 				item.setUserLoginId(rs.getString("user_login_id"));
 				item.setThreadTitle(rs.getString("thread_title"));
@@ -65,7 +60,7 @@ public class ItemDAO {
 	 * @return ItemDataBeans
 	 * @throws SQLException
 	 */
-	public static ItemDataBeans getItemByItemID(int itemId) throws SQLException {
+	public static ThreadDataBeans getThreadByThreadID(int itemId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -76,7 +71,7 @@ public class ItemDAO {
 
 			ResultSet rs = st.executeQuery();
 
-			ItemDataBeans item = new ItemDataBeans();
+			ThreadDataBeans item = new ThreadDataBeans();
 			if (rs.next()) {
 				item.setId(rs.getInt("id"));
 				item.setUserLoginId(rs.getString("user_login_id"));
@@ -107,7 +102,7 @@ public class ItemDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static ArrayList<ItemDataBeans> getItemsByItemName(String searchWord, int pageNum, int pageMaxItemCount) throws SQLException {
+	public static ArrayList<ThreadDataBeans> getItemsByItemName(String searchWord, int pageNum, int pageMaxItemCount) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -129,10 +124,10 @@ public class ItemDAO {
 			}
 
 			ResultSet rs = st.executeQuery();
-			ArrayList<ItemDataBeans> itemList = new ArrayList<ItemDataBeans>();
+			ArrayList<ThreadDataBeans> itemList = new ArrayList<ThreadDataBeans>();
 
 			while (rs.next()) {
-				ItemDataBeans item = new ItemDataBeans();
+				ThreadDataBeans item = new ThreadDataBeans();
 				item.setId(rs.getInt("id"));
 				item.setUserLoginId(rs.getString("user_login_id"));
 				item.setThreadTitle(rs.getString("thread_title"));

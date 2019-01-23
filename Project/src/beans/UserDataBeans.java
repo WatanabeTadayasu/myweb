@@ -117,6 +117,12 @@ public class UserDataBeans implements Serializable {
 		/*this.id = id;*/
 	}
 
+	public void setUpdateUserDataBeansInfoPassNull(String loginId, String name, String birthdate) {
+		this.loginId = loginId;
+		this.name = name;
+		this.birthdate = birthdate;
+	}
+
 	public void setUpdateUserDataBeansResult(String loginId, String name, String password, String birthdate/*, int id*/) {
 		this.loginId = loginId;
 		this.name = name;

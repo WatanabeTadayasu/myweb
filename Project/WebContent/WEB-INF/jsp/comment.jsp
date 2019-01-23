@@ -6,14 +6,14 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href = "css/style.css">
-<title>Insert title here</title>
+<title>スレッド詳細</title>
 </head>
 <body>
 
 <div class="box_0">
 
-	<h1>題名.本文</h1>
-	<p>ここにコメントここにコメントここにコメントここにコメントここにコメント</p>
+	<h1>題名.本文${thread.threadTtitle}</h1>
+	<p>ここにコメントここにコメントここにコメントここにコメントここにコメント${thread.threadText}</p>
 	<a href="#" class="square_btn">良いでしょう</a>
 </div>
 
@@ -24,19 +24,36 @@
 
 </div>
 
-<form>
+<form action="CommentConfirm" method="POST">
 
-  <div class="form-post">
-    <label for="exampleFormControlInput1">名前</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="名前">
+<div class="form-post">
+   <!--  <label>スレッドID送信用</label> -->
+    <input name="thread_id" type="hidden" value="${thread.id}">
+	<%-- <input type="text" class="form-control" name="thread_category_id" value="${userSelectDMB.name}" disabled> --%>
   </div>
 
   <div class="form-post">
-    <label for="exampleFormControlTextarea1">本文</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    <label>名前</label>
+    <input type="text" class="form-control" name="user_login_id" value="${udb.loginId}" readonly>
   </div>
 
-  <a class="btn btn-primary" href="UserDetailServlet?id=${user.id}">コメント</a>
+  <div class="form-post">
+    <label>コメント欄</label>
+    <textarea class="form-control" name="m_comment" rows="5"></textarea>
+  </div>
+
+
+
+		<div class="form-post">
+			<div class="col s12">
+				<button class="btn  waves-effect waves-light  col s4 offset-s4"
+					type="submit" name="action">コメント</button>
+			</div>
+		</div>
+
+		<div class="form-post">
+			<a class="btn btn-primary" type="submit" name="action">コメント</a>
+		</div>
 
 </form>
 

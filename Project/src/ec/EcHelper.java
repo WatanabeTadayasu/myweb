@@ -2,11 +2,8 @@ package ec;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
-
-import beans.ItemDataBeans;
 
 /**
  * 定数保持、処理及び表示簡略化ヘルパークラス
@@ -59,14 +56,15 @@ public class EcHelper {
 	 *
 	 * @param items
 	 * @return total
-	 */
+	 *//*
 	public static int getTotalItemPrice(ArrayList<ItemDataBeans> items) {
 		int total = 0;
 		for (ItemDataBeans item : items) {
 			total += item.getPrice();
 		}
 		return total;
-	}
+	}*/
+
 
 	/**
 	 * ハッシュ関数

@@ -112,9 +112,11 @@ public class BuyDetailDAO {
 			while (rs.next()) {
 				ItemDataBeans idb = new ItemDataBeans();
 				idb.setId(rs.getInt("id"));
-				idb.setName(rs.getString("name"));
-				idb.setPrice(rs.getInt("price"));
-
+				idb.setUserLoginId(rs.getString("user_login_id"));
+				idb.setThreadTitle(rs.getString("thread_title"));
+				idb.setThreadText(rs.getString("thread_text"));
+				idb.setThreadCategoryId(rs.getInt("thread_category_id"));
+				idb.setCreateDate(rs.getString("create_date"));
 
 				buyDetailItemList.add(idb);
 			}
@@ -159,8 +161,11 @@ public class BuyDetailDAO {
 			while (rs.next()) {
 				ItemDataBeans idb = new ItemDataBeans();
 				idb.setId(rs.getInt("id"));
-				idb.setName(rs.getString("name"));
-				idb.setPrice(rs.getInt("price"));
+				idb.setUserLoginId(rs.getString("user_login_id"));
+				idb.setThreadTitle(rs.getString("thread_title"));
+				idb.setThreadText(rs.getString("thread_text"));
+				idb.setThreadCategoryId(rs.getInt("thread_category_id"));
+				idb.setCreateDate(rs.getString("create_date"));
 				buyDetailItemList.add(idb);
 			}
 

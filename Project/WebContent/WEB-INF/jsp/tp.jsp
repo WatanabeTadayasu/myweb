@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +51,14 @@
 
 </div>
 
-<div class="box_d">
+		<div class="container">
+			<div class="row center">
+				<h5 class=" col s12 light">おすすめ記事</h5>
+			</div>
+
+		</div>
+
+		<div class="box_d">
 
 		<!-- <c:if test="${userInfo.loginId == 'admin'}"> -->
 			<div class="delete">
@@ -59,12 +67,13 @@
 		<!-- </c:if> -->
 
 			<div class="box_1">
-				<h2>
-					<a href="https://saruwakakun.com/">うどん
-						${resultBDB.threadTitle}</a>
-				</h2>
-				<p>ここにコメントここにコメントここにコメントここにコメント
-				${resultBDB.threadText}</p>
+				<!--   おすすめ商品   -->
+				<c:forEach var="thread" items="${threadList}">
+						<h2>
+							<a href="Comment?thread_id=${thread.id}">${thread.threadTtitle}</a>
+						</h2>
+						<h6>${thread.threadText}${thread.createDate}</h6>
+				</c:forEach>
 			</div>
 
 			<!-- <c:if test="${userInfo.loginId == 'admin'}"> -->
@@ -73,42 +82,52 @@
 			</div>
 		<!-- </c:if> -->
 
-<div class="box_2">
-      <h2>パスタ</h2>
-      <p>ここにコメントここにコメントここにコメントここにコメント</p>
-  </div>
+			<%-- <div class="box_2">
+				<!--   おすすめ商品   -->
+				<c:forEach var="item" items="${itemList}">
+						<h2>
+							<a href="Item?item_id=${item.id}">${item.threadTtitle}</a>
+						</h2>
+						<h6>${item.threadText}${item.createDate}</h6>
+				</c:forEach>
+			</div>
 
 
-<div class="box_3">
-      <h2>ラーメン</h2>
-      <p>ここにコメントここにコメントここにコメントここにコメント</p>
-  </div>
+			<div class="box_3">
+				<!--   おすすめ商品   -->
+				<c:forEach var="item" items="${itemList}">
+						<h2>
+							<a href="Item?item_id=${item.id}">${item.threadTtitle}</a>
+						</h2>
+						<h6>${item.threadText}${item.createDate}</h6>
+				</c:forEach>
+			</div> --%>
 
 
-<div class="box_4">
-      <h2>寿司</h2>
-      <p>ここにコメントここにコメントここにコメントここにコメント</p>
-  </div>
+			<div class="box_4">
+				<h2>寿司</h2>
+				<p>ここにコメントここにコメントここにコメントここにコメント</p>
+			</div>
 
 
-<div class="box_5">
-      <h2>スイーツ</h2>
-      <p>ここにコメントここにコメントここにコメントここにコメント</p>
-  </div>
+			<div class="box_5">
+				<h2>スイーツ</h2>
+				<p>ここにコメントここにコメントここにコメントここにコメント</p>
+			</div>
 
 
-<div class="box_6">
-      <h2>イタリアン</h2>
-      <p>ここにコメントここにコメントここにコメントここにコメント</p>
-  </div>
+			<div class="box_6">
+				<h2>イタリアン</h2>
+				<p>ここにコメントここにコメントここにコメントここにコメント</p>
+			</div>
 
 
-<div class="box_7">
-      <h2>ワイン</h2>
-      <p>ここにコメントここにコメントここにコメントここにコメント</p>
-  </div>
+			<div class="box_7">
+				<h2>ワイン</h2>
+				<p>ここにコメントここにコメントここにコメントここにコメント</p>
+			</div>
 
-</div>
+	</div>
 
 <div class= "footer">
       <p>keiziban</p>

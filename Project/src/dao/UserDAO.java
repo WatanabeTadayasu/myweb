@@ -294,56 +294,50 @@ public class UserDAO {
 	 * @throws SQLException
 	 *             呼び出し元にcatchさせるためにスロー
 	 */
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ })
 	public static void updateUser(UserDataBeans udb) throws SQLException {
 		// 更新された情報をセットされたJavaBeansのリスト
-		UserDataBeans updatedUdb = new UserDataBeans();
+		/*UserDataBeans updatedUdb = new UserDataBeans();*/
 		Connection con = null;
 		PreparedStatement st = null;
 
 		try {
 
 			con = DBManager.getConnection();
+
+			if(udb.getPassword().equals("")) {
+
+				st = con.prepareStatement("UPDATE t_user SET name=?, birth_date=?, update_date=? WHERE login_id=?;");
+				st.setString(1, udb.getName());
+				st.setString(2, udb.getBirthdate());
+				st.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+				st.setString(4, udb.getLoginId());
+				st.executeUpdate();
+				System.out.println("update has been completed");
+
+            }else {
+
 			st = con.prepareStatement("UPDATE t_user SET name=?, login_password=?, birth_date=?, update_date=? WHERE login_id=?;");
 			st.setString(1, udb.getName());
-			st.setString(2, udb.getPassword());
+			st.setString(2, EcHelper.getMd5(udb.getPassword()));
 			st.setString(3, udb.getBirthdate());
 			st.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
 			st.setString(5, udb.getLoginId());
 			st.executeUpdate();
 			System.out.println("update has been completed");
 
-			// SELECT文を準備
-            String sql = "SELECT ";
-
-            if(!udb.getName().equals("")) {
-            	sql += " name,";
             }
 
-            if(!udb.getPassword().equals("")) {
-            	sql += " login_password,";
-            }
+            	/*st = con.prepareStatement("SELECT name, login_id, login_password, birth_date, update_date FROM t_user WHERE login_id=" + udb.getLoginId());
+                ResultSet rs = st.executeQuery();
 
-            if(!udb.getBirthdate().equals("")) {
-            	sql += " birth_date";
-            }
-
-            if(!udb.getLoginId().equals("")) {
-            	sql += " FROM t_user WHERE login_id = " + udb.getLoginId();
-            }
-
-
-			/*st = con.prepareStatement("SELECT name, login_password, birth_date, update_date FROM t_user WHERE login_id=" + udb.getLoginId());*/
-            Statement stmt = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-
-			while (rs.next()) {
-				updatedUdb.setLoginId(rs.getString("login_id"));
-				updatedUdb.setName(rs.getString("name"));
-				updatedUdb.setPassword(rs.getString("login_password"));
-				updatedUdb.setBirthdate(rs.getString("birth_date"));
-				updatedUdb.setUpdateDate(rs.getString("update_date"));
-			}
+    			while (rs.next()) {
+    				updatedUdb.setLoginId(rs.getString("login_id"));
+    				updatedUdb.setName(rs.getString("name"));
+    				updatedUdb.setPassword(rs.getString("login_password"));
+    				updatedUdb.setBirthdate(rs.getString("birth_date"));
+    				updatedUdb.setUpdateDate(rs.getString("update_date"));
+    			}*/
 
 			st.close();
 			System.out.println("searching updated-UserDataBeans has been completed");

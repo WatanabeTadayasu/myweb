@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author d-yamaguchi
  *
  */
-public class ItemDataBeans implements Serializable {
+public class ThreadDataBeans implements Serializable {
 	private int id;
 	private int threadCategoryId;
 	private String userLoginId;

@@ -12,7 +12,6 @@
 <div align="right">
 <header class="head">
 
-${userInfo.name} さん
 
 <a href="LogoutServlet">ログアウト</a>
 </header>

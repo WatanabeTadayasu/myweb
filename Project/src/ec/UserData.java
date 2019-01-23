@@ -44,9 +44,12 @@ public class UserData extends HttpServlet {
 //			// ログイン時に取得したユーザーIDをセッションから取得
 //			int userId = (int) session.getAttribute("userInfo");
 
-			// URLからGETパラメータとしてIDを受け取る
-			String num = request.getParameter("userId");
-			int userId = Integer.parseInt(num);
+//			// URLからGETパラメータとしてIDを受け取る
+//			String num = request.getParameter("userId");
+//			int userId = Integer.parseInt(num);
+
+			// ログイン時に取得したユーザーIDをセッションから取得
+			int userId = (int) session.getAttribute("userId");
 
 			// 更新確認画面から戻ってきた場合Sessionから取得。それ以外はuserIdでユーザーを取得
 			UserDAO UserDAO = new UserDAO();

@@ -22,7 +22,7 @@
 					<div class="card-content">
 						<form action="UserDataUpdateConfirm" method="POST">
 							<c:if test="${validationMessage != null}">
-								<p class="red-text center-align">${validationMessage}</p>
+								<p class="red-text center-align"><span style="color:#ff0000;">${validationMessage}</span></p>
 							</c:if>
 							<br> <br>
 
@@ -40,12 +40,12 @@
 							</div>
 							<div class="row">
 								<div class="form-group col-md-6">
-									<label>パスワード</label><input type="password" name="password">
+									<label>パスワード</label><input type="password" name="password" value="">
 								</div>
 							</div>
 							<div class="row">
 								<div class="form-group col-md-6">
-									<label>パスワード(確認)</label><input type="password" name="password1">
+									<label>パスワード(確認)</label><input type="password" name="password1" value="">
 								</div>
 							</div>
 							<div class="row">
