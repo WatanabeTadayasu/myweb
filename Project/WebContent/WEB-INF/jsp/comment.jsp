@@ -10,39 +10,44 @@
 </head>
 <body>
 
-<div class="box_0">
+	<div class="box_0">
+		<h1>題名.本文${thread.threadTitle}</h1>
+		<p>ここにコメントここにコメントここにコメントここにコメントここにコメント${thread.threadText}
+		<a href="#"class="square_btn">良いでしょう</a>
+		</p>
+	</div>
 
-	<h1>題名.本文${thread.threadTtitle}</h1>
-	<p>ここにコメントここにコメントここにコメントここにコメントここにコメント${thread.threadText}</p>
-	<a href="#" class="square_btn">良いでしょう</a>
-</div>
+	<div class="yoibottun">
+		<!--   コメント一覧ボタン  -->
+		<a href="CommentHistoryDetail?thread_id=${thread.id}">
+			<button type="submit" class="btn btn-primary">コメント一覧</button>
+		</a>
+	</div>
 
-<div class="box_1">
+	<div class="box_2">
+		<!--   コメント一覧   -->
+		<c:forEach var="comment" items="${commentList}">
+			<h6>${comment.userLoginId}<br>${comment.comment}${comment.createDate}</h6>
+		</c:forEach>
+	</div>
 
-	<h2>靴</h2>
-       <p>ここにコメントここにコメントここにコメントここにコメント</p>
+	<form action="CommentConfirm" method="POST">
 
-</div>
+		<div class="form-post">
+			<!--  <label>スレッドID送信用</label> -->
+			<input name="thread_id" type="hidden" value="${thread.id}">
+			<%-- <input type="text" class="form-control" name="thread_category_id" value="${userSelectDMB.name}" disabled> --%>
+		</div>
 
-<form action="CommentConfirm" method="POST">
+		<div class="form-post">
+			<label>名前</label> <input type="text" class="form-control"
+				name="user_login_id" value="${udb.loginId}" readonly>
+		</div>
 
-<div class="form-post">
-   <!--  <label>スレッドID送信用</label> -->
-    <input name="thread_id" type="hidden" value="${thread.id}">
-	<%-- <input type="text" class="form-control" name="thread_category_id" value="${userSelectDMB.name}" disabled> --%>
-  </div>
-
-  <div class="form-post">
-    <label>名前</label>
-    <input type="text" class="form-control" name="user_login_id" value="${udb.loginId}" readonly>
-  </div>
-
-  <div class="form-post">
-    <label>コメント欄</label>
-    <textarea class="form-control" name="m_comment" rows="5"></textarea>
-  </div>
-
-
+		<div class="form-post">
+			<label>コメント欄</label>
+			<textarea class="form-control" name="m_comment" rows="5"></textarea>
+		</div>
 
 		<div class="form-post">
 			<div class="col s12">
@@ -55,7 +60,7 @@
 			<a class="btn btn-primary" type="submit" name="action">コメント</a>
 		</div>
 
-</form>
+	</form>
 
 </body>
 </html>

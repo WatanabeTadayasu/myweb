@@ -39,20 +39,22 @@ public class Comment extends HttpServlet {
    			int id = Integer.parseInt(request.getParameter("thread_id"));
    			//戻るページ表示用
    			int pageNum = Integer.parseInt(request.getParameter("page_num")==null?"1":request.getParameter("page_num"));
-   			//対象のアイテム情報を取得
+   			//対象のスレッド情報を取得
    			ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(id);
+
+//   			//対象のコメント情報を取得
+//   			ArrayList<CommentDataBeans> commentList = CommentDetailDAO.getCommentDataBeansListByBuyId(id);
 
    			/*コメントメソッド*/
    			int commentid = (int) session.getAttribute("userId");
    			UserDAO UserDAO = new UserDAO();
    			UserDataBeans udb = UserDAO.findByDetailInfo(commentid);
 
-
-
    			session.setAttribute("udb", udb);
 
    			//リクエストパラメーターにセット
    			request.setAttribute("thread", thread);
+//   			request.setAttribute("commentList", commentList);
    			request.setAttribute("pageNum", pageNum);
 
    			request.getRequestDispatcher("/WEB-INF/jsp/comment.jsp").forward(request, response);

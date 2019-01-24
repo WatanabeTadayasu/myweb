@@ -58,15 +58,15 @@ public class CommentConfirm extends HttpServlet {
 //		int threadCategoryId = dmdb.getId();
 //		String threadCategoryName = dmdb.getName();
 
-		int inputThreadId = Integer.parseInt(request.getParameter("thread_id"));
-		String inputuserLoginId = request.getParameter("user_login_id");
-		String inputComment = request.getParameter("m_comment");
+		int threadId = Integer.parseInt(request.getParameter("thread_id"));
+		String userLoginId = request.getParameter("user_login_id");
+		String comment = request.getParameter("m_comment");
 
 		CommentDataBeans comme = new CommentDataBeans();
 
-		comme.setThreadId(inputThreadId);
-		comme.setUserLoginId(inputuserLoginId);
-		comme.setComment(inputComment);
+		comme.setThreadId(threadId);
+		comme.setUserLoginId(userLoginId);
+		comme.setComment(comment);
 //		bdb.setThreadCategoryId(threadCategoryId);
 //		bdb.setThreadCategoryName(threadCategoryName);
 //
@@ -80,7 +80,7 @@ public class CommentConfirm extends HttpServlet {
 		String validationMessage = "";
 
 		// 入力チェック
-		if (inputComment.equals("")) {
+		if (comment.equals("")) {
 			validationMessage += "コメントを入力して下さい。<br>";
 		}
 

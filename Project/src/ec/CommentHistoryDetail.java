@@ -1,6 +1,7 @@
 package ec;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,16 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.PostDataBeans;
-import dao.PostDAO;
+import beans.CommentDataBeans;
+import beans.ThreadDataBeans;
+import dao.CommentDetailDAO;
+import dao.ThreadDAO;
 
 /**
  * 購入履歴画面
  * @author d-yamaguchi
  *
  */
-@WebServlet("/UserBuyHistoryDetail")
-public class UserBuyHistoryDetail extends HttpServlet {
+@WebServlet("/CommentHistoryDetail")
+public class CommentHistoryDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,18 +32,24 @@ public class UserBuyHistoryDetail extends HttpServlet {
 			//戻るページ表示用
 			int pageNum = Integer.parseInt(request.getParameter("page_num")==null?"1":request.getParameter("page_num"));
 
-			//購入詳細情報、購入情報を取得
-			PostDataBeans bdbbb = PostDAO.getBuyDataBeansByBuyId(id);
-
+//			//購入詳細情報、購入情報を取得
+//			PostDataBeans bdbbb = PostDAO.getBuyDataBeansByBuyId(id);
+//
 //			// 購入アイテム情報
 //			ArrayList<ItemDataBeans> buyIDBList = BuyDetailDAO.getItemDataBeansListByBuyId(id);
 
+			//対象のスレッド情報を取得
+   			ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(id);
+			ArrayList<CommentDataBeans> commentList = CommentDetailDAO.getCommentDataBeansListByBuyId(id);
+
 			//リクエストパラメーターにセット
-			request.setAttribute("bdbbb", bdbbb);
+//			request.setAttribute("bdbbb", bdbbb);
 //			request.setAttribute("buyIDBList", buyIDBList);
+			request.setAttribute("thread", thread);
+			request.setAttribute("commentList", commentList);
 			request.setAttribute("pageNum", pageNum);
 
-			request.getRequestDispatcher(EcHelper.USER_BUY_HISTORY_DETAIL_PAGE).forward(request, response);
+			request.getRequestDispatcher("commenthistorydetail.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("errorMessage", e.toString());

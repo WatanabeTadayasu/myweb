@@ -60,14 +60,14 @@ public class ThreadDAO {
 	 * @return ItemDataBeans
 	 * @throws SQLException
 	 */
-	public static ThreadDataBeans getThreadByThreadID(int itemId) throws SQLException {
+	public static ThreadDataBeans getThreadByThreadID(int threadId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
 			con = DBManager.getConnection();
 
 			st = con.prepareStatement("SELECT * FROM t_thread WHERE id = ?");
-			st.setInt(1, itemId);
+			st.setInt(1, threadId);
 
 			ResultSet rs = st.executeQuery();
 
