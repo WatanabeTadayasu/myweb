@@ -15,12 +15,8 @@ public class ThreadDataBeans implements Serializable {
 	private String threadText;
 	private String createDate;
 
-	public ThreadDataBeans(String threadTitle) {
-		// TODO 自動生成されたコンストラクター・スタブ
-	}
-	public ThreadDataBeans() {
-		// TODO 自動生成されたコンストラクター・スタブ
-	}
+
+
 	public int getId() {
 		return id;
 	}

@@ -62,7 +62,7 @@ public class CommentHistoryDetail extends HttpServlet {
 			request.setAttribute("commentList", commentList);
 			request.setAttribute("pageNum", pageNum);
 
-			request.getRequestDispatcher("commenthistorydetail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/commenthistorydetail.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("errorMessage", e.toString());
