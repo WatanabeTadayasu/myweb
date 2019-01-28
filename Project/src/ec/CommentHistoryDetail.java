@@ -42,9 +42,22 @@ public class CommentHistoryDetail extends HttpServlet {
    			ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(id);
 			ArrayList<CommentDataBeans> commentList = CommentDetailDAO.getCommentDataBeansListByBuyId(id);
 
+			//セッションにカートがない場合カートを作成
+			if (commentList == null) {
+				commentList = new ArrayList<CommentDataBeans>();
+				session.setAttribute("commentList", commentList);
+			}
+
+			String cartActionMessage = "";
+			//カートに商品が入っていないなら
+			if(commentList.size() == 0) {
+				cartActionMessage = "コメント履歴がありません。";
+			}
+
 			//リクエストパラメーターにセット
 //			request.setAttribute("bdbbb", bdbbb);
 //			request.setAttribute("buyIDBList", buyIDBList);
+			request.setAttribute("cartActionMessage", cartActionMessage);
 			request.setAttribute("thread", thread);
 			request.setAttribute("commentList", commentList);
 			request.setAttribute("pageNum", pageNum);

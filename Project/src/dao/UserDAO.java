@@ -535,7 +535,7 @@ public class UserDAO {
 	    }
 
 
-	 /*検索*/
+	 /*ユーザー検索*/
 
     public List<UserDataBeans> findSearch(String loginIdP, String nameP, String birthdateP, String birthdateP1) {
         Connection conn = null;

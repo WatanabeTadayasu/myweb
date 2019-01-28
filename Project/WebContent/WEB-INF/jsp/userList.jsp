@@ -25,9 +25,9 @@
 <div align="center">
 <h1>ユーザー一覧</h1>
 </div>
-<div align="right">
-<a href="sinki">新規登録</a>
-</div>
+<!-- <div align="right">
+<a href="Regist">新規登録</a>
+</div> -->
 
 <form method="post" action="UserListServlet" class="form-horizontal">
 
@@ -63,48 +63,47 @@
 
 </form>
 
-        <div class="table-responsive">
-             <table class="table table-striped">
-               <thead>
-                 <tr>
-                   <th>ログインID</th>
-                   <th>ユーザ名</th>
-                   <th>生年月日</th>
-                   <th></th>
-                 </tr>
-               </thead>
-               <tbody>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ログインID</th>
+					<th>ユーザ名</th>
+					<th>生年月日</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="UserDataBeans" items="${userList}">
+					<tr>
+						<td>${UserDataBeans.loginId}</td>
+						<td>${UserDataBeans.name}</td>
+						<td>${UserDataBeans.birthdate}</td>
+						<!-- TODO 未実装；ログインボタンの表示制御を行う -->
 
-                 <c:forEach var="UserDataBeans" items="${userList}">
-                   <tr>
-                     <td>${UserDataBeans.loginId}</td>
-                     <td>${UserDataBeans.name}</td>
-                     <td>${UserDataBeans.birthdate}</td>
-                     <!-- TODO 未実装；ログインボタンの表示制御を行う -->
-
-           <c:if test="${userId == 1}">
-			<td>
-
-             <a class="btn btn-primary" href="UserDetailServlet?userId=${UserDataBeans.id}">詳細</a>
-             <a class="btn btn-success" href="UserData?userId=${UserDataBeans.id}">更新</a>
-             <a class="btn btn-danger" href ="UserDeleteServlet?userId=${UserDataBeans.id}">削除</a>
-
-             </td>
-			</c:if>
-				<c:if test="${userId != 1}">
-				<td>
-                <a class="btn btn-primary" href="UserDetailServlet?userId=${UserDataBeans.id}">詳細</a>
-
-                	<c:if test="${userId == UserDataBeans.id}">
-               		<a class="btn btn-success" href="UserData?userId=${UserDataBeans.id}">更新</a>
-                	</c:if>
-
-                </td>
-				</c:if>
-			</tr>
-			</c:forEach>
+						<c:if test="${userId == 1}">
+							<td><a class="btn btn-primary"
+								href="UserDetailServlet?userId=${UserDataBeans.id}">詳細</a> <a
+								class="btn btn-success"
+								href="UserData?userId=${UserDataBeans.id}">更新</a> <a
+								class="btn btn-danger"
+								href="UserDeleteServlet?userId=${UserDataBeans.id}">削除</a></td>
+						</c:if>
+						<c:if test="${userId != 1}">
+							<td><a class="btn btn-primary"
+								href="UserDetailServlet?userId=${UserDataBeans.id}">詳細</a>
+								<c:if test="${userId == UserDataBeans.id}">
+									<a class="btn btn-success"
+										href="UserData?userId=${UserDataBeans.id}">更新</a>
+								</c:if></td>
+						</c:if>
+					</tr>
+				</c:forEach>
 			</tbody>
-			</table>
-			</div>
-  </body>
+		</table>
+	</div>
+
+	<a href="Index">戻る</a>
+
+</body>
 </html>

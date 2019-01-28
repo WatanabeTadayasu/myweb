@@ -126,7 +126,7 @@ public class PostDAO {
 	 * @throws SQLException
 	 * 				呼び出し元にスローさせるため
 	 */
-	public static ArrayList<PostDataBeans> getBuyDataBeansHistory() throws SQLException {
+	public static ArrayList<PostDataBeans> getBuyDataBeansHistory(String loginId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -136,7 +136,10 @@ public class PostDAO {
 					"SELECT * FROM t_thread"
 							+ " JOIN m_thread_category"
 							+ " ON t_thread.thread_category_id = m_thread_category.id"
+							+ " WHERE user_login_id = ?"
 							+ " order by t_thread.id desc");
+			st.setString(1, loginId);
+
 			ResultSet rs = st.executeQuery();
 
 			ArrayList<PostDataBeans> buyDataBeansList = new ArrayList<PostDataBeans>();

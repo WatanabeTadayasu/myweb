@@ -73,7 +73,13 @@
 				</div>
 			</div>
 		</div>
-		<!--  購入履歴 -->
+	</div>
+	<c:if test="${cartActionMessage != null}">
+		<p class="red-text center-align">
+			<span style="color: #2ca9e1;">${cartActionMessage}</span>
+		</p>
+	</c:if>
+	<!--  購入履歴 -->
 		<div class="row">
 			<div class="col s12">
 				<div class="card grey lighten-5">
@@ -81,7 +87,7 @@
 						<table class="bordered">
 							<thead>
 								<tr>
-									<th style="width: 10%"></th>
+									<th style="width: 5%"></th>
 									<th class="center">投稿時間</th>
 									<th class="center">タイトル</th>
 									<th class="center">カテゴリ</th>
@@ -99,7 +105,7 @@
 
 					<c:forEach var="bdbhList" items="${bdbhList}">
 								<tr>
-									<td class="center"><a href="UserBuyHistoryDetail?buy_id=${bdbhList.id}" class="btn-floating btn waves-effect waves-light "> <i class="material-icons">details</i></a></td>
+									<td class="center"><a href="UserBuyHistoryDetail?thread_id=${bdbhList.id}" class="btn-floating btn waves-effect waves-light "> <i class="material-icons">details</i></a></td>
 									<td class="center">${bdbhList.createDate}</td>
 									<td class="center">${bdbhList.threadTitle}</td>
 									<td class="center">${bdbhList.threadCategoryName}</td>
@@ -120,7 +126,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+
 
 <a href="UserListServlet">戻る</a>
 

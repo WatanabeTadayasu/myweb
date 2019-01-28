@@ -22,13 +22,21 @@
 
 	<div class="yoibottun">
 		<!--   コメント一覧ボタン  -->
-		<a href="CommentHistoryDetail?thread_id=${thread.id}">
-			<button type="submit" class="btn btn-primary">コメント一覧</button>
+		<a href="Comment?thread_id=${thread.id}">
+			<button type="submit" class="btn btn-primary">コメントする</button>
 		</a>
 	</div>
 
+
+
 	<div class="box_2">
 		<!--   コメント一覧   -->
+		<c:if test="${cartActionMessage != null}">
+			<p class="red-text center-align">
+				<span style="color: #2ca9e1;">${cartActionMessage}</span>
+			</p>
+		</c:if>
+
 		<c:forEach var="comment" items="${commentList}">
 			<h6>${comment.userLoginId}<br>${comment.comment}${comment.createDate}</h6>
 		</c:forEach>

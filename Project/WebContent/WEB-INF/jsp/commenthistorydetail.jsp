@@ -19,8 +19,15 @@
 
 		<div class="box_0">
 			<h1>題名.本文${thread.threadTtitle}</h1>
-			<p>ここにコメントここにコメントここにコメントここにコメントここにコメント${thread.threadText}</p>
+			<p>ここにコメントここにコメントここにコメントここにコメントここにコメント
+			${thread.threadText}${thread.createDate}</p>
 		</div>
+
+		<c:if test="${cartActionMessage != null}">
+			<p class="red-text center-align">
+				<span style="color: #2ca9e1;">${cartActionMessage}</span>
+			</p>
+		</c:if>
 
 		<div class="box_1">
 			<!--   コメント一覧   -->

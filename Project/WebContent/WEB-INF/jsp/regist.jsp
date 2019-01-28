@@ -63,5 +63,8 @@
 			</div>
 		</div>
 	</div>
+
+	<a href="Index">戻る</a>
+
 </body>
 </html>

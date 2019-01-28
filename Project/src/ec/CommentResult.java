@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.CommentDataBeans;
-import beans.CommentDetailDataBeans;
 import dao.CommentDAO;
-import dao.CommentDetailDAO;
 
 /**
  * Servlet implementation class CommentResult
@@ -67,14 +65,15 @@ public class CommentResult extends HttpServlet {
 				break;
 
 			case "regist":
-				// コメント情報を登録
-				int commentId = CommentDAO.insertComment(comme);
+//				// コメント情報を登録
+//				int commentId =
+				CommentDAO.insertComment(comme);
 
-				 //コメント詳細情報をコメント情報IDに紐づけして登録
-				CommentDetailDataBeans cddb = new CommentDetailDataBeans();
-				cddb.setThreadId(inputThreadId);
-				cddb.setCommentId(commentId);
-				CommentDetailDAO.insertCommentDetail(cddb);
+//				//コメント詳細情報をコメント情報IDに紐づけして登録
+//				CommentDetailDataBeans cddb = new CommentDetailDataBeans();
+//				cddb.setThreadId(inputThreadId);
+//				cddb.setCommentId(commentId);
+//				CommentDetailDAO.insertCommentDetail(cddb);
 
 //				/* ====購入完了ページ表示用==== */
 //				PostDataBeans resultBDB = PostDAO.getBuyDataBeansByBuyId(buyId);

@@ -55,7 +55,6 @@
 			<div class="row center">
 				<h5 class=" col s12 light">おすすめ記事</h5>
 			</div>
-
 		</div>
 
 		<div class="box_d">
@@ -92,7 +91,6 @@
 				</c:forEach>
 			</div>
 
-
 			<div class="box_3">
 				<!--   おすすめ商品   -->
 				<c:forEach var="item" items="${itemList}">
@@ -103,24 +101,20 @@
 				</c:forEach>
 			</div> --%>
 
-
 			<div class="box_4">
 				<h2>寿司</h2>
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
-
 
 			<div class="box_5">
 				<h2>スイーツ</h2>
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 
-
 			<div class="box_6">
 				<h2>イタリアン</h2>
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
-
 
 			<div class="box_7">
 				<h2>ワイン</h2>
@@ -129,11 +123,71 @@
 
 	</div>
 
-<div class= "footer">
-      <p>keiziban</p>
-</div>
+		<div class="container">
+			<div class="row center">
+				<h5 class=" col s12 light">ランキング</h5>
+			</div>
+		</div>
 
-</div>
+		<div class="box_d">
+
+			<div class="box_1">
+				<!--   ランキング商品   -->
+				<c:forEach var="item" items="${itemList}">
+						<h2>
+							<a href="Item?item_id=${item.id}">${item.threadTtitle}</a>
+						</h2>
+						<h6>${item.threadText}${item.createDate}</h6>
+				</c:forEach>
+			</div>
+
+			<div class="box_4">
+				<h2>寿司</h2>
+				<p>ここにコメントここにコメントここにコメントここにコメント</p>
+			</div>
+
+			<div class="box_5">
+				<h2>スイーツ</h2>
+				<p>ここにコメントここにコメントここにコメントここにコメント</p>
+			</div>
+
+	</div>
+
+	<div class="container">
+			<div class="row center">
+				<h5 class=" col s12 light">速報</h5>
+			</div>
+		</div>
+
+		<div class="box_d">
+
+			<div class="box_1">
+				<!--   速報商品   -->
+				<c:forEach var="item" items="${itemList}">
+						<h2>
+							<a href="Item?item_id=${item.id}">${item.threadTtitle}</a>
+						</h2>
+						<h6>${item.threadText}${item.createDate}</h6>
+				</c:forEach>
+			</div>
+
+			<div class="box_4">
+				<h2>寿司</h2>
+				<p>ここにコメントここにコメントここにコメントここにコメント</p>
+			</div>
+
+			<div class="box_5">
+				<h2>スイーツ</h2>
+				<p>ここにコメントここにコメントここにコメントここにコメント</p>
+			</div>
+
+	</div>
+
+		<div class="footer">
+			<p>keiziban</p>
+		</div>
+
+	</div>
 
 </body>
 </html>

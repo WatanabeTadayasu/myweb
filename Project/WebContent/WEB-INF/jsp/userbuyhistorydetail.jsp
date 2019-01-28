@@ -15,86 +15,37 @@
 		<div class="row center">
 			<h4 class=" col s12 light">投稿詳細</h4>
 		</div>
+
+		<!-- private int id;
+		private int threadCategoryId;
+		private String userId;
+		private String threadTitle;
+		private String threadText;
+		private String createDate;
+		private String threadCategoryName; -->
 		<!--  購入 -->
 		<div class="row">
 			<div class="col s10 offset-s1">
 				<div class="card grey lighten-5">
 					<div class="card-content">
-						<table>
-							<thead>
-								<tr>
-									<th class="center" style="width: 20%;">タイトル</th>
-									<th class="center">本文</th>
-								</tr>
-							</thead>
 
-							<!-- private int id;
-	private int threadCategoryId;
-	private String userId;
-	private String threadTitle;
-	private String threadText;
-	private String createDate;
-	private String threadCategoryName; -->
+						<div class="form-post">
+							<label for="exampleFormControlInput1">タイトル</label><br>
+							${bdbbb.threadTitle}
+						</div><br>
 
-							<tbody>
-								<tr>
-									<td class="center">${bdbbb.threadTitle}</td>
-									<td class="center">${bdbbb.threadText}</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- 詳細 -->
-		<div class="row">
-			<div class="col s10 offset-s1">
-				<div class="card grey lighten-5">
-					<div class="card-content">
-						<table class="bordered">
-							<thead>
-								<tr>
-									<th class="center" style="width: 20%">商品名</th>
-									<th class="center">単価</th>
-								</tr>
-							</thead>
+						<div class="form-post">
+							<label for="exampleFormControlTextarea1">本文</label><br>
+							${bdbbb.threadText}
+						</div><br>
 
-							<!-- idb.setId(rs.getInt("id"));
-							idb.setName(rs.getString("name"));
-							idb.setPrice(rs.getInt("price")); -->
-
-							<tbody>
-						<c:forEach var="buyIDB" items="${buyIDBList}" >
-									<tr>
-										<td class="center">${buyIDB.name}</td>
-										<td class="center">${buyIDB.price}円</td>
-									</tr>
-								</c:forEach>
-								<tr>
-									<td class="center">${bdbbb.threadTitle}</td>
-									<td class="center">${bdbbb.threadText}円</td>
-								</tr>
-								<!-- <tr>
-									<td class="center">サンプル商品名2</td>
-									<td class="center">222222222円</td>
-								</tr>
-								<tr>
-									<td class="center">サンプル商品名3</td>
-									<td class="center">333333333円</td>
-								</tr>
-								<tr>
-									<td class="center">サンプル</td>
-									<td class="center">123456789円</td>
-								</tr> -->
-							</tbody>
-						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<a href="UserListServlet">戻る</a>
+	<a href="UserData">戻る</a>
+
 </body>
 </html>

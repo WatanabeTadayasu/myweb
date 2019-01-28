@@ -53,8 +53,8 @@ public class CommentDetailDAO {
 		try {
 			con = DBManager.getConnection();
 
-			st = con.prepareStatement("SELECT id,thread_id,name,m_comment,create_date,FROM m_comment"
-					+ " WHERE thread_id = ?");
+			st = con.prepareStatement(
+					"SELECT * FROM m_comment WHERE thread_id = ?");
 			st.setInt(1, threadId);
 
 			ResultSet rs = st.executeQuery();

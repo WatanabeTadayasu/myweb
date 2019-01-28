@@ -58,8 +58,22 @@ public class UserData extends HttpServlet {
 			// 入力された内容に誤りがあったとき等に表示するエラーメッセージを格納する
 			String validationMessage = (String) EcHelper.cutSessionAttribute(session, "validationMessage");
 
-			ArrayList<PostDataBeans> bdbhList = PostDAO.getBuyDataBeansHistory();
+			String loginId = udb.getLoginId();
+			ArrayList<PostDataBeans> bdbhList = PostDAO.getBuyDataBeansHistory(loginId);
 
+			//セッションにカートがない場合カートを作成
+			if (bdbhList == null) {
+				bdbhList = new ArrayList<PostDataBeans>();
+				session.setAttribute("bdbhList", bdbhList);
+			}
+
+			String cartActionMessage = "";
+			//カートに商品が入っていないなら
+			if(bdbhList.size() == 0) {
+				cartActionMessage = "投稿履歴がありません。";
+			}
+
+			request.setAttribute("cartActionMessage", cartActionMessage);
 			request.setAttribute("validationMessage", validationMessage);
 			request.setAttribute("udb", udb);
 			request.setAttribute("bdbhList", bdbhList);
