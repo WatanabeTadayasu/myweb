@@ -69,7 +69,7 @@
 				<!--   おすすめ商品   -->
 				<c:forEach var="thread" items="${threadList}">
 						<h2>
-							<a href="Comment?thread_id=${thread.id}">${thread.threadTitle}</a>
+							<a href="PostDetail?thread_id=${thread.id}">${thread.threadTitle}</a>
 						</h2>
 						<h6>${thread.threadText}${thread.createDate}</h6>
 				</c:forEach>

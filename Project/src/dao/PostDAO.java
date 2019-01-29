@@ -89,7 +89,6 @@ public class PostDAO {
 				bdb.setThreadText(rs.getString("thread_text"));
 				bdb.setThreadCategoryId(rs.getInt("thread_category_id"));
 				bdb.setThreadCategoryName(rs.getString("name"));
-
 				//bdb.setBuyDate(rs.getTimestamp("create_date"));
 
 				/* Date型⇒String型 */

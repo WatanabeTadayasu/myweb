@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import base.DBManager;
@@ -39,7 +41,19 @@ public class ThreadDAO {
 				item.setThreadTitle(rs.getString("thread_title"));
 				item.setThreadText(rs.getString("thread_text"));
 				item.setThreadCategoryId(rs.getInt("thread_category_id"));
-				item.setCreateDate(rs.getString("create_date"));
+//				item.setCreateDate(rs.getString("create_date"));
+
+				/* Date型⇒String型 */
+				// 変換後の日付文字列の書式を指定
+				DateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
+				// 変換
+				String sDate = df1.format(rs.getTimestamp("create_date"));
+				//bdb.setBuyDate(sDate);
+
+				//bdb.setBuyDate(rs.getTimestamp("create_date"));
+
+				item.setCreateDate(sDate);
+
 				itemList.add(item);
 			}
 			System.out.println("getAllItem completed");
@@ -78,7 +92,18 @@ public class ThreadDAO {
 				item.setThreadTitle(rs.getString("thread_title"));
 				item.setThreadText(rs.getString("thread_text"));
 				item.setThreadCategoryId(rs.getInt("thread_category_id"));
-				item.setCreateDate(rs.getString("create_date"));
+//				item.setCreateDate(rs.getString("create_date"));
+
+				/* Date型⇒String型 */
+				// 変換後の日付文字列の書式を指定
+				DateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
+				// 変換
+				String sDate = df1.format(rs.getTimestamp("create_date"));
+				//bdb.setBuyDate(sDate);
+
+				//bdb.setBuyDate(rs.getTimestamp("create_date"));
+
+				item.setCreateDate(sDate);
 			}
 
 			System.out.println("searching item by itemID has been completed");

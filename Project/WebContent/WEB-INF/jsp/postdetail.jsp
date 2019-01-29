@@ -11,10 +11,17 @@
 <body>
 
 	<div class="box_0">
+		<h6>${thread.createDate}</h6>
 		<h1>題名.本文${thread.threadTitle}</h1>
-		<p>ここにコメントここにコメントここにコメントここにコメントここにコメント${thread.threadText}${thread.createDate}
+		<p>ここにコメントここにコメントここにコメントここにコメントここにコメント${thread.threadText}
 		</p>
 	</div>
+
+	<c:if test="${cartActionMessage != null}">
+		<p class="red-text center-align">
+			<span style="color: #2ca9e1;">${cartActionMessage}</span>
+		</p>
+	</c:if>
 
 	<div class="yoibottun">
 	<a href="#"class="square_btn">良いでしょう</a>
@@ -27,27 +34,19 @@
 		</a>
 	</div>
 
-
-
 	<div class="box_2">
 		<!--   コメント一覧   -->
-		<c:if test="${cartActionMessage != null}">
-			<p class="red-text center-align">
-				<span style="color: #2ca9e1;">${cartActionMessage}</span>
-			</p>
-		</c:if>
-
 		<c:forEach var="comment" items="${commentList}">
 			<h6>${comment.userLoginId}<br>${comment.comment}${comment.createDate}</h6>
 		</c:forEach>
 	</div>
 
-	<form action="CommentConfirm" method="POST">
+	<%-- <form action="CommentConfirm" method="POST">
 
 		<div class="form-post">
 			<!--  <label>スレッドID送信用</label> -->
 			<input name="thread_id" type="hidden" value="${thread.id}">
-			<%-- <input type="text" class="form-control" name="thread_category_id" value="${userSelectDMB.name}" disabled> --%>
+			<input type="text" class="form-control" name="thread_category_id" value="${userSelectDMB.name}" disabled>
 		</div>
 
 		<div class="form-post">
@@ -71,7 +70,7 @@
 			<button class="btn btn-primary" type="submit" name="action">コメント</button>
 		</div> -->
 
-	</form>
+	</form> --%>
 
 </body>
 </html>

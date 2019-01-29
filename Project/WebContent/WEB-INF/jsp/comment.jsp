@@ -6,17 +6,18 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href = "css/style.css">
-<title>スレッド詳細</title>
+<title>コメントする</title>
 </head>
 <body>
 
 	<div class="box_0">
-		<h1>題名.本文${thread.threadTitle}</h1>
-		<p>ここにコメントここにコメントここにコメントここにコメントここにコメント${thread.threadText}${thread.createDate}
+		<h6>${thread.createDate}</h6>
+		<h1>${thread.threadTitle}</h1>
+		<p>ここにコメントここにコメントここにコメントここにコメントここにコメント${thread.threadText}
 		</p>
 	</div>
 
-	<div class="yoibottun">
+	<%-- <div class="yoibottun">
 	<a href="#"class="square_btn">良いでしょう</a>
 	</div>
 
@@ -25,7 +26,7 @@
 		<a href="CommentHistoryDetail?thread_id=${thread.id}">
 			<button type="submit" class="btn btn-primary">コメント一覧</button>
 		</a>
-	</div>
+	</div> --%>
 
 	<div class="box_2">
 		<!--   コメント一覧   -->
