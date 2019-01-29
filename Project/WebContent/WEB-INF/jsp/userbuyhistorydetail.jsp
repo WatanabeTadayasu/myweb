@@ -45,7 +45,7 @@
 		</div>
 	</div>
 
-	<a href="UserData">戻る</a>
+	<a href="UserListServlet">戻る</a>
 
 </body>
 </html>

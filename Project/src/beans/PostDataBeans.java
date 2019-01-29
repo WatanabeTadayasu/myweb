@@ -16,6 +16,7 @@ public class PostDataBeans  implements Serializable {
 	private String createDate;
 	private String threadCategoryName;
 
+
 	public int getId() {
 		return id;
 	}

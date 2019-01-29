@@ -101,8 +101,9 @@ div.recommend3 {
 }
 
 .header{
+	width: 100%;
 	margin: 10px 0px;
-	padding:5px;
+	padding: 5px;
 }
 
 .wrapper{
@@ -113,12 +114,11 @@ div.recommend3 {
 }
 
 .footer{
+	height:100px;
     width: 100%;
     background-color: #89c7de;
     color: #fff;
     text-align: left;
-    padding: 20px 0px 10px 0px;
-
  	position: absolute;/*←絶対位置*/
     bottom: 0; /*下に固定*/
 }

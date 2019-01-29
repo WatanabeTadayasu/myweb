@@ -9,8 +9,6 @@
 </head>
 <body>
 
-<div class="wrapper">
-
 <div class = "header">
 
 <h1>掲示板</h1>
@@ -51,6 +49,8 @@
 
 </div>
 
+<div class="wrapper">
+
 		<div class="container">
 			<div class="row center">
 				<h5 class=" col s12 light">おすすめ記事</h5>
@@ -59,25 +59,11 @@
 
 		<div class="box_d">
 
-		<!-- <c:if test="${userInfo.loginId == 'admin'}"> -->
-			<div class="delete">
-             <a class="btn btn-danger" href ="UserDeleteServlet?id=${user.id}">削除</a>
-			</div>
-		<!-- </c:if> -->
-
-			<div class="box_1">
 				<!--   おすすめ商品   -->
 				<c:forEach var="thread" items="${threadList}">
 						<h2><a href="PostDetail?thread_id=${thread.id}">${thread.threadTitle}</a></h2>
 						<h6>${thread.threadText}</h6>
 				</c:forEach>
-			</div>
-
-			<!-- <c:if test="${userInfo.loginId == 'admin'}"> -->
-			<div class="delete">
-             <a class="btn btn-danger" href ="UserDeleteServlet?id=${user.id}">削除</a>
-			</div>
-		<!-- </c:if> -->
 
 			<%-- <div class="box_2">
 				<!--   おすすめ商品   -->

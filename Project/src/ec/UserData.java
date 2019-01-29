@@ -25,8 +25,6 @@ import dao.UserDAO;
 public class UserData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// セッション開始
@@ -44,22 +42,24 @@ public class UserData extends HttpServlet {
 //			// ログイン時に取得したユーザーIDをセッションから取得
 //			int userId = (int) session.getAttribute("userInfo");
 
-//			// URLからGETパラメータとしてIDを受け取る
-//			String num = request.getParameter("userId");
-//			int userId = Integer.parseInt(num);
+			// URLからGETパラメータとしてIDを受け取る
+			String num = request.getParameter("userId");
+			int id = Integer.parseInt(num);
 
-			// ログイン時に取得したユーザーIDをセッションから取得
-			int userId = (int) session.getAttribute("userId");
+			// 確認用：idをコンソールに出力
+			System.out.println(id);
 
 			// 更新確認画面から戻ってきた場合Sessionから取得。それ以外はuserIdでユーザーを取得
 			UserDAO UserDAO = new UserDAO();
-			UserDataBeans udb = session.getAttribute("returnUDB") == null ? UserDAO.findByLoginInfo(userId) : (UserDataBeans) EcHelper.cutSessionAttribute(session, "returnUDB");
+			UserDataBeans udb = session.getAttribute("returnUDB") == null ? UserDAO.findByLoginInfo(id) : (UserDataBeans) EcHelper.cutSessionAttribute(session, "returnUDB");
 
 			// 入力された内容に誤りがあったとき等に表示するエラーメッセージを格納する
 			String validationMessage = (String) EcHelper.cutSessionAttribute(session, "validationMessage");
 
 			String loginId = udb.getLoginId();
 			ArrayList<PostDataBeans> bdbhList = PostDAO.getBuyDataBeansHistory(loginId);
+
+
 
 			//セッションにカートがない場合カートを作成
 			if (bdbhList == null) {
@@ -72,6 +72,7 @@ public class UserData extends HttpServlet {
 			if(bdbhList.size() == 0) {
 				cartActionMessage = "投稿履歴がありません。";
 			}
+
 
 			request.setAttribute("cartActionMessage", cartActionMessage);
 			request.setAttribute("validationMessage", validationMessage);

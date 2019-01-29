@@ -75,20 +75,18 @@
 		</div>
 	</div>
 
+	<!--  投稿履歴 -->
+	<div class="row center">
+		<h5 class=" col s12 light">投稿履歴</h5>
+	</div>
+
 	<c:if test="${cartActionMessage != null}">
 		<p class="red-text center-align">
 			<span style="color: #2ca9e1;">${cartActionMessage}</span>
 		</p>
 	</c:if>
 
-	<!--  投稿履歴 -->
-	<div class="container">
-		<div class="row center">
-			${cartActionMessage}
-			<h5 class=" col s12 light">投稿履歴</h5>
-		</div>
-		<div class="section">
-			<form action="ItemDelete" method="POST">
+	<form action="PostDelete" method="POST">
 				<div class="row">
 					<div class="col s12">
 						<div class="card grey lighten-5">
@@ -105,20 +103,23 @@
 									<tbody>
 										<c:forEach var="bdbhList" items="${bdbhList}"
 											varStatus="status">
+
 											<tr>
-												<td class="center"><a
-													href="UserBuyHistoryDetail?thread_id=${bdbhList.id}"
+												<td class="center">
+												<p>
+												<input type="checkbox" id="${status.index}"
+													name="delete_item_id_list" value="${bdbhList.id}" /> <label
+													for="${status.index}">削除</label>
+												</p>
+												<a href="UserBuyHistoryDetail?thread_id=${bdbhList.id}"
 													class="btn-floating btn waves-effect waves-light "> <i
-														class="material-icons">details</i></a></td>
+														class="material-icons">details</i></a>
+												</td>
 												<td class="center">${bdbhList.createDate}</td>
 												<td class="center">${bdbhList.threadTitle}</td>
 												<td class="center">${bdbhList.threadCategoryName}</td>
 											</tr>
-											<p>
-												<input type="checkbox" id="${status.index}"
-													name="delete_item_id_list" value="${bdbhList.id}" /> <label
-													for="${status.index}">削除</label>
-											</p>
+
 										</c:forEach>
 									</tbody>
 								</table>
@@ -135,9 +136,6 @@
 												削除<i class="material-icons right">delete</i>
 											</button>
 										</div>
-										<!-- <div class="col s6 center-align">
-							<a href="Buy" class="btn  waves-effect waves-light col s6 offset-s3">レジに進む<i class="material-icons right">attach_money</i></a>
-						</div> -->
 									</div>
 								</div>
 							</div>
@@ -145,10 +143,8 @@
 					</div>
 				</div>
 			</form>
-		</div>
-	</div>
 
-	<div class="row">
+	<%-- <div class="row">
 		<div class="col s12">
 			<div class="card grey lighten-5">
 				<div class="card-content">
@@ -177,8 +173,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
+	</div> --%>
 
 	<a href="UserListServlet">戻る</a>
 

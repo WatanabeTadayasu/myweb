@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,8 @@
 <div align="right">
 <header class="head">
 
-<a href="Logout">ログアウト</a>
+
+<a href="LogoutServlet">ログアウト</a>
 </header>
 </div>
 
@@ -29,7 +31,7 @@
 <a href="UserListServlet">
 <button type="button" class="btn btn-success">キャンセル</button></a>
 
-<a href="ThreadDetail?action=done">
+<a href="PostDelete?action=done">
 <button type="button" class="btn btn-danger">OK</button></a>
 
 </div>

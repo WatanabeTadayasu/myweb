@@ -136,7 +136,7 @@ public class PostDAO {
 							+ " JOIN m_thread_category"
 							+ " ON t_thread.thread_category_id = m_thread_category.id"
 							+ " WHERE user_login_id = ?"
-							+ " order by t_thread.id desc");
+							+ " order by t_thread.id ASC");
 			st.setString(1, loginId);
 
 			ResultSet rs = st.executeQuery();
@@ -181,5 +181,49 @@ public class PostDAO {
 			}
 		}
 	}
+
+	//ユーザー削除
+
+    public void postdeletemethod(int[] deleteList) {
+		// TODO 自動生成されたメソッド・スタブ
+    	Connection conn = null;
+    	try {
+            // データベースへ接続
+            conn = DBManager.getConnection();
+
+            // SELECT文を準備
+            String sql = "DELETE FROM t_thread WHERE id = ?";
+
+             // SELECTを実行し、結果表を取得
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+
+            conn.setAutoCommit(false);
+           
+            pStmt.setShort(1, deleteList);
+
+            int rs = pStmt.executeUpdate();
+
+            System.out.println(rs + "行が削除されました。");
+
+            conn.commit();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return;
+
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
+        }
+
+    }
+
 
 }
