@@ -68,6 +68,8 @@ public class ThreadDAO {
 		}
 	}
 
+
+
 	/**
 	 * 商品IDによる商品検索
 	 * @param itemId
@@ -118,6 +120,7 @@ public class ThreadDAO {
 			}
 		}
 	}
+
 
 	/**
 	 * 商品検索

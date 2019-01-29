@@ -27,7 +27,13 @@
 <a href="Regist">新規登録</a>
 </div> -->
 
-<form method="post" action="UserListServlet" class="form-horizontal">
+	<c:if test="${cartActionMessage != null}">
+		<p class="red-text center-align">
+			<span style="color: #2ca9e1;">${cartActionMessage}</span>
+		</p>
+	</c:if>
+
+	<form method="post" action="UserListServlet" class="form-horizontal">
 
     <div class="form-group col-md-6">
       <label for="inputCity">ログインID</label>

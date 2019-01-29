@@ -184,7 +184,7 @@ public class PostDAO {
 
 	//ユーザー削除
 
-    public void postdeletemethod(int[] deleteList) {
+    public static void postdeletemethod(int cartInItem) {
 		// TODO 自動生成されたメソッド・スタブ
     	Connection conn = null;
     	try {
@@ -192,14 +192,14 @@ public class PostDAO {
             conn = DBManager.getConnection();
 
             // SELECT文を準備
-            String sql = "DELETE FROM t_thread WHERE id = ?";
+            String sql = "DELETE FROM t_thread WHERE ID = ?";
 
              // SELECTを実行し、結果表を取得
             PreparedStatement pStmt = conn.prepareStatement(sql);
 
             conn.setAutoCommit(false);
-           
-            pStmt.setShort(1, deleteList);
+
+            pStmt.setInt(1, cartInItem);
 
             int rs = pStmt.executeUpdate();
 

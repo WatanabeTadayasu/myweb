@@ -66,7 +66,7 @@
 
 	</form>
 
-	<a href="PostDetail">戻る</a>
+	<a href="Index">戻る</a>
 
 </body>
 </html>
