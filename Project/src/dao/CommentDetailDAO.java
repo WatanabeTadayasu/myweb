@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import base.DBManager;
@@ -66,7 +68,18 @@ public class CommentDetailDAO {
 				cdb.setThreadId(rs.getInt("thread_id"));
 				cdb.setUserLoginId(rs.getString("name"));
 				cdb.setComment(rs.getString("m_comment"));
-				cdb.setCreateDate(rs.getString("create_date"));
+//				cdb.setCreateDate(rs.getString("create_date"));
+
+				/* Date型⇒String型 */
+				// 変換後の日付文字列の書式を指定
+				DateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
+				// 変換
+				String sDate = df1.format(rs.getTimestamp("create_date"));
+				//bdb.setBuyDate(sDate);
+
+				//bdb.setBuyDate(rs.getTimestamp("create_date"));
+
+				cdb.setCreateDate(sDate);
 
 				commentDataList.add(cdb);
 			}

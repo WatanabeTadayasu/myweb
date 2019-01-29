@@ -11,7 +11,7 @@
 <body>
 
 	<div class="box_0">
-		<h6>${thread.createDate}</h6>
+		<h6>${thread.createDate}${thread.userLoginId}</h6>
 		<h1>${thread.threadTitle}</h1>
 		<p>ここにコメントここにコメントここにコメントここにコメントここにコメント${thread.threadText}
 		</p>
@@ -31,7 +31,7 @@
 	<div class="box_2">
 		<!--   コメント一覧   -->
 		<c:forEach var="comment" items="${commentList}">
-			<h6>${comment.userLoginId}<br>${comment.comment}${comment.createDate}</h6>
+			<h6>${comment.createDate}${comment.userLoginId}<br>${comment.comment}</h6>
 		</c:forEach>
 	</div>
 
@@ -65,6 +65,8 @@
 		</div> -->
 
 	</form>
+
+	<a href="PostDetail">戻る</a>
 
 </body>
 </html>

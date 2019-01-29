@@ -11,8 +11,8 @@
 <body>
 
 	<div class="box_0">
-		<h6>${thread.createDate}</h6>
-		<h1>題名.本文${thread.threadTitle}</h1>
+		<h6>${thread.createDate}${thread.userLoginId}</h6>
+		<h1>${thread.threadTitle}</h1>
 		<p>ここにコメントここにコメントここにコメントここにコメントここにコメント${thread.threadText}
 		</p>
 	</div>
@@ -23,21 +23,23 @@
 		</p>
 	</c:if>
 
-	<div class="yoibottun">
-	<a href="#"class="square_btn">良いでしょう</a>
-	</div>
+	<div class="box_1">
+		<div class="yoibottun">
+			<a href="#" class="square_btn">良いでしょう</a>
+		</div>
 
-	<div class="yoibottun">
-		<!--   コメント一覧ボタン  -->
-		<a href="Comment?thread_id=${thread.id}">
-			<button type="submit" class="btn btn-primary">コメントする</button>
-		</a>
+		<div class="yoibottun">
+			<!--   コメント一覧ボタン  -->
+			<a href="Comment?thread_id=${thread.id}">
+				<button type="submit" class="btn btn-primary">コメントする</button>
+			</a>
+		</div>
 	</div>
 
 	<div class="box_2">
 		<!--   コメント一覧   -->
 		<c:forEach var="comment" items="${commentList}">
-			<h6>${comment.userLoginId}<br>${comment.comment}${comment.createDate}</h6>
+			<h6>${comment.createDate}${comment.userLoginId}<br>${comment.comment}</h6>
 		</c:forEach>
 	</div>
 
@@ -71,6 +73,8 @@
 		</div> -->
 
 	</form> --%>
+
+	<a href="Index">戻る</a>
 
 </body>
 </html>

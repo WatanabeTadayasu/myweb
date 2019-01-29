@@ -68,10 +68,8 @@
 			<div class="box_1">
 				<!--   おすすめ商品   -->
 				<c:forEach var="thread" items="${threadList}">
-						<h2>
-							<a href="PostDetail?thread_id=${thread.id}">${thread.threadTitle}</a>
-						</h2>
-						<h6>${thread.threadText}${thread.createDate}</h6>
+						<h2><a href="PostDetail?thread_id=${thread.id}">${thread.threadTitle}</a></h2>
+						<h6>${thread.threadText}</h6>
 				</c:forEach>
 			</div>
 

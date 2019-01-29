@@ -18,7 +18,7 @@
 		</div>
 
 		<div class="box_0">
-			<h1>題名.本文${thread.threadTitle}</h1>
+			<h1>${thread.threadTitle}</h1>
 			<p>ここにコメントここにコメントここにコメントここにコメントここにコメント
 			${thread.threadText}${thread.createDate}</p>
 		</div>
