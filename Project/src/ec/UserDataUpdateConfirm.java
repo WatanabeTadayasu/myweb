@@ -38,7 +38,7 @@ public class UserDataUpdateConfirm extends HttpServlet {
 			/*if (udb.getPassword().equals("") || (udb.getPassword1().equals(""))) {
 				udb.setUpdateUserDataBeansInfoPassNull(request.getParameter("login_id"), request.getParameter("user_name"), request.getParameter("birthdate"));
 			}else {*/
-				udb.setUpdateUserDataBeansInfo(request.getParameter("login_id"), request.getParameter("user_name"), request.getParameter("password"), request.getParameter("password1"), request.getParameter("birthdate")/*, (int) session.getAttribute("userId")*/);
+			udb.setUpdateUserDataBeansInfo(request.getParameter("login_id"), request.getParameter("user_name"), request.getParameter("password"), request.getParameter("password1"), request.getParameter("birthdate")/*, (int) session.getAttribute("userId")*/);
 			/*}*/
 
 //			//ログインIDの入力規則チェック 英数字 ハイフン アンダースコアのみ入力可能
@@ -55,12 +55,12 @@ public class UserDataUpdateConfirm extends HttpServlet {
 			}
 
 			//パスワードチェック
-			if (!udb.getPassword().equals("") && udb.getPassword().equals("")) {
+			if (!udb.getPassword().equals("") && udb.getPassword1().equals("")) {
 				validationMessage = "パスワードを入力してください。";
 			}
 
 			//パスワードチェック
-			if (udb.getPassword().equals("") && !udb.getPassword().equals("")) {
+			if (udb.getPassword().equals("") && !udb.getPassword1().equals("")) {
 				validationMessage = "パスワードを入力してください。";
 			}
 

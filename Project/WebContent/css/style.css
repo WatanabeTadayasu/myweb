@@ -100,11 +100,27 @@ div.recommend3 {
 	/* text-align: right; */
 }
 
-.header{
+.nav {
+	padding:30px 0px;
+	min-width: 1100px;
+    width: 100%;
+    background: #0088e7;
+    height: 80px;
+    border-bottom: 1px solid #fff;
+
+}
+
+/* .header{
 	width: 100%;
 	margin: 10px 0px;
 	padding: 5px;
-}
+
+	min-width: 1100px;
+    width: 100%;
+    background: #0088e7;
+    height: 80px;
+    border-bottom: 1px solid #fff;
+} */
 
 .wrapper{
     min-height: 100vh;
@@ -126,12 +142,6 @@ div.recommend3 {
 .rankingtitle h1 {
 
 	padding: 20px 0px;
-}
-
-
-.nav {
-	padding:30px 0px;
-	background-color: #7FFFD4;
 }
 
 .box_0{

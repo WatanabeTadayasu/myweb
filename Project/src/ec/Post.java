@@ -43,8 +43,8 @@ public class Post extends HttpServlet {
 //				ArrayList<ItemDataBeans> cart = (ArrayList<ItemDataBeans>) session.getAttribute("cart");
 
 				if (!isLogin) {
-					// Sessionにリターンページ情報を書き込む
-					session.setAttribute("returnStrUrl", "Buy");
+//					// Sessionにリターンページ情報を書き込む
+//					session.setAttribute("returnStrUrl", "Buy");
 					// Login画面にリダイレクト
 					response.sendRedirect("Login");
 
@@ -55,7 +55,7 @@ public class Post extends HttpServlet {
 					// 配送方法をDBから取得
 					ArrayList<ThreadCategoryDataBeans> dMDBList = ThreadCategoryDAO.getAllThreadCategoryDataBeans();
 
-					/*投稿メソッド*/
+					//投稿メソッド
 					int id = (int) session.getAttribute("userId");
 					UserDAO UserDAO = new UserDAO();
 					UserDataBeans udb = UserDAO.findByDetailInfo(id);

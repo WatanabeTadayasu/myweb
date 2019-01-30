@@ -182,7 +182,7 @@ public class PostDAO {
 		}
 	}
 
-	//ユーザー削除
+	//投稿削除
 
     public static void postdeletemethod(int cartInItem) {
 		// TODO 自動生成されたメソッド・スタブ
@@ -224,6 +224,7 @@ public class PostDAO {
         }
 
     }
+
 
 
 }

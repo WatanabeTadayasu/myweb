@@ -11,39 +11,42 @@
 
 <div class = "header">
 
-<h1>掲示板</h1>
 <ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link" href="#">
-    <span style="border-bottom: solid 5px blue;">ランキング</span></a>
+	<li class="nav-item">
+     <h1><a class="nav-link" href="#">
+   	<span style="border-bottom: solid 1px #fff;">掲示板</span></a></h1>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">
-    <span style="border-bottom: solid 5px blue;">速報</span></a>
+    <span style="border-bottom: solid 1px #fff;">ランキング</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">
-    <span style="border-bottom: solid 5px blue;">おすすめ</span></a>
+    <span style="border-bottom: solid 1px #fff;">速報</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+    <span style="border-bottom: solid 1px #fff;">おすすめ</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="Regist">
-    <span style="border-bottom: solid 5px blue;">新規登録</span></a>
+    <span style="border-bottom: solid 1px #fff;">新規登録</span></a>
   </li>
    <li class="nav-item">
     <a class="nav-link" href="UserListServlet">
-    <span style="border-bottom: solid 5px blue;">ユーザー一覧</span></a>
+    <span style="border-bottom: solid 1px #fff;">ユーザー一覧</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="Login">
-    <span style="border-bottom: solid 5px blue;">ログイン</span></a>
+    <span style="border-bottom: solid 1px #fff;">ログイン</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="Logout">
-    <span style="border-bottom: solid 5px blue;">ログアウト</span></a>
+    <span style="border-bottom: solid 1px #fff;">ログアウト</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="Post">
-    <span style="border-bottom: solid 5px blue;">投稿</span></a>
+    <span style="border-bottom: solid 1px #fff;">投稿</span></a>
   </li>
 </ul>
 
@@ -115,7 +118,6 @@
 
 		<div class="box_d">
 
-			<div class="box_1">
 				<!--   ランキング商品   -->
 				<c:forEach var="item" items="${itemList}">
 						<h2>
@@ -123,7 +125,6 @@
 						</h2>
 						<h6>${item.threadText}${item.createDate}</h6>
 				</c:forEach>
-			</div>
 
 			<div class="box_4">
 				<h2>寿司</h2>
@@ -145,7 +146,6 @@
 
 		<div class="box_d">
 
-			<div class="box_1">
 				<!--   速報商品   -->
 				<c:forEach var="item" items="${itemList}">
 						<h2>
@@ -153,7 +153,6 @@
 						</h2>
 						<h6>${item.threadText}${item.createDate}</h6>
 				</c:forEach>
-			</div>
 
 			<div class="box_4">
 				<h2>寿司</h2>

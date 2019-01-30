@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import beans.CommentDataBeans;
 import beans.ThreadDataBeans;
-import dao.CommentDetailDAO;
+import dao.CommentDAO;
 import dao.ThreadDAO;
 
 /**
@@ -43,7 +43,7 @@ public class PostDetail extends HttpServlet {
    			//対象のスレッド情報を取得
    			ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(id);
 
-   			ArrayList<CommentDataBeans> commentList = CommentDetailDAO.getCommentDataBeansListByBuyId(id);
+   			ArrayList<CommentDataBeans> commentList = CommentDAO.getCommentDataBeansListByBuyId(id);
 
 			//セッションにカートがない場合カートを作成
 			if (commentList == null) {

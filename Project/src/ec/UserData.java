@@ -61,14 +61,14 @@ public class UserData extends HttpServlet {
 
 
 
-			//セッションにカートがない場合カートを作成
+			//セッションに投稿がない場合ポストデータビーンズを作成
 			if (bdbhList == null) {
 				bdbhList = new ArrayList<PostDataBeans>();
 				session.setAttribute("bdbhList", bdbhList);
 			}
 
 			String cartActionMessage = "";
-			//カートに商品が入っていないなら
+			//投稿が入っていないなら
 			if(bdbhList.size() == 0) {
 				cartActionMessage = "投稿履歴がありません。";
 			}

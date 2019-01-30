@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.UserDataBeans;
+import dao.CommentDAO;
 import dao.PostDAO;
 import dao.UserDAO;
 
@@ -46,6 +47,7 @@ public class PostDelete extends HttpServlet {
 //    					for (int cartInItem : threadList) {
 //    						if (cartInItem.getId() == Integer.parseInt(deleteItemId)) {
     							PostDAO.postdeletemethod(Integer.parseInt(deleteItemId));
+    							CommentDAO.commentdeletemethod(Integer.parseInt(deleteItemId));
     							break;
 //    						}
 //    					}

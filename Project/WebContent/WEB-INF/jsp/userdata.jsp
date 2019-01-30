@@ -111,7 +111,7 @@
 													name="delete_item_id_list" value="${bdbhList.id}" /> <label
 													for="${status.index}">削除</label>
 												</p>
-												<a href="UserBuyHistoryDetail?thread_id=${bdbhList.id}"
+												<a href="UserPostHistoryDetail?thread_id=${bdbhList.id}"
 													class="btn-floating btn waves-effect waves-light "> <i
 														class="material-icons">details</i></a>
 												</td>

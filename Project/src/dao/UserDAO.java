@@ -307,13 +307,13 @@ public class UserDAO {
 
 			if(udb.getPassword().equals("")) {
 
-				st = con.prepareStatement("UPDATE t_user SET name=?, birth_date=?, update_date=? WHERE login_id=?;");
-				st.setString(1, udb.getName());
-				st.setString(2, udb.getBirthdate());
-				st.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
-				st.setString(4, udb.getLoginId());
-				st.executeUpdate();
-				System.out.println("update has been completed");
+			st = con.prepareStatement("UPDATE t_user SET name=?, birth_date=?, update_date=? WHERE login_id=?;");
+			st.setString(1, udb.getName());
+			st.setString(2, udb.getBirthdate());
+			st.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+			st.setString(4, udb.getLoginId());
+			st.executeUpdate();
+			System.out.println("update has been completed");
 
             }else {
 
@@ -361,7 +361,7 @@ public class UserDAO {
             // データベースへ接続
             conn = DBManager.getConnection();
 
-            // SELECT文を準備
+            // SELECT文を準備StringBuffer();
             String sql = "SELECT * FROM t_user WHERE id = ?";
 
             // SELECTを実行し、結果表を取得

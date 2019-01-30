@@ -11,16 +11,27 @@
 
 <div align="right">
 <header class="head">
-
-
 <a href="LogoutServlet">ログアウト</a>
 </header>
 </div>
 
-    <p>削除完了しました</p>
+	<div class="row">
+		<div class="col s12">
+			<p class="center-align">削除完了しました。</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<p class="center-align">
+				<a href="UserListServlet"
+					class="btn waves-effect waves-light  col s8 offset-s2">戻る</a>
+			</p>
+		</div>
+	</div>
 
-    <a href="UserListServlet">戻る</a>
+	<!-- <p>削除完了しました</p>
 
+    <a href="UserListServlet">戻る</a> -->
 
 </body>
 </html>
