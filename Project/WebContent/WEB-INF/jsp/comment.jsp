@@ -24,6 +24,12 @@
 		</p>
 	</div>
 
+	<c:if test="${validationMessage != null}">
+		<p class="red-text center-align">
+			<span style="color: #ff0000;">${validationMessage}</span>
+		</p>
+	</c:if>
+
 	<%-- <div class="yoibottun">
 	<a href="#"class="square_btn">良いでしょう</a>
 	</div>
@@ -58,7 +64,7 @@
 
 		<div class="form-post">
 			<label>コメント欄</label>
-			<textarea class="form-control" name="m_comment" rows="5"></textarea>
+			<textarea class="form-control" name="m_comment" ${comme.comment} rows="5"></textarea>
 		</div>
 
 		<div class="form-post">

@@ -42,16 +42,16 @@ public class UserData extends HttpServlet {
 //			// ログイン時に取得したユーザーIDをセッションから取得
 //			int userId = (int) session.getAttribute("userInfo");
 
-			// URLからGETパラメータとしてIDを受け取る
-			String num = request.getParameter("userId");
-			int id = Integer.parseInt(num);
-
-			// 確認用：idをコンソールに出力
-			System.out.println(id);
+//			// URLからGETパラメータとしてIDを受け取る
+//			String num = request.getParameter("userId");
+//			int id = Integer.parseInt(num);
+//
+//			// 確認用：idをコンソールに出力
+//			System.out.println(id);
 
 			// 更新確認画面から戻ってきた場合Sessionから取得。それ以外はuserIdでユーザーを取得
 			UserDAO UserDAO = new UserDAO();
-			UserDataBeans udb = session.getAttribute("returnUDB") == null ? UserDAO.findByLoginInfo(id) : (UserDataBeans) EcHelper.cutSessionAttribute(session, "returnUDB");
+			UserDataBeans udb = session.getAttribute("returnUDB") == null ? UserDAO.findByLoginInfo(Integer.parseInt(request.getParameter("userId"))) : (UserDataBeans) EcHelper.cutSessionAttribute(session, "returnUDB");
 
 			// 入力された内容に誤りがあったとき等に表示するエラーメッセージを格納する
 			String validationMessage = (String) EcHelper.cutSessionAttribute(session, "validationMessage");

@@ -59,6 +59,7 @@
 
 <div class="wrapper">
 
+
 		<div class="container">
 			<div class="row center">
 				<h5 class=" col s12 light">おすすめ記事</h5>
@@ -171,9 +172,17 @@
 
 	</div>
 
-		<div class="footer">
-			<p>keiziban</p>
+
+
+<div class="footer">
+		<div class="container">
+			<div class="row center">
+
+					<p>keiziban</p>
+				</div>
+			</div>
 		</div>
+
 
 	</div>
 

@@ -70,7 +70,7 @@ public class PostDetail extends HttpServlet {
    			//リクエストパラメーターにセット
 			request.setAttribute("cartActionMessage", cartActionMessage);
 			request.setAttribute("commentList", commentList);
-   			request.setAttribute("thread", thread);
+			session.setAttribute("thread", thread);
    			request.setAttribute("pageNum", pageNum);
 
    			request.getRequestDispatcher("/WEB-INF/jsp/postdetail.jsp").forward(request, response);

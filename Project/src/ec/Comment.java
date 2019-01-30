@@ -35,15 +35,45 @@ public class Comment extends HttpServlet {
    	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
    		HttpSession session = request.getSession();
    		try {
+
    			//選択された商品のIDを型変換し利用
-   			int id = Integer.parseInt(request.getParameter("thread_id"));
+//   			int id = Integer.parseInt(request.getParameter("thread_id"));
    			//戻るページ表示用
    			int pageNum = Integer.parseInt(request.getParameter("page_num")==null?"1":request.getParameter("page_num"));
-   			//対象のスレッド情報を取得
-   			ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(id);
+
+//   			// 更新確認画面から戻ってきた場合Sessionから取得。それ以外はuserIdでユーザーを取得
+//			UserDAO UserDAO = new UserDAO();
+//			UserDataBeans udb = session.getAttribute("returnUDB") == null ? UserDAO.findByLoginInfo(Integer.parseInt(request.getParameter("userId"))) : (UserDataBeans) EcHelper.cutSessionAttribute(session, "returnUDB");
+
+//   			//対象のスレッド情報を取得
+//   			ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(Integer.parseInt(request.getParameter("thread_id")));
 
 //   			//対象のコメント情報を取得
 //   			ArrayList<CommentDataBeans> commentList = CommentDetailDAO.getCommentDataBeansListByBuyId(id);
+
+   			if (request.getParameter("thread_id") == null) {
+
+   			int id = ((ThreadDataBeans) session.getAttribute("thread")).getId();
+   			String userLoginId = ((ThreadDataBeans) session.getAttribute("thread")).getUserLoginId();
+   			String threadTitle = ((ThreadDataBeans) session.getAttribute("thread")).getThreadTitle();
+   			String threadText = ((ThreadDataBeans) session.getAttribute("thread")).getThreadText();
+   			String createDate = ((ThreadDataBeans) session.getAttribute("thread")).getCreateDate();
+
+   			ThreadDataBeans tdb = new ThreadDataBeans();
+   			tdb.setId(id);
+   			tdb.setUserLoginId(userLoginId);
+   			tdb.setThreadTitle(threadTitle);
+   			tdb.setThreadText(threadText);
+   			tdb.setCreateDate(createDate);
+   			session.setAttribute("thread", tdb);
+
+   			}else {
+
+   			//対象のスレッド情報を取得
+   			ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(Integer.parseInt(request.getParameter("thread_id")));
+   			session.setAttribute("thread", thread);
+
+   			}
 
    			/*コメントメソッド*/
    			int commentid = (int) session.getAttribute("userId");
@@ -53,23 +83,17 @@ public class Comment extends HttpServlet {
    			session.setAttribute("udb", udb);
 
    			//リクエストパラメーターにセット
-   			request.setAttribute("thread", thread);
+//   			session.setAttribute("thread", thread);
 //   			request.setAttribute("commentList", commentList);
    			request.setAttribute("pageNum", pageNum);
 
    			request.getRequestDispatcher("/WEB-INF/jsp/comment.jsp").forward(request, response);
+
    		} catch (Exception e) {
    			e.printStackTrace();
    			session.setAttribute("errorMessage", e.toString());
    			response.sendRedirect("Error");
    		}
    	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
 }

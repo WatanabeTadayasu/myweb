@@ -27,14 +27,6 @@ public class CommentConfirm extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -91,8 +83,10 @@ public class CommentConfirm extends HttpServlet {
 //			request.setAttribute("userSelectDMB", dmdb);
 			request.getRequestDispatcher("/WEB-INF/jsp/commentconfirm.jsp").forward(request, response);
 		} else {
+
 //			session.setAttribute("bdb", bdb);
 			session.setAttribute("validationMessage", validationMessage);
+			session.setAttribute("comme", comme);
 			response.sendRedirect("Comment");
 		}
 
