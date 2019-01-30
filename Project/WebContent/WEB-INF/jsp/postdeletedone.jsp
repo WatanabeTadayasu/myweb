@@ -10,10 +10,10 @@
 <body>
 
 <div align="right">
-<header class="head">
-<a href="LogoutServlet">ログアウト</a>
-</header>
-</div>
+		<header class="head">
+			<a href="Logout"><span style="border-bottom: solid 1px #FFFFFF;">ログアウト</span></a>
+		</header>
+	</div>
 
 	<div class="row">
 		<div class="col s12">

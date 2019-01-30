@@ -11,30 +11,28 @@
 </head>
 <body>
 
-<div align="right">
-<header class="head">
+	<div align="right">
+		<header class="head">
+			<a href="Logout"><span style="border-bottom: solid 1px #FFFFFF;">ログアウト</span></a>
+		</header>
+	</div>
 
+	<div align="center">
+		<h1>ユーザー削除確認</h1>
+	</div>
 
-<a href="LogoutServlet">ログアウト</a>
-</header>
-</div>
+	<p>ログインID:${deleteUser.loginId}を</p>
+	<p>本当に削除してもよろしいでしょうか。</p>
 
-<div align="center">
-<h1>ユーザー削除確認</h1>
-</div>
+	<div align="center">
 
-		<p>ログインID:${deleteUser.loginId}を</p>
-		<p>本当に削除してもよろしいでしょうか。</p>
+		<a href="UserListServlet">
+			<button type="button" class="btn btn-success">キャンセル</button>
+		</a> <a href="UserDeleteServlet?action=done">
+			<button type="button" class="btn btn-danger">OK</button>
+		</a>
 
-<div align="center">
-
-<a href="UserListServlet">
-<button type="button" class="btn btn-success">キャンセル</button></a>
-
-<a href="UserDeleteServlet?action=done">
-<button type="button" class="btn btn-danger">OK</button></a>
-
-</div>
+	</div>
 
 </body>
 </html>

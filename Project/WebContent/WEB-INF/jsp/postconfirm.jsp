@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href = "css/style.css">
 <title>投稿確認</title>
-
 </head>
 <body>
 
@@ -47,6 +46,8 @@
 				<button class="btn  waves-effect waves-light" type="submit" name="confirm_button" value="regist">登録</button>
 			</div>
 		</div>
+
 </form>
+
 </body>
 </html>

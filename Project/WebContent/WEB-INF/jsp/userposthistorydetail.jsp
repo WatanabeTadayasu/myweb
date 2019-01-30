@@ -9,6 +9,13 @@
 <title>投稿履歴詳細</title>
 </head>
 <body>
+
+	<div align="right">
+		<header class="head">
+			<a href="Logout"><span style="border-bottom: solid 1px #FFFFFF;">ログアウト</span></a>
+		</header>
+	</div>
+
 	<br>
 	<br>
 	<div class="container">

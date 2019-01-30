@@ -9,46 +9,51 @@
 </head>
 <body>
 
-<div class = "header">
+
+
+<div align="left">
+
+<header class="head">
 
 <ul class="nav">
 	<li class="nav-item">
      <h1><a class="nav-link" href="#">
-   	<span style="border-bottom: solid 1px #fff;">掲示板</span></a></h1>
+   	<span style="border-bottom: solid 1px #FFFFFF;">掲示板</span></a></h1>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">
-    <span style="border-bottom: solid 1px #fff;">ランキング</span></a>
+    <span style="border-bottom: solid 1px #FFFFFF;">ランキング</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">
-    <span style="border-bottom: solid 1px #fff;">速報</span></a>
+    <span style="border-bottom: solid 1px #FFFFFF;">速報</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">
-    <span style="border-bottom: solid 1px #fff;">おすすめ</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="Regist">
-    <span style="border-bottom: solid 1px #fff;">新規登録</span></a>
-  </li>
-   <li class="nav-item">
-    <a class="nav-link" href="UserListServlet">
-    <span style="border-bottom: solid 1px #fff;">ユーザー一覧</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="Login">
-    <span style="border-bottom: solid 1px #fff;">ログイン</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="Logout">
-    <span style="border-bottom: solid 1px #fff;">ログアウト</span></a>
+    <span style="border-bottom: solid 1px #FFFFFF;">おすすめ</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="Post">
-    <span style="border-bottom: solid 1px #fff;">投稿</span></a>
+    <span style="border-bottom: solid 1px #FFFFFF;">投稿</span></a>
   </li>
+   <li class="nav-item">
+    <a class="nav-link" href="Login">
+    <span style="border-bottom: solid 1px #FFFFFF;">ログイン</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="Regist">
+    <span style="border-bottom: solid 1px #FFFFFF;">新規登録</span></a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" href="UserListServlet">
+    <span style="border-bottom: solid 1px #FFFFFF;">ユーザー一覧</span></a>
+  </li>
+ <!--  <li class="nav-item">
+    <a class="nav-link" href="Logout">
+    <span style="border-bottom: solid 1px #0088e7;">ログアウト</span></a>
+  </li> -->
 </ul>
+		</header>
 
 </div>
 

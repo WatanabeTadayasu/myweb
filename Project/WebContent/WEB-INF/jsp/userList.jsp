@@ -11,19 +11,16 @@
 
 <body>
 
-<div align="right">
-<header class="head">
+	<div align="right">
+		<header class="head">
+			<a href="Logout"><span style="border-bottom: solid 1px #FFFFFF;">ログアウト</span></a>
+		</header>
+	</div>
 
-
-
-<a href="Logout">ログアウト</a>
-</header>
-</div>
-
-<div align="center">
-<h1>ユーザー一覧</h1>
-</div>
-<!-- <div align="right">
+	<div align="center">
+		<h1>ユーザー一覧</h1>
+	</div>
+	<!-- <div align="right">
 <a href="Regist">新規登録</a>
 </div> -->
 

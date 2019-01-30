@@ -9,8 +9,14 @@
 <title>投稿</title>
 </head>
 <body>
-	<br>
 
+<div align="right">
+		<header class="head">
+			<a href="Logout"><span style="border-bottom: solid 1px #FFFFFF;">ログアウト</span></a>
+		</header>
+	</div>
+
+	<br>
 <div class="topicpost">
 
 	<h1>記事作成</h1>

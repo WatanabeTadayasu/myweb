@@ -19,15 +19,13 @@
 		</div>
 	</c:if>
 
-<div align="right">
-<header class="head">
+	<div align="right">
+		<header class="head">
+			<a href="Logout"><span style="border-bottom: solid 1px #FFFFFF;">ログアウト</span></a>
+		</header>
+	</div>
 
-
-<a href="LogoutServlet">ログアウト</a>
-</header>
-</div>
-
-<div align="center">
+	<div align="center">
 <h1>ユーザー削除</h1>
 </div>
 
