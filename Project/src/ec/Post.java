@@ -64,7 +64,6 @@ public class Post extends HttpServlet {
 					request.setAttribute("dmdbList", dMDBList);
 					request.getRequestDispatcher("/WEB-INF/jsp/post.jsp").forward(request, response);
 
-
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -72,7 +71,6 @@ public class Post extends HttpServlet {
 				response.sendRedirect("Error");
 			}
 		}
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
