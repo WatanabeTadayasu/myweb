@@ -39,7 +39,7 @@
   <div class="form-post">
     <label>カテゴリ選択</label>
     <select name="thread_category_id">
-	<c:forEach var="dmdb" items="${dmdbList}" >
+	<c:forEach var="dmdb" items="${dmdbList}">
 		<option value="${dmdb.id}">${dmdb.name}</option>
 	</c:forEach>
 	</select>

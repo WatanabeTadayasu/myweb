@@ -51,13 +51,13 @@ public class UserData extends HttpServlet {
 
 			// 更新確認画面から戻ってきた場合Sessionから取得。それ以外はuserIdでユーザーを取得
 			UserDAO UserDAO = new UserDAO();
-			UserDataBeans udb = session.getAttribute("returnUDB") == null ? UserDAO.findByLoginInfo(Integer.parseInt(request.getParameter("userId"))) : (UserDataBeans) EcHelper.cutSessionAttribute(session, "returnUDB");
+			UserDataBeans udb = session.getAttribute("returnUDB") == null ? UserDAO.findByUserInfo(Integer.parseInt(request.getParameter("userId"))) : (UserDataBeans) EcHelper.cutSessionAttribute(session, "returnUDB");
 
 			// 入力された内容に誤りがあったとき等に表示するエラーメッセージを格納する
 			String validationMessage = (String) EcHelper.cutSessionAttribute(session, "validationMessage");
 
 			String loginId = udb.getLoginId();
-			ArrayList<PostDataBeans> bdbhList = PostDAO.getBuyDataBeansHistory(loginId);
+			ArrayList<PostDataBeans> bdbhList = PostDAO.getThreadDataBeansHistory(loginId);
 
 
 

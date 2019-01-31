@@ -9,8 +9,6 @@
 </head>
 <body>
 
-
-
 <div align="left">
 
 <header class="head">
@@ -53,12 +51,58 @@
     <span style="border-bottom: solid 1px #0088e7;">ログアウト</span></a>
   </li> -->
 </ul>
-		</header>
+
+	</header>
 
 </div>
 
-<div class="wrapper">
+<!-- <div class="container"> -->
 
+<!-- <div class="searchbbutton"> -->
+
+<!-- <div class="form-row"> -->
+
+	<c:if test="${searchEerrorMessage != null}">
+		<p class="red-text center-align">
+			<span style="color: #ff0000;">${searchEerrorMessage}</span>
+		</p>
+	</c:if>
+
+	<form class="form-inline my-2 my-lg-0" action="SearchTitleResult">
+		<label for="inputState">タイトル検索</label>
+			<input class="form-control mr-sm-2" type="search" width="80"
+				height="40" placeholder="Search" aria-label="Search" name="search_word" value="">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+
+<c:if test="${userId != null}">
+
+		<form class="form-inline my-2 my-lg-0" action="SearchCategoryResult">
+
+				<!-- <div class="form-group col-md-4"> -->
+				<label for="inputState">カテゴリ検索</label>
+				<select id="inputState" class="form-control" name="thread_category_id">
+					<option value="1">旅行日記</option>
+					<option value="2">暮らしライフスタイル</option>
+					<option value="3">外食</option>
+					<option value="4">スポーツゲーム</option>
+					<option value="5">映画</option>
+					<option value="6">ニュース</option>
+				</select>
+
+				<!-- </div> -->
+				<button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+		</form>
+
+</c:if>
+
+<!-- </div> -->
+
+<!-- </div> -->
+
+<!-- </div> -->
+
+<div class="wrapper">
 
 		<div class="container">
 			<div class="row center">
@@ -114,7 +158,7 @@
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 
-	</div>
+		</div>
 
 		<div class="container">
 			<div class="row center">
@@ -142,7 +186,7 @@
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 
-	</div>
+		</div>
 
 	<div class="container">
 			<div class="row center">
@@ -153,11 +197,9 @@
 		<div class="box_d">
 
 				<!--   速報商品   -->
-				<c:forEach var="item" items="${itemList}">
-						<h2>
-							<a href="Item?item_id=${item.id}">${item.threadTtitle}</a>
-						</h2>
-						<h6>${item.threadText}${item.createDate}</h6>
+				<c:forEach var="thread" items="${quickThreadList}">
+						<h2><a href="PostDetail?thread_id=${thread.id}">${thread.threadTitle}</a></h2>
+						<h6>${thread.threadText}</h6>
 				</c:forEach>
 
 			<div class="box_4">
@@ -170,19 +212,15 @@
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 
-	</div>
+		</div>
 
-
-
-<div class="footer">
-		<div class="container">
-			<div class="row center">
-
+		<div class="footer">
+			<div class="container">
+				<div class="row center">
 					<p>keiziban</p>
 				</div>
 			</div>
 		</div>
-
 
 	</div>
 

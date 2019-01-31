@@ -17,12 +17,16 @@
 			<div class="col s6 offset-s3">
 				<div class="card grey lighten-5">
 					<div class="card-content">
+						<c:if test="${loginErrorMessage != null}">
+							<p class="red-text center-align">${loginErrorMessage}</p>
+							<br>
+						</c:if>
+						<c:if test="${logoutMessage != null}">
+							<p class="text-success center-align">${logoutMessage}</p>
+							<br>
+						</c:if>
 						<form action="LoginResult" method="POST">
 							<div class="row">
-								<c:if test="${loginErrorMessage != null}">
-									<p class="red-text center-align">${loginErrorMessage}</p>
-									<br>
-								</c:if>
 								<div class="input-field col s8 offset-s2">
 									<input type="text" name="login_id" value="${inputLoginId}" required> <label>ログインID</label>
 								</div>

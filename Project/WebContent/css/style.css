@@ -1,6 +1,6 @@
 
 .head {
-	height: 100px;
+	height: 120px;
 	background: #FFFF66;
 	background-color: skyblue;
 	color: #FFFFFF;
@@ -39,7 +39,12 @@
     border-bottom: 1px solid skyblue;
 } */
 
+.searchbbutton {
+  	float: left;
+  	margin: 0px;
+  	padding: 0px;
 
+}
 form {/*真ん中の要素*/
 
   padding: 50px;
@@ -136,6 +141,7 @@ div.recommend3 {
 }
 
 .wrapper{
+	clear: both;
     min-height: 100vh;
     position: relative;/*←相対位置*/
     padding-bottom: 100px;/*←footerの高さ*/

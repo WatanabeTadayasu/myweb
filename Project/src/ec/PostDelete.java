@@ -80,7 +80,7 @@ public class PostDelete extends HttpServlet {
 
     			int id = (int) request.getAttribute("userId");
     			UserDAO UserDAO = new UserDAO();
-    			UserDataBeans udb = UserDAO.findByLoginInfo(id);
+    			UserDataBeans udb = UserDAO.findByUserInfo(id);
 
     			request.setAttribute("udb", udb);
     			request.setAttribute("cartActionMessage", cartActionMessage);

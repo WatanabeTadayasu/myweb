@@ -45,14 +45,17 @@ public class RegistConfirm extends HttpServlet {
 
 			String validationMessage = "";
 
+			// 未入力チェック
+			if (inputUserName.equals("") ||inputLoginId.equals("") || inputPassword.equals("") || inputConfirmPassword.equals("") || inputUserBirthdate.equals("")) {
+				validationMessage += "入力されている内容は正しくありません<br>";
+			}
 			// 入力されているパスワードが確認用と等しいか
 			if (!inputPassword.equals(inputConfirmPassword)) {
 				validationMessage += "入力されているパスワードと確認用パスワードが違います<br>";
 			}
-
 			// ログインIDの入力規則チェック 英数字 ハイフン アンダースコアのみ入力可能
 			if (!EcHelper.isLoginIdValidation(udb.getLoginId())) {
-				validationMessage += "半角英数とハイフン、アンダースコアのみ入力できます";
+				validationMessage += "半角英数とハイフン、アンダースコアのみ入力できます<br>";
 			}
 			// loginIdの重複をチェック
 			if (UserDAO.isOverlapLoginId(udb.getLoginId(), 0)) {

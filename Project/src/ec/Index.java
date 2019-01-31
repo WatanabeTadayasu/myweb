@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.ThreadDataBeans;
-import dao.ThreadDAO;
+import beans.PostDataBeans;
+import dao.PostDAO;
 
 /**
  * スタート画面
@@ -27,10 +27,13 @@ public class Index extends HttpServlet {
 		try {
 			// TODO 未実装：ログインセッションがある場合
 			 if (session.getAttribute("userId") != null){
-			//商品情報を取得
-			ArrayList<ThreadDataBeans> threadList = ThreadDAO.getRandItem(4);
+			//投稿情報をランダムに取得
+			ArrayList<PostDataBeans> threadList = PostDAO.getRandThread(4);
+//			//投稿情報をランダムに取得
+			ArrayList<PostDataBeans> quickThreadList = PostDAO.getQuickThread(4);
 			//リクエストスコープにセット
 			request.setAttribute("threadList", threadList);
+			request.setAttribute("quickThreadList", quickThreadList);
 		}
 
 			//セッションにsearchWordが入っていたら破棄する

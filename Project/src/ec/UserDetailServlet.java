@@ -42,7 +42,7 @@ public class UserDetailServlet extends HttpServlet {
 		// TODO  未実装：idを引数にして、idに紐づくユーザ情報を出力する
 		// リクエストパラメータの入力項目を引数に渡して、Daoのメソッドを実行
 		UserDAO userDao = new UserDAO();
-		UserDataBeans Detail = userDao.findByDetailInfo(id);
+		UserDataBeans Detail = userDao.findByUserInfo(id);
 
 		// TODO  未実装：ユーザ情報をリクエストスコープにセットしてjspにフォワード
 		// リクエストスコープにユーザ情報をセット

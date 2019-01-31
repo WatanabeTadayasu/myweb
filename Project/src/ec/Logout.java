@@ -22,6 +22,8 @@ public class Logout extends HttpServlet {
 		HttpSession session = request.getSession();
 		// ログイン時に保存したセッション内のユーザ情報を削除
 		session.removeAttribute("userId");
+		session.removeAttribute("isLogin");
+		session.setAttribute("logoutMessage", "ログアウトしました。");
 
 		// ログインのサーブレットにリダイレクト
 		response.sendRedirect("Login");

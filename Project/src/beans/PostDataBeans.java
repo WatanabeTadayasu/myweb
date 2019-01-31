@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class PostDataBeans  implements Serializable {
 	private int id;
 	private int threadCategoryId;
-	private String userId;
+	private String userLoginId;
 	private String threadTitle;
 	private String threadText;
 	private String createDate;
@@ -23,11 +23,11 @@ public class PostDataBeans  implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUserId() {
-		return userId;
+	public String getUserLoginId() {
+		return userLoginId;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserLoginId(String userLoginId) {
+		this.userLoginId = userLoginId;
 	}
 	public String getThreadTitle() {
 		return threadTitle;
@@ -60,11 +60,9 @@ public class PostDataBeans  implements Serializable {
 		this.threadCategoryId = threadCategoryId;
 	}
 
-
 //	public String getFormatDate() {
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
 //		return sdf.format(buyDate);
 //	}
-
 
 }

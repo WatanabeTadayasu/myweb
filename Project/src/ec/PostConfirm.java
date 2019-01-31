@@ -55,7 +55,6 @@ public class PostConfirm extends HttpServlet {
 //			ArrayList<ItemDataBeans> cartIDBList = (ArrayList<ItemDataBeans>) session.getAttribute("cart");
 //			//合計金額
 //			int totalPrice = EcHelper.getTotalItemPrice(cartIDBList) + dmdb.getPrice();
-//
 
 			int threadCategoryId = dmdb.getId();
 			String threadCategoryName = dmdb.getName();
@@ -65,7 +64,7 @@ public class PostConfirm extends HttpServlet {
 			String inputThreadText = request.getParameter("thread_text");
 
 			PostDataBeans bdb = new PostDataBeans();
-			bdb.setUserId(inputuserLoginId);
+			bdb.setUserLoginId(inputuserLoginId);
 			bdb.setThreadTitle(inputThreadTitle);
 			bdb.setThreadText(inputThreadText);
 			bdb.setThreadCategoryId(threadCategoryId);

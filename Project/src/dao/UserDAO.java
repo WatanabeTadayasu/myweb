@@ -140,7 +140,6 @@ public class UserDAO {
 		}
 	}
 
-
 //	/**
 //     * ログインIDとパスワードに紐づくユーザ情報を返す
 //     * @param loginId
@@ -198,7 +197,7 @@ public class UserDAO {
 
     /*idに紐づくユーザー情報を返す*/
 
-    public UserDataBeans findByDetailInfo(int id) {
+    public UserDataBeans findByUserInfo(int id) {
         Connection conn = null;
 
         try {
@@ -242,6 +241,51 @@ public class UserDAO {
         }
     }
 
+//    /*idに紐づくユーザー情報を返す*/
+//
+//    public UserDataBeans findByLoginInfo(int userId) {
+//        Connection conn = null;
+//
+//        try {
+//            // データベースへ接続
+//            conn = DBManager.getConnection();
+//
+//            // SELECT文を準備StringBuffer();
+//            String sql = "SELECT * FROM t_user WHERE id = ?";
+//
+//            // SELECTを実行し、結果表を取得
+//            PreparedStatement pStmt = conn.prepareStatement(sql);
+//            pStmt.setInt(1, userId);
+//            ResultSet rs = pStmt.executeQuery();
+//
+//         // 主キーに紐づくレコードは1件のみなので、rs.next()は1回だけ行う
+//            if (!rs.next()) {
+//                return null;
+//            }
+//
+//                String loginId = rs.getString("login_id");
+//                String name = rs.getString("name");
+//                String birthdate = rs.getString("birth_date");
+//                String password = rs.getString("login_password");
+//                /*String createDate = rs.getString("create_date");*/
+//                String updateDate = rs.getString("update_date");
+//                return new UserDataBeans(loginId, name, birthdate, password, updateDate);
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            return null;
+//        } finally {
+//            // データベース切断
+//            if (conn != null) {
+//                try {
+//                    conn.close();
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                    return null;
+//                }
+//            }
+//        }
+//    }
 
 	/**
 	 * ユーザーIDからユーザー情報を取得する
@@ -283,8 +327,6 @@ public class UserDAO {
 		System.out.println("searching UserDataBeans by userId has been completed");
 		return udb;
 	}
-
-
 
 	/**
 	 * ユーザー情報の更新処理を行う。
@@ -352,52 +394,6 @@ public class UserDAO {
 		}
 	}
 
-	/*idに紐づくユーザー情報を返す*/
-
-    public UserDataBeans findByLoginInfo(int userId) {
-        Connection conn = null;
-
-        try {
-            // データベースへ接続
-            conn = DBManager.getConnection();
-
-            // SELECT文を準備StringBuffer();
-            String sql = "SELECT * FROM t_user WHERE id = ?";
-
-            // SELECTを実行し、結果表を取得
-            PreparedStatement pStmt = conn.prepareStatement(sql);
-            pStmt.setInt(1, userId);
-            ResultSet rs = pStmt.executeQuery();
-
-         // 主キーに紐づくレコードは1件のみなので、rs.next()は1回だけ行う
-            if (!rs.next()) {
-                return null;
-            }
-
-                String loginId = rs.getString("login_id");
-                String name = rs.getString("name");
-                String birthdate = rs.getString("birth_date");
-                String password = rs.getString("login_password");
-                /*String createDate = rs.getString("create_date");*/
-                String updateDate = rs.getString("update_date");
-                return new UserDataBeans(loginId, name, birthdate, password, updateDate);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            // データベース切断
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    return null;
-                }
-            }
-        }
-    }
-
 	/**
 	 * loginIdの重複チェック
 	 *
@@ -439,7 +435,6 @@ public class UserDAO {
 		System.out.println("overlap check has been completed");
 		return isOverlap;
 	}
-
 
 	 /*  String loginId;
 		private String name;

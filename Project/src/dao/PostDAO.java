@@ -34,7 +34,7 @@ public class PostDAO {
 			st = con.prepareStatement(
 					"INSERT INTO t_thread(user_login_id,thread_title,thread_text,thread_category_id,create_date) VALUES (?,?,?,?,now())"
 					 , Statement.RETURN_GENERATED_KEYS);
-			st.setString(1, bdb.getUserId());
+			st.setString(1, bdb.getUserLoginId());
 			st.setString(2, bdb.getThreadTitle());
 			st.setString(3, bdb.getThreadText());
 			st.setInt(4, bdb.getThreadCategoryId());
@@ -66,7 +66,7 @@ public class PostDAO {
 	 * @throws SQLException
 	 * 				呼び出し元にスローさせるため
 	 */
-	public static  PostDataBeans getBuyDataBeansByBuyId(int buyId) throws SQLException {
+	public static PostDataBeans getThreadDataBeansByBuyId(int buyId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -84,7 +84,7 @@ public class PostDAO {
 			PostDataBeans bdb = new PostDataBeans();
 			if (rs.next()) {
 				bdb.setId(rs.getInt("id"));
-				bdb.setUserId(rs.getString("user_login_id"));
+				bdb.setUserLoginId(rs.getString("user_login_id"));
 				bdb.setThreadTitle(rs.getString("thread_title"));
 				bdb.setThreadText(rs.getString("thread_text"));
 				bdb.setThreadCategoryId(rs.getInt("thread_category_id"));
@@ -125,7 +125,7 @@ public class PostDAO {
 	 * @throws SQLException
 	 * 				呼び出し元にスローさせるため
 	 */
-	public static ArrayList<PostDataBeans> getBuyDataBeansHistory(String loginId) throws SQLException {
+	public static ArrayList<PostDataBeans> getThreadDataBeansHistory(String loginId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -146,7 +146,7 @@ public class PostDAO {
 			while (rs.next()) {
 				PostDataBeans bdb = new PostDataBeans();
 				bdb.setId(rs.getInt("id"));
-				bdb.setUserId(rs.getString("user_login_id"));
+				bdb.setUserLoginId(rs.getString("user_login_id"));
 				bdb.setThreadTitle(rs.getString("thread_title"));
 				bdb.setThreadText(rs.getString("thread_text"));
 				bdb.setThreadCategoryId(rs.getInt("thread_category_id"));
@@ -225,6 +225,281 @@ public class PostDAO {
 
     }
 
+    /**
+	 * ランダムで引数指定分のItemDataBeansを取得
+	 * @param limit 取得したいかず
+	 * @return <ItemDataBeans>
+	 * @throws SQLException
+	 */
+	public static ArrayList<PostDataBeans> getRandThread(int limit) throws SQLException {
+		Connection con = null;
+		PreparedStatement st = null;
+		try {
+			con = DBManager.getConnection();
 
+			st = con.prepareStatement("SELECT * FROM t_thread ORDER BY RAND() LIMIT ? ");
+			st.setInt(1, limit);
+
+			ResultSet rs = st.executeQuery();
+
+			ArrayList<PostDataBeans> postList = new ArrayList<PostDataBeans>();
+
+			while (rs.next()) {
+				PostDataBeans post = new PostDataBeans();
+				post.setId((int)rs.getInt("id"));
+				post.setUserLoginId(rs.getString("user_login_id"));
+				post.setThreadTitle(rs.getString("thread_title"));
+				post.setThreadText(rs.getString("thread_text"));
+				post.setThreadCategoryId(rs.getInt("thread_category_id"));
+//				item.setCreateDate(rs.getString("create_date"));
+
+				/* Date型⇒String型 */
+				// 変換後の日付文字列の書式を指定
+				DateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
+				// 変換
+				String sDate = df1.format(rs.getTimestamp("create_date"));
+				//bdb.setBuyDate(sDate);
+
+				//bdb.setBuyDate(rs.getTimestamp("create_date"));
+
+				post.setCreateDate(sDate);
+
+				postList.add(post);
+			}
+			System.out.println("getAllItem completed");
+			return postList;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
+
+	 /**
+	 * idの降順で引数指定分のItemDataBeansを取得
+	 * @param limit 取得したいかず
+	 * @return <ItemDataBeans>
+	 * @throws SQLException
+	 */
+		public static ArrayList<PostDataBeans> getQuickThread(int limit) throws SQLException {
+			Connection con = null;
+			PreparedStatement st = null;
+			try {
+				con = DBManager.getConnection();
+
+				st = con.prepareStatement("SELECT * FROM t_thread ORDER BY id DESC LIMIT ? ");
+				st.setInt(1, limit);
+
+				ResultSet rs = st.executeQuery();
+
+				ArrayList<PostDataBeans> postList = new ArrayList<PostDataBeans>();
+
+				while (rs.next()) {
+					PostDataBeans post = new PostDataBeans();
+					post.setId((int)rs.getInt("id"));
+					post.setUserLoginId(rs.getString("user_login_id"));
+					post.setThreadTitle(rs.getString("thread_title"));
+					post.setThreadText(rs.getString("thread_text"));
+					post.setThreadCategoryId(rs.getInt("thread_category_id"));
+//					item.setCreateDate(rs.getString("create_date"));
+
+					/* Date型⇒String型 */
+					// 変換後の日付文字列の書式を指定
+					DateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
+					// 変換
+					String sDate = df1.format(rs.getTimestamp("create_date"));
+					//bdb.setBuyDate(sDate);
+
+					//bdb.setBuyDate(rs.getTimestamp("create_date"));
+
+					post.setCreateDate(sDate);
+
+					postList.add(post);
+				}
+				System.out.println("getAllItem completed");
+				return postList;
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				throw new SQLException(e);
+			} finally {
+				if (con != null) {
+					con.close();
+				}
+			}
+		}
+
+		/**
+		 * カテゴリID検索
+		 * @param searchWord
+		 * @param pageNum
+		 * @param pageMaxItemCount
+		 * @return
+		 * @throws SQLException
+		 */
+		public static ArrayList<PostDataBeans> getItemsByCategoryId(int categoryId, int pageNum, int pageMaxItemCount) throws SQLException {
+			Connection con = null;
+			PreparedStatement st = null;
+			try {
+				int startiItemNum = (pageNum - 1) * pageMaxItemCount;
+				con = DBManager.getConnection();
+
+				if (categoryId == 0) {
+					// 全検索
+					st = con.prepareStatement("SELECT * FROM t_thread WHERE thread_category_id = ? ORDER BY id ASC LIMIT ?,? ");
+					st.setInt(1, categoryId);
+					st.setInt(2, startiItemNum);
+					st.setInt(3, pageMaxItemCount);
+
+				} else {
+					// 商品名検索
+					st = con.prepareStatement("SELECT * FROM t_thread WHERE thread_category_id = ? ORDER BY id ASC LIMIT ?,? ");
+					st.setInt(1, categoryId);
+					st.setInt(2, startiItemNum);
+					st.setInt(3, pageMaxItemCount);
+				}
+
+				ResultSet rs = st.executeQuery();
+				ArrayList<PostDataBeans> postList = new ArrayList<PostDataBeans>();
+
+				while (rs.next()) {
+					PostDataBeans post = new PostDataBeans();
+					post.setId(rs.getInt("id"));
+					post.setUserLoginId(rs.getString("user_login_id"));
+					post.setThreadTitle(rs.getString("thread_title"));
+					post.setThreadText(rs.getString("thread_text"));
+					post.setThreadCategoryId(rs.getInt("thread_category_id"));
+					post.setCreateDate(rs.getString("create_date"));
+
+					postList.add(post);
+				}
+				System.out.println("get Items by itemName has been completed");
+				return postList;
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				throw new SQLException(e);
+			} finally {
+				if (con != null) {
+					con.close();
+				}
+			}
+		}
+
+		/**
+		 * 商品総数を取得
+		 *
+		 * @param searchWord
+		 * @return
+		 * @throws SQLException
+		 */
+		public static double getItemCount(int categoryId) throws SQLException {
+			Connection con = null;
+			PreparedStatement st = null;
+			try {
+				con = DBManager.getConnection();
+				st = con.prepareStatement("select count(*) as cnt from t_thread where thread_category_id = ?");
+				st.setInt(1, categoryId);
+				ResultSet rs = st.executeQuery();
+				double coung = 0.0;
+				while (rs.next()) {
+					coung = Double.parseDouble(rs.getString("cnt"));
+				}
+				return coung;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				throw new SQLException(e);
+			} finally {
+				if (con != null) {
+					con.close();
+				}
+			}
+		}
+
+	/**
+	 * タイトル検索
+	 * @param searchWord
+	 * @param pageNum
+	 * @param pageMaxItemCount
+	 * @return
+	 * @throws SQLException
+	 */
+	public static ArrayList<PostDataBeans> getItemsByItemName(String searchWord, int pageNum, int pageMaxItemCount) throws SQLException {
+		Connection con = null;
+		PreparedStatement st = null;
+		try {
+			int startiItemNum = (pageNum - 1) * pageMaxItemCount;
+			con = DBManager.getConnection();
+
+			if (searchWord.length() == 0) {
+				// 全検索
+				st = con.prepareStatement("SELECT * FROM t_thread ORDER BY id ASC LIMIT ?,? ");
+				st.setInt(1, startiItemNum);
+				st.setInt(2, pageMaxItemCount);
+
+			} else {
+				// 商品名検索
+				st = con.prepareStatement("SELECT * FROM t_thread WHERE thread_title like ? ORDER BY id ASC LIMIT ?,? ");
+				st.setString(1,"%" + searchWord + "%");
+				st.setInt(2, startiItemNum);
+				st.setInt(3, pageMaxItemCount);
+			}
+
+			ResultSet rs = st.executeQuery();
+			ArrayList<PostDataBeans> postList = new ArrayList<PostDataBeans>();
+
+			while (rs.next()) {
+				PostDataBeans post = new PostDataBeans();
+				post.setId(rs.getInt("id"));
+				post.setUserLoginId(rs.getString("user_login_id"));
+				post.setThreadTitle(rs.getString("thread_title"));
+				post.setThreadText(rs.getString("thread_text"));
+				post.setThreadCategoryId(rs.getInt("thread_category_id"));
+				post.setCreateDate(rs.getString("create_date"));
+
+				postList.add(post);
+			}
+			System.out.println("get Items by itemName has been completed");
+			return postList;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
+
+	/**
+	 * 商品総数を取得
+	 *
+	 * @param searchWord
+	 * @return
+	 * @throws SQLException
+	 */
+	public static double getItemCount(String searchWord) throws SQLException {
+		Connection con = null;
+		PreparedStatement st = null;
+		try {
+			con = DBManager.getConnection();
+			st = con.prepareStatement("select count(*) as cnt from t_thread where thread_title like ?");
+			st.setString(1, "%" + searchWord + "%");
+			ResultSet rs = st.executeQuery();
+			double coung = 0.0;
+			while (rs.next()) {
+				coung = Double.parseDouble(rs.getString("cnt"));
+			}
+			return coung;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
 
 }

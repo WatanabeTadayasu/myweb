@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.ThreadDataBeans;
+import beans.PostDataBeans;
 import beans.UserDataBeans;
-import dao.ThreadDAO;
+import dao.PostDAO;
 import dao.UserDAO;
 
 /**
@@ -53,32 +53,33 @@ public class Comment extends HttpServlet {
 
    			if (request.getParameter("thread_id") == null) {
 
-   			int id = ((ThreadDataBeans) session.getAttribute("thread")).getId();
-   			String userLoginId = ((ThreadDataBeans) session.getAttribute("thread")).getUserLoginId();
-   			String threadTitle = ((ThreadDataBeans) session.getAttribute("thread")).getThreadTitle();
-   			String threadText = ((ThreadDataBeans) session.getAttribute("thread")).getThreadText();
-   			String createDate = ((ThreadDataBeans) session.getAttribute("thread")).getCreateDate();
+   			int id = ((PostDataBeans) session.getAttribute("thread")).getId();
+   			String userLoginId = ((PostDataBeans) session.getAttribute("thread")).getUserLoginId();
+   			String threadTitle = ((PostDataBeans) session.getAttribute("thread")).getThreadTitle();
+   			String threadText = ((PostDataBeans) session.getAttribute("thread")).getThreadText();
+   			String createDate = ((PostDataBeans) session.getAttribute("thread")).getCreateDate();
 
-   			ThreadDataBeans tdb = new ThreadDataBeans();
-   			tdb.setId(id);
-   			tdb.setUserLoginId(userLoginId);
-   			tdb.setThreadTitle(threadTitle);
-   			tdb.setThreadText(threadText);
-   			tdb.setCreateDate(createDate);
-   			session.setAttribute("thread", tdb);
+   			PostDataBeans pdb = new PostDataBeans();
+   			pdb.setId(id);
+   			pdb.setUserLoginId(userLoginId);
+   			pdb.setThreadTitle(threadTitle);
+   			pdb.setThreadText(threadText);
+   			pdb.setCreateDate(createDate);
+   			session.setAttribute("thread", pdb);
 
    			}else {
 
    			//対象のスレッド情報を取得
-   			ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(Integer.parseInt(request.getParameter("thread_id")));
+   			//ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(Integer.parseInt(request.getParameter("thread_id")));
+   			PostDataBeans thread = PostDAO.getThreadDataBeansByBuyId(Integer.parseInt(request.getParameter("thread_id")));
    			session.setAttribute("thread", thread);
 
    			}
 
    			/*コメントメソッド*/
-   			int commentid = (int) session.getAttribute("userId");
+   			int userId = (int) session.getAttribute("userId");
    			UserDAO UserDAO = new UserDAO();
-   			UserDataBeans udb = UserDAO.findByDetailInfo(commentid);
+   			UserDataBeans udb = UserDAO.findByUserInfo(userId);
 
    			session.setAttribute("udb", udb);
 
@@ -86,6 +87,7 @@ public class Comment extends HttpServlet {
 //   			session.setAttribute("thread", thread);
 //   			request.setAttribute("commentList", commentList);
    			request.setAttribute("pageNum", pageNum);
+   			session.removeAttribute("validationMessage");
 
    			request.getRequestDispatcher("/WEB-INF/jsp/comment.jsp").forward(request, response);
 

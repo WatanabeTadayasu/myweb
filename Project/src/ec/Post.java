@@ -58,7 +58,7 @@ public class Post extends HttpServlet {
 					//投稿メソッド
 					int id = (int) session.getAttribute("userId");
 					UserDAO UserDAO = new UserDAO();
-					UserDataBeans udb = UserDAO.findByDetailInfo(id);
+					UserDataBeans udb = UserDAO.findByUserInfo(id);
 
 					session.setAttribute("udb", udb);
 					request.setAttribute("dmdbList", dMDBList);

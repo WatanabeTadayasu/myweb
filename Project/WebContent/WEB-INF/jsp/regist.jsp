@@ -37,7 +37,7 @@
 							</div>
 							<div class="row">
 								<div class="input-field col s10 offset-s1">
-									<input  name="password" type="password" required> <label>パスワード</label>
+									<input name="password" type="password" required> <label>パスワード</label>
 								</div>
 							</div>
 							<div class="row">

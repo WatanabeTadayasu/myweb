@@ -47,6 +47,7 @@ public class LoginResult extends HttpServlet {
 			if (userId != 0) {
 				session.setAttribute("isLogin", true);
 				session.setAttribute("userId", userId);
+				session.removeAttribute("logoutMessage");
 //				//ログイン前のページを取得
 //				String returnStrUrl = (String) EcHelper.cutSessionAttribute(session, "returnStrUrl");
 //
@@ -57,6 +58,7 @@ public class LoginResult extends HttpServlet {
 			} else {
 				session.setAttribute("loginId", loginId);
 				session.setAttribute("loginErrorMessage", "入力内容が正しくありません");
+				session.removeAttribute("logoutMessage");
 				response.sendRedirect("Login");
 			}
 		} catch (Exception e) {

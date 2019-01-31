@@ -32,6 +32,7 @@ public class Regist extends HttpServlet {
 
 		request.setAttribute("udb", udb);
 		request.setAttribute("validationMessage",validationMessage);
+		session.removeAttribute("logoutMessage");
 
 		request.getRequestDispatcher("/WEB-INF/jsp/regist.jsp").forward(request, response);
 	}

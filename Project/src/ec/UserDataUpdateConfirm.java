@@ -33,7 +33,6 @@ public class UserDataUpdateConfirm extends HttpServlet {
 			//入力フォームから受け取った値をBeansにセット
 			UserDataBeans udb = new UserDataBeans();
 
-
 			//パスワードチェック
 			/*if (udb.getPassword().equals("") || (udb.getPassword1().equals(""))) {
 				udb.setUpdateUserDataBeansInfoPassNull(request.getParameter("login_id"), request.getParameter("user_name"), request.getParameter("birthdate"));
@@ -49,6 +48,11 @@ public class UserDataUpdateConfirm extends HttpServlet {
 //			if ( UserDAO.isOverlapLoginId(udb.getLoginId(),(int) session.getAttribute("userId"))) {
 //				validationMessage = "ほかのユーザーが使用中のログインIDです";
 //			}
+			//未入力チェック
+			if (udb.getName().equals("") || udb.getLoginId().equals("") || udb.getBirthdate().equals("")) {
+				validationMessage = "入力された内容は正しくありません。";
+			}
+
 			//パスワードチェック
 			if (!udb.getPassword().equals(udb.getPassword1())) {
 				validationMessage = "パスワードが異なっています。";

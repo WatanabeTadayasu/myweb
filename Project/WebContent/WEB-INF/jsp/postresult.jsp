@@ -18,7 +18,7 @@
 
 	<div class="form-post">
     <label for="exampleFormControlInput1">ログインID</label>
-    <input type="text" class="form-control" name="user_id" value="${resultBDB.userId}" readonly>
+    <input type="text" class="form-control" name="user_id" value="${resultBDB.userLoginId}" readonly>
   </div>
 
   <div class="form-post">

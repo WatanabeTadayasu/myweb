@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.CommentDataBeans;
-import beans.ThreadDataBeans;
+import beans.PostDataBeans;
 import dao.CommentDAO;
-import dao.ThreadDAO;
+import dao.PostDAO;
 
 /**
  * Servlet implementation class Comment
@@ -41,7 +41,8 @@ public class PostDetail extends HttpServlet {
    			//戻るページ表示用
    			int pageNum = Integer.parseInt(request.getParameter("page_num")==null?"1":request.getParameter("page_num"));
    			//対象のスレッド情報を取得
-   			ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(id);
+   			//ThreadDataBeans thread = ThreadDAO.getThreadByThreadID(id);
+   			PostDataBeans thread = PostDAO.getThreadDataBeansByBuyId(id);
 
    			ArrayList<CommentDataBeans> commentList = CommentDAO.getCommentDataBeansListByBuyId(id);
 

@@ -52,7 +52,7 @@ public class PostResult extends HttpServlet {
 			int inputThreadCategoryId = Integer.parseInt(request.getParameter("thread_category_id"));
 
 			PostDataBeans bdb = new PostDataBeans();
-			bdb.setUserId(inputuserLoginId);
+			bdb.setUserLoginId(inputuserLoginId);
 			bdb.setThreadTitle(inputThreadTitle);
 			bdb.setThreadText(inputThreadText);
 			bdb.setThreadCategoryId(inputThreadCategoryId);
@@ -71,7 +71,7 @@ public class PostResult extends HttpServlet {
 				int buyId = PostDAO.insertBuy(bdb);
 
 				/* ====購入完了ページ表示用==== */
-				PostDataBeans resultBDB = PostDAO.getBuyDataBeansByBuyId(buyId);
+				PostDataBeans resultBDB = PostDAO.getThreadDataBeansByBuyId(buyId);
 
 				request.setAttribute("bdb", bdb);
 				session.setAttribute("resultBDB", resultBDB);

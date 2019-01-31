@@ -30,7 +30,7 @@ public class UserPostHistoryDetail extends HttpServlet {
 				int pageNum = Integer.parseInt(request.getParameter("page_num")==null?"1":request.getParameter("page_num"));
 
 				//購入詳細情報、購入情報を取得
-				PostDataBeans bdbbb = PostDAO.getBuyDataBeansByBuyId(id);
+				PostDataBeans bdbbb = PostDAO.getThreadDataBeansByBuyId(id);
 
 //				// 購入アイテム情報
 //				ArrayList<ItemDataBeans> buyIDBList = BuyDetailDAO.getItemDataBeansListByBuyId(id);
