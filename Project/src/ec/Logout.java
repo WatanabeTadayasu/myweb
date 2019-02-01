@@ -23,6 +23,7 @@ public class Logout extends HttpServlet {
 		// ログイン時に保存したセッション内のユーザ情報を削除
 		session.removeAttribute("userId");
 		session.removeAttribute("isLogin");
+		request.removeAttribute("udb");
 		session.setAttribute("logoutMessage", "ログアウトしました。");
 
 //		// ログインのサーブレットにリダイレクト

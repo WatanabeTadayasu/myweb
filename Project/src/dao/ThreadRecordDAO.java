@@ -50,7 +50,7 @@ public class ThreadRecordDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static double getItemCount(int threadId) throws SQLException {
+	public static int getItemCount(int threadId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -58,9 +58,9 @@ public class ThreadRecordDAO {
 			st = con.prepareStatement("select count(*) as cnt from t_thread_record where thread_id = ?");
 			st.setInt(1, threadId);
 			ResultSet rs = st.executeQuery();
-			double coung = 0.0;
+			int coung = 0;
 			while (rs.next()) {
-				coung = Double.parseDouble(rs.getString("cnt"));
+				coung = Integer.parseInt(rs.getString("cnt"));
 			}
 			return coung;
 		} catch (Exception e) {

@@ -42,6 +42,7 @@ public class Index extends HttpServlet {
 				session.removeAttribute("searchWord");
 			}else {
 			session.removeAttribute("logoutMessage");
+			session.removeAttribute("validationMessage");
 			request.getRequestDispatcher("/WEB-INF/jsp/tp.jsp").forward(request, response);
 
 			}

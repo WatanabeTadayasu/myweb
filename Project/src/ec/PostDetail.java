@@ -48,7 +48,7 @@ public class PostDetail extends HttpServlet {
    			ArrayList<CommentDataBeans> commentList = CommentDAO.getCommentDataBeansListByBuyId(id);
 
    			//スレッドIDに対して評価数を取得
-			double itemCount = ThreadRecordDAO.getItemCount(id);
+			int itemCount = ThreadRecordDAO.getItemCount(id);
 
 			//セッションにコメントがない場合コメントリストを作成
 			if (commentList == null) {

@@ -53,7 +53,7 @@ public class ThreadRecord extends HttpServlet {
 			if (validationMessage.length() != 0) {
 
 				//スレッドIDに対して評価数を取得
-				double itemCount = ThreadRecordDAO.getItemCount(inputThreadId);
+				int itemCount = ThreadRecordDAO.getItemCount(inputThreadId);
 
 				//総アイテム数
 				request.setAttribute("itemCount", (int) itemCount);
