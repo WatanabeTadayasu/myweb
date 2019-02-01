@@ -25,8 +25,9 @@ public class Logout extends HttpServlet {
 		session.removeAttribute("isLogin");
 		session.setAttribute("logoutMessage", "ログアウトしました。");
 
-		// ログインのサーブレットにリダイレクト
+//		// ログインのサーブレットにリダイレクト
 		response.sendRedirect("Login");
+//		request.getRequestDispatcher("/WEB-INF/jsp/logout.jsp").forward(request, response);
 		}
 
 

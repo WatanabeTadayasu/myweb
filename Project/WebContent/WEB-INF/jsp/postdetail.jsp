@@ -16,7 +16,6 @@
 		</header>
 	</div>
 
-
 	<div class="box_0">
 	<!--   投稿タイトル  -->
 		<h6>${thread.createDate}${thread.userLoginId}</h6>
@@ -32,8 +31,9 @@
 	</c:if>
 
 	<div class="box_1">
+
 		<div class="yoibottun">
-			<a href="#" class="square_btn">良いでしょう</a>
+			<a href="ThreadRecord?thread_id=${thread.id}" class="square_btn">良いでしょう(${itemCount})</a>
 		</div>
 
 		<div class="yoibottun">
@@ -42,6 +42,7 @@
 				<button type="submit" class="btn btn-primary">コメントする</button>
 			</a>
 		</div>
+
 	</div>
 
 	<div class="box_d">

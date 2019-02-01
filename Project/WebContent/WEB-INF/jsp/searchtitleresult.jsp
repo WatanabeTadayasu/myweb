@@ -10,6 +10,12 @@
 </head>
 <body>
 
+<div align="right">
+		<header class="head">
+			<a href="Index"><span style="border-bottom: solid 1px #FFFFFF;">トップページへ</span></a>
+		</header>
+	</div>
+
 	<form class="form-inline my-2 my-lg-0" action="SearchTitleResult">
 		<label for="inputState">タイトル検索</label>
 			<input class="form-control mr-sm-2" type="search" width="80"
@@ -93,8 +99,6 @@
 		</div>
 
 	</div>
-
-	<a href="Index">戻る</a>
 
 </body>
 </html>

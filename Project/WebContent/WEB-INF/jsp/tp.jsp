@@ -15,7 +15,7 @@
 
 <ul class="nav">
 	<li class="nav-item">
-     <h1><a class="nav-link" href="#">
+     <h1><a class="nav-link" href="Index">
    	<span style="border-bottom: solid 1px #FFFFFF;">掲示板</span></a></h1>
   </li>
   <li class="nav-item">
@@ -23,11 +23,11 @@
     <span style="border-bottom: solid 1px #FFFFFF;">ランキング</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="#quick">
     <span style="border-bottom: solid 1px #FFFFFF;">速報</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="#recommen">
     <span style="border-bottom: solid 1px #FFFFFF;">おすすめ</span></a>
   </li>
   <li class="nav-item">
@@ -106,7 +106,7 @@
 
 		<div class="container">
 			<div class="row center">
-				<h5 class=" col s12 light">おすすめ記事</h5>
+				<h5 class=" col s12 light" id="recommen">おすすめ記事</h5>
 			</div>
 		</div>
 
@@ -148,16 +148,6 @@
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 
-			<div class="box_6">
-				<h2>イタリアン</h2>
-				<p>ここにコメントここにコメントここにコメントここにコメント</p>
-			</div>
-
-			<div class="box_7">
-				<h2>ワイン</h2>
-				<p>ここにコメントここにコメントここにコメントここにコメント</p>
-			</div>
-
 		</div>
 
 		<div class="container">
@@ -190,7 +180,7 @@
 
 	<div class="container">
 			<div class="row center">
-				<h5 class=" col s12 light">速報</h5>
+				<h5 class=" col s12 light" id="quick">速報</h5>
 			</div>
 		</div>
 

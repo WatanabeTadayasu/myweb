@@ -42,7 +42,6 @@ public class LoginResult extends HttpServlet {
 //			UserDAO userDao = new UserDAO();
 			int userId = UserDAO.getUserId(loginId, password);
 
-
 			//ユーザーIDが取得できたなら
 			if (userId != 0) {
 				session.setAttribute("isLogin", true);

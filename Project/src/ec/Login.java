@@ -26,12 +26,12 @@ public class Login extends HttpServlet {
 
 
 		//ログイン失敗時に使用するため
-				String inputLoginId =session.getAttribute("loginId")!=null?(String) EcHelper.cutSessionAttribute(session,"loginId"):"";
-				String loginErrorMessage = (String)EcHelper.cutSessionAttribute(session, "loginErrorMessage");
+		String inputLoginId =session.getAttribute("loginId")!=null?(String) EcHelper.cutSessionAttribute(session,"loginId"):"";
+		String loginErrorMessage = (String)EcHelper.cutSessionAttribute(session, "loginErrorMessage");
 
-				request.setAttribute("inputLoginId", inputLoginId);
-				request.setAttribute("loginErrorMessage", loginErrorMessage);
+		request.setAttribute("inputLoginId", inputLoginId);
+		request.setAttribute("loginErrorMessage", loginErrorMessage);
 
-				request.getRequestDispatcher(EcHelper.LOGIN_PAGE).forward(request, response);
-			}
+		request.getRequestDispatcher(EcHelper.LOGIN_PAGE).forward(request, response);
+		}
 }

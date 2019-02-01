@@ -394,13 +394,13 @@ public class PostDAO {
 		 * @return
 		 * @throws SQLException
 		 */
-		public static double getItemCount(int categoryId) throws SQLException {
+		public static double getItemCount(int searchWord) throws SQLException {
 			Connection con = null;
 			PreparedStatement st = null;
 			try {
 				con = DBManager.getConnection();
 				st = con.prepareStatement("select count(*) as cnt from t_thread where thread_category_id = ?");
-				st.setInt(1, categoryId);
+				st.setInt(1, searchWord);
 				ResultSet rs = st.executeQuery();
 				double coung = 0.0;
 				while (rs.next()) {

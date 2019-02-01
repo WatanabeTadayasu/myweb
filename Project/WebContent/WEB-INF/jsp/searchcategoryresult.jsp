@@ -10,6 +10,12 @@
 </head>
 <body>
 
+<div align="right">
+		<header class="head">
+			<a href="Index"><span style="border-bottom: solid 1px #FFFFFF;">トップページへ</span></a>
+		</header>
+	</div>
+
 		<form class="form-inline my-2 my-lg-0" action="SearchCategoryResult">
 
 				<!-- <div class="form-group col-md-4"> -->
@@ -40,7 +46,7 @@
 		<!-- <div class="box_d"> -->
 				<!--   おすすめ商品   -->
 				<c:forEach var="thread" items="${threadList}">
-						<h2>${thread.threadTitle}</h2>
+						<h2><a href="PostDetail?thread_id=${thread.id}">${thread.threadTitle}</a></h2>
 						<h6>${thread.threadText}</h6>
 				</c:forEach>
 		<!-- </div> -->

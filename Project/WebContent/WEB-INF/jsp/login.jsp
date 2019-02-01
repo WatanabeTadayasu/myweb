@@ -18,7 +18,7 @@
 				<div class="card grey lighten-5">
 					<div class="card-content">
 						<c:if test="${loginErrorMessage != null}">
-							<p class="red-text center-align">${loginErrorMessage}</p>
+							<p class="text-red center-align">${loginErrorMessage}</p>
 							<br>
 						</c:if>
 						<c:if test="${logoutMessage != null}">

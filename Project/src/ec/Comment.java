@@ -51,6 +51,7 @@ public class Comment extends HttpServlet {
 //   			//対象のコメント情報を取得
 //   			ArrayList<CommentDataBeans> commentList = CommentDetailDAO.getCommentDataBeansListByBuyId(id);
 
+   			//戻るページ表示用
    			if (request.getParameter("thread_id") == null) {
 
    			int id = ((PostDataBeans) session.getAttribute("thread")).getId();
