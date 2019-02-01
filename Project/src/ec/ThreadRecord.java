@@ -36,21 +36,42 @@ public class ThreadRecord extends HttpServlet {
 
    			//レコード登録
    			int inputUserId = (int) session.getAttribute("userId");
-   			int inputThresdId = Integer.parseInt(request.getParameter("thread_id"));
+   			int inputThreadId = Integer.parseInt(request.getParameter("thread_id"));
 
 			ThreadRecordBeans trb = new ThreadRecordBeans();
 			trb.setUserId(inputUserId);
-			trb.setThreadId(inputThresdId);
+			trb.setThreadId(inputThreadId);
+
+			String validationMessage = "";
+
+			// userIdの重複をチェック
+			if (ThreadRecordDAO.isOverlapUserId(inputUserId, inputThreadId)) {
+				validationMessage += "評価済みです。";
+			}
+
+			// バリデーションエラーメッセージがないなら確認画面へ
+			if (validationMessage.length() != 0) {
+
+				//スレッドIDに対して評価数を取得
+				double itemCount = ThreadRecordDAO.getItemCount(inputThreadId);
+
+				//総アイテム数
+				request.setAttribute("itemCount", (int) itemCount);
+				request.setAttribute("validationMessage", validationMessage);
+				request.getRequestDispatcher("/WEB-INF/jsp/postdetail.jsp").forward(request, response);
+			} else {
 
 			ThreadRecordDAO.insertRecord(trb);
 
 			//スレッドIDに対して評価数を取得
-			double itemCount = ThreadRecordDAO.getItemCount(inputThresdId);
+			double itemCount = ThreadRecordDAO.getItemCount(inputThreadId);
 
 			//総アイテム数
 			request.setAttribute("itemCount", (int) itemCount);
 
    			request.getRequestDispatcher("/WEB-INF/jsp/postdetail.jsp").forward(request, response);
+
+			}
 
    		} catch (Exception e) {
    			e.printStackTrace();

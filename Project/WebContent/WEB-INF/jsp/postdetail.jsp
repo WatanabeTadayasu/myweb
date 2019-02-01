@@ -30,6 +30,12 @@
 		</p>
 	</c:if>
 
+	<c:if test="${validationMessage != null}">
+		<p class="red-text center-align">
+			<span style="color: #2ca9e1;">${validationMessage}</span>
+		</p>
+	</c:if>
+
 	<div class="box_1">
 
 		<div class="yoibottun">

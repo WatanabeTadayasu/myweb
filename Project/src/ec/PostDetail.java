@@ -14,6 +14,7 @@ import beans.CommentDataBeans;
 import beans.PostDataBeans;
 import dao.CommentDAO;
 import dao.PostDAO;
+import dao.ThreadRecordDAO;
 
 /**
  * Servlet implementation class Comment
@@ -46,14 +47,17 @@ public class PostDetail extends HttpServlet {
 
    			ArrayList<CommentDataBeans> commentList = CommentDAO.getCommentDataBeansListByBuyId(id);
 
-			//セッションにカートがない場合カートを作成
+   			//スレッドIDに対して評価数を取得
+			double itemCount = ThreadRecordDAO.getItemCount(id);
+
+			//セッションにコメントがない場合コメントリストを作成
 			if (commentList == null) {
 				commentList = new ArrayList<CommentDataBeans>();
 				session.setAttribute("commentList", commentList);
 			}
 
 			String cartActionMessage = "";
-			//カートに商品が入っていないなら
+			//コメントリストにコメントが入っていないなら
 			if(commentList.size() == 0) {
 				cartActionMessage = "コメント履歴がありません。";
 			}
@@ -70,6 +74,7 @@ public class PostDetail extends HttpServlet {
 
    			//リクエストパラメーターにセット
 			request.setAttribute("cartActionMessage", cartActionMessage);
+			request.setAttribute("itemCount", itemCount);
 			request.setAttribute("commentList", commentList);
 			session.setAttribute("thread", thread);
    			request.setAttribute("pageNum", pageNum);
