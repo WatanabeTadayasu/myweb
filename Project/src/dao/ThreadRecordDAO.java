@@ -44,7 +44,7 @@ public class ThreadRecordDAO {
 	}
 
 	/**
-	 * 商品総数を取得
+	 * レコード総数を取得
 	 *
 	 * @param searchWord
 	 * @return
@@ -72,6 +72,8 @@ public class ThreadRecordDAO {
 			}
 		}
 	}
+
+
 
 	/**
 	 * userIdの重複チェック

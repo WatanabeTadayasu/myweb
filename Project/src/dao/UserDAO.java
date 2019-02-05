@@ -347,7 +347,7 @@ public class UserDAO {
 
 			con = DBManager.getConnection();
 
-			if(!udb.getPassword().equals("")) {
+			if(udb.getPassword().equals("")) {
 
 			st = con.prepareStatement("UPDATE t_user SET name=?, birth_date=?, update_date=? WHERE login_id=?;");
 			st.setString(1, udb.getName());
@@ -358,14 +358,6 @@ public class UserDAO {
 			System.out.println("update has been completed");
 
             }else {
-
-			st = con.prepareStatement("UPDATE t_user SET name=?, birth_date=?, update_date=? WHERE login_id=?;");
-			st.setString(1, udb.getName());
-			st.setString(2, udb.getBirthdate());
-			st.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
-			st.setString(4, udb.getLoginId());
-			st.executeUpdate();
-			System.out.println("update has been completed");
 
 			st = con.prepareStatement("UPDATE t_user SET name=?, login_password=?, birth_date=?, update_date=? WHERE login_id=?;");
 			st.setString(1, udb.getName());

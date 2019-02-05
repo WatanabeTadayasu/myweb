@@ -182,6 +182,8 @@ public class PostDAO {
 		}
 	}
 
+
+
 	//投稿削除
 
     public static void postdeletemethod(int cartInItem) {
@@ -322,6 +324,36 @@ public class PostDAO {
 				System.out.println("getAllItem completed");
 				return postList;
 			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				throw new SQLException(e);
+			} finally {
+				if (con != null) {
+					con.close();
+				}
+			}
+		}
+
+		/**
+		 * レコード総数を取得降順で並び替え
+		 *
+		 * @param searchWord
+		 * @return
+		 * @throws SQLException
+		 */
+		public static int getItemCount(int threadId) throws SQLException {
+			Connection con = null;
+			PreparedStatement st = null;
+			try {
+				con = DBManager.getConnection();
+				st = con.prepareStatement("select count(*) as cnt from t_thread_record where thread_id = ?");
+				st.setInt(1, threadId);
+				ResultSet rs = st.executeQuery();
+				int coung = 0;
+				while (rs.next()) {
+					coung = Integer.parseInt(rs.getString("cnt"));
+				}
+				return coung;
+			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				throw new SQLException(e);
 			} finally {
