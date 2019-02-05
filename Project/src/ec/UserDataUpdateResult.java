@@ -46,7 +46,6 @@ public class UserDataUpdateResult extends HttpServlet {
 			case "cancel":
 				session.setAttribute("returnUDB", udb);
 				response.sendRedirect("UserData");
-
 				break;
 			// アップデート処理
 			case "update":

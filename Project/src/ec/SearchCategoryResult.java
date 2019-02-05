@@ -27,17 +27,17 @@ public class SearchCategoryResult extends HttpServlet {
 		HttpSession session = request.getSession();
 		try {
 
-			int searchWord = Integer.parseInt(request.getParameter("thread_category_id"));
+			int searchCategory = Integer.parseInt(request.getParameter("thread_category_id"));
 			//表示ページ番号 未指定の場合 1ページ目を表示
 			int pageNum = Integer.parseInt(request.getParameter("page_num") == null ? "1" : request.getParameter("page_num"));
 			// 新たに検索されたキーワードをセッションに格納する
-			session.setAttribute("searchWord", searchWord);
+			session.setAttribute("searchCategory", searchCategory);
 
 			// 商品リストを取得 ページ表示分のみ
-			ArrayList<PostDataBeans> searchResultItemList = PostDAO.getItemsByCategoryId(searchWord, pageNum, PAGE_MAX_ITEM_COUNT);
+			ArrayList<PostDataBeans> searchResultItemList = PostDAO.getItemsByCategoryId(searchCategory, pageNum, PAGE_MAX_ITEM_COUNT);
 
 			// 検索ワードに対しての総ページ数を取得
-			double itemCount = PostDAO.getItemCount(searchWord);
+			double itemCount = PostDAO.getItemCount(searchCategory);
 			int pageMax = (int) Math.ceil(itemCount / PAGE_MAX_ITEM_COUNT);
 
 			String searchEerrorMessage = "";

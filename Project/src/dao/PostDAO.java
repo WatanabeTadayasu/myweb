@@ -388,7 +388,7 @@ public class PostDAO {
 		}
 
 		/**
-		 * 商品総数を取得
+		 * カテゴリ別商品総数を取得
 		 *
 		 * @param searchWord
 		 * @return
@@ -473,7 +473,7 @@ public class PostDAO {
 	}
 
 	/**
-	 * 商品総数を取得
+	 * タイトル別商品総数を取得
 	 *
 	 * @param searchWord
 	 * @return

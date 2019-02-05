@@ -88,13 +88,13 @@
 						<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="waves-effect"><a href="SearchCategoryResult?search_word=${searchWord}&page_num=${pageNum - 1}"><i class="material-icons">chevron_left</i></a></li>
+						<li class="waves-effect"><a href="SearchCategoryResult?thread_category_id=${searchCategory}&page_num=${pageNum - 1}"><i class="material-icons">chevron_left</i></a></li>
 					</c:otherwise>
 				</c:choose>
 
 				<!-- ページインデックス -->
 				<c:forEach begin="${(pageNum - 5) > 0 ? pageNum - 5 : 1}" end="${(pageNum + 5) > pageMax ? pageMax : pageNum + 5}" step="1" varStatus="status">
-					<li <c:if test="${pageNum == status.index }"> class="active" </c:if>><a href="SearchCategoryResult?search_word=${searchWord}&page_num=${status.index}">${status.index}</a></li>
+					<li <c:if test="${pageNum == status.index }"> class="active" </c:if>><a href="SearchCategoryResult?thread_category_id=${searchCategory}&page_num=${status.index}">${status.index}</a></li>
 				</c:forEach>
 
 				<!-- 1ページ送るボタン -->
@@ -103,15 +103,13 @@
 					<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="waves-effect"><a href="SearchCategoryResult?search_word=${searchWord}&page_num=${pageNum + 1}"><i class="material-icons">chevron_right</i></a></li>
+					<li class="waves-effect"><a href="SearchCategoryResult?thread_category_id=${searchCategory}&page_num=${pageNum + 1}"><i class="material-icons">chevron_right</i></a></li>
 				</c:otherwise>
 				</c:choose>
 			</ul>
 		</div>
 
 	</div>
-
-	<a href="Index">戻る</a>
 
 </body>
 </html>

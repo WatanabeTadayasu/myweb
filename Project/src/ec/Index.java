@@ -31,6 +31,7 @@ public class Index extends HttpServlet {
 			ArrayList<PostDataBeans> threadList = PostDAO.getRandThread(4);
 //			//投稿情報をランダムに取得
 			ArrayList<PostDataBeans> quickThreadList = PostDAO.getQuickThread(4);
+
 			//リクエストスコープにセット
 			request.setAttribute("threadList", threadList);
 			request.setAttribute("quickThreadList", quickThreadList);
@@ -40,6 +41,7 @@ public class Index extends HttpServlet {
 			String searchWord = (String)session.getAttribute("searchWord");
 			if(searchWord != null) {
 				session.removeAttribute("searchWord");
+				request.getRequestDispatcher("/WEB-INF/jsp/tp.jsp").forward(request, response);
 			}else {
 			session.removeAttribute("logoutMessage");
 			session.removeAttribute("validationMessage");
