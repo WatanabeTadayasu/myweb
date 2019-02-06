@@ -37,8 +37,6 @@ public class PostDelete extends HttpServlet {
 //    			iarray[i] = Integer.parseInt(deleteItemIdList[i]);
 //    			}
 
-
-
     			String cartActionMessage = "";
 
     			if (deleteItemIdList != null) {
@@ -46,20 +44,23 @@ public class PostDelete extends HttpServlet {
     				for (String deleteItemId : deleteItemIdList) {
 //    					for (int cartInItem : threadList) {
 //    						if (cartInItem.getId() == Integer.parseInt(deleteItemId)) {
+    				for (int i = 0 ; i < deleteItemIdList.length ;){
     							PostDAO.postdeletemethod(Integer.parseInt(deleteItemId));
     							CommentDAO.commentdeletemethod(Integer.parseInt(deleteItemId));
     							break;
 //    						}
 //    					}
+    				}
     			}
     				cartActionMessage = "削除しました";
     				request.setAttribute("cartActionMessage", cartActionMessage);
     				request.getRequestDispatcher("/WEB-INF/jsp/postdeletedone.jsp").forward(request, response);
-    			}
-    			else{
+
+    			}else{
 
 //    			(deleteItemIdList.length == 0) {
     				cartActionMessage = "削除する投稿が選択されていません";
+
     			}
 
 //    			if (deleteItemIdList != null) {

@@ -25,17 +25,20 @@ public class Index extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		try {
-			// TODO 未実装：ログインセッションがある場合
-			 if (session.getAttribute("userId") != null){
+//			// TODO 未実装：ログインセッションがある場合
+//			 if (session.getAttribute("userId") != null){
 			//投稿情報をランダムに取得
-			ArrayList<PostDataBeans> threadList = PostDAO.getRandThread(4);
-//			//投稿情報をランダムに取得
-			ArrayList<PostDataBeans> quickThreadList = PostDAO.getQuickThread(4);
+			ArrayList<PostDataBeans> threadList = PostDAO.getRandThread(3);
+			//投稿情報を速報順で取得
+			ArrayList<PostDataBeans> quickThreadList = PostDAO.getQuickThread(3);
+			//投稿情報を速報順で取得
+			ArrayList<PostDataBeans> rankingThreadList = PostDAO.getItemCountRanking(3);
 
 			//リクエストスコープにセット
 			request.setAttribute("threadList", threadList);
 			request.setAttribute("quickThreadList", quickThreadList);
-		}
+			request.setAttribute("rankingThreadList", rankingThreadList);
+//		}
 
 			//セッションにsearchWordが入っていたら破棄する
 			String searchWord = (String)session.getAttribute("searchWord");

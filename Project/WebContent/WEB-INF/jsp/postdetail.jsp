@@ -6,15 +6,17 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href = "css/style.css">
-<title>スレッド詳細</title>
+<title>投稿詳細</title>
 </head>
 <body>
 
-<div align="right">
-		<header class="head">
-			<a href="Logout"><span style="border-bottom: solid 1px #FFFFFF;">ログアウト</span></a>
-		</header>
-	</div>
+	<c:if test="${userId != null}">
+		<div align="right">
+			<header class="head">
+				<a href="Logout"><span style="border-bottom: solid 1px #FFFFFF;">ログアウト</span></a>
+			</header>
+		</div>
+	</c:if>
 
 	<div class="box_0">
 	<!--   投稿タイトル  -->
@@ -36,20 +38,22 @@
 		</p>
 	</c:if>
 
-	<div class="box_1">
+	<c:if test="${userId != null}">
+		<div class="box_1">
 
-		<div class="yoibottun">
-			<a href="ThreadRecord?thread_id=${thread.id}" class="square_btn">良いでしょう(${itemCount})</a>
+			<div class="yoibottun">
+				<a href="ThreadRecord?thread_id=${thread.id}" class="square_btn">良いでしょう(${itemCount})</a>
+			</div>
+
+			<div class="yoibottun">
+				<!--   コメント一覧ボタン  -->
+				<a href="Comment?thread_id=${thread.id}">
+					<button type="submit" class="btn btn-primary">コメントする</button>
+				</a>
+			</div>
+
 		</div>
-
-		<div class="yoibottun">
-			<!--   コメント一覧ボタン  -->
-			<a href="Comment?thread_id=${thread.id}">
-				<button type="submit" class="btn btn-primary">コメントする</button>
-			</a>
-		</div>
-
-	</div>
+	</c:if>
 
 	<div class="box_d">
 

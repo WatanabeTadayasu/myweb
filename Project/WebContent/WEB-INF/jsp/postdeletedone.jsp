@@ -16,10 +16,22 @@
 	</div>
 
 	<div class="row">
-		<div class="col s12">
-			<p class="center-align">削除完了しました。</p>
+		<div class="section"></div>
+		<div class="col s6 offset-s3">
+			<div class="card grey lighten-5">
+				<div class="card-content">
+					<div class="row">
+						<div class="col s12">
+							<br> <br> <br>
+							<p class="center-align">削除完了しました。</p>
+							<br> <br> <br>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col s12">
 			<p class="center-align">

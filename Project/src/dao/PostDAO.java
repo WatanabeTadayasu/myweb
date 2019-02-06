@@ -136,7 +136,7 @@ public class PostDAO {
 							+ " JOIN m_thread_category"
 							+ " ON t_thread.thread_category_id = m_thread_category.id"
 							+ " WHERE user_login_id = ?"
-							+ " order by t_thread.id ASC");
+							+ " order by t_thread.id desc");
 			st.setString(1, loginId);
 
 			ResultSet rs = st.executeQuery();
@@ -340,19 +340,48 @@ public class PostDAO {
 		 * @return
 		 * @throws SQLException
 		 */
-		public static int getItemCount(int threadId) throws SQLException {
+		public static ArrayList<PostDataBeans> getItemCountRanking(int limit) throws SQLException {
 			Connection con = null;
 			PreparedStatement st = null;
 			try {
 				con = DBManager.getConnection();
-				st = con.prepareStatement("select count(*) as cnt from t_thread_record where thread_id = ?");
-				st.setInt(1, threadId);
+				st = con.prepareStatement(
+						"select thread_id,thread_title,thread_text,create_date,"
+						+ " count(1) as like_count from t_thread_record"
+						+ " inner join t_thread on t_thread_record.thread_id = t_thread.id"
+						+ " group by thread_id order by like_count desc LIMIT ?"
+						);
+				st.setInt(1, limit);
+//				st.setInt(1, threadId);
 				ResultSet rs = st.executeQuery();
-				int coung = 0;
+//				int coung = 0;
+//				while (rs.next()) {
+//					coung = Integer.parseInt(rs.getString("cnt"));
+
+				ArrayList<PostDataBeans> postRanking = new ArrayList<PostDataBeans>();
+
 				while (rs.next()) {
-					coung = Integer.parseInt(rs.getString("cnt"));
+					PostDataBeans post = new PostDataBeans();
+					post.setId((int)rs.getInt("thread_id"));
+					post.setThreadTitle(rs.getString("thread_title"));
+					post.setThreadText(rs.getString("thread_text"));
+//						item.setCreateDate(rs.getString("create_date"));
+
+					/* Date型⇒String型 */
+					// 変換後の日付文字列の書式を指定
+					DateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
+					// 変換
+					String sDate = df1.format(rs.getTimestamp("create_date"));
+					//bdb.setBuyDate(sDate);
+
+					//bdb.setBuyDate(rs.getTimestamp("create_date"));
+
+					post.setCreateDate(sDate);
+
+					postRanking.add(post);
+
 				}
-				return coung;
+				return postRanking;
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				throw new SQLException(e);

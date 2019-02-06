@@ -159,11 +159,9 @@
 		<div class="box_d">
 
 				<!--   ランキング商品   -->
-				<c:forEach var="item" items="${itemList}">
-						<h2>
-							<a href="Item?item_id=${item.id}">${item.threadTtitle}</a>
-						</h2>
-						<h6>${item.threadText}${item.createDate}</h6>
+				<c:forEach var="thread" items="${rankingThreadList}">
+						<h2><a href="PostDetail?thread_id=${thread.id}">${thread.threadTitle}</a></h2>
+						<h6>${thread.threadText}</h6>
 				</c:forEach>
 
 			<div class="box_4">

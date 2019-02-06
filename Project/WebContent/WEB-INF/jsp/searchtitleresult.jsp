@@ -33,11 +33,15 @@
 		<div class="section">
 
 		<!-- <div class="box_d"> -->
-				<!--   おすすめ商品   -->
+				<!--   検索結果   -->
 				<c:forEach var="thread" items="${threadList}">
-						<h2>${thread.threadTitle}</h2>
+						<h2><a href="PostDetail?thread_id=${thread.id}">${thread.threadTitle}</a></h2>
 						<h6>${thread.threadText}</h6>
 				</c:forEach>
+				<%-- <c:forEach var="thread" items="${threadList}">
+						<h2>${thread.threadTitle}</h2>
+						<h6>${thread.threadText}</h6>
+				</c:forEach> --%>
 		<!-- </div> -->
 
 			<div class="row">

@@ -115,7 +115,7 @@
 												<td class="center">
 												<p>
 												<input type="checkbox" id="${status.index}"
-													name="delete_item_id_list" value="${bdbhList.id}" /> <label
+													name="delete_item_id_list" value="${bdbhList.id}"/> <label
 													for="${status.index}">削除</label>
 												</p>
 												<a href="UserPostHistoryDetail?thread_id=${bdbhList.id}"
