@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 import base.DBManager;
 import beans.CommentDataBeans;
@@ -57,7 +56,7 @@ public class CommentDAO {
 	/**
      * 全てのユーザ情報を取得する
      * @return
-     */
+     *//*
     public List<CommentDataBeans> findAll() {
         Connection conn = null;
         List<CommentDataBeans> userList = new ArrayList<CommentDataBeans>();
@@ -102,7 +101,7 @@ public class CommentDAO {
         }
         return userList;
 
-    }
+    }*/
 
     /**
 	 * 購入IDによる購入履歴情報検索
@@ -164,7 +163,7 @@ public class CommentDAO {
 
 	//コメント削除
 
-    public static void commentdeletemethod(int cartInItem) {
+    public static void commentdeletemethod(int threadId) {
 		// TODO 自動生成されたメソッド・スタブ
     	Connection conn = null;
     	try {
@@ -179,7 +178,7 @@ public class CommentDAO {
 
             conn.setAutoCommit(false);
 
-            pStmt.setInt(1, cartInItem);
+            pStmt.setInt(1, threadId);
 
             int rs = pStmt.executeUpdate();
 

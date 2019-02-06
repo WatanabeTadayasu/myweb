@@ -182,11 +182,9 @@ public class PostDAO {
 		}
 	}
 
-
-
 	//投稿削除
 
-    public static void postdeletemethod(int cartInItem) {
+    public static void postdeletemethod(int threadId) {
 		// TODO 自動生成されたメソッド・スタブ
     	Connection conn = null;
     	try {
@@ -194,14 +192,14 @@ public class PostDAO {
             conn = DBManager.getConnection();
 
             // SELECT文を準備
-            String sql = "DELETE FROM t_thread WHERE ID = ?";
+            String sql = "DELETE FROM t_thread WHERE id = ?";
 
              // SELECTを実行し、結果表を取得
             PreparedStatement pStmt = conn.prepareStatement(sql);
 
             conn.setAutoCommit(false);
 
-            pStmt.setInt(1, cartInItem);
+            pStmt.setInt(1, threadId);
 
             int rs = pStmt.executeUpdate();
 
@@ -407,20 +405,20 @@ public class PostDAO {
 				int startiItemNum = (pageNum - 1) * pageMaxItemCount;
 				con = DBManager.getConnection();
 
-				if (categoryId == 0) {
+				/*if (categoryId == 0) {
 					// 全検索
 					st = con.prepareStatement("SELECT * FROM t_thread WHERE thread_category_id = ? ORDER BY id ASC LIMIT ?,? ");
 					st.setInt(1, categoryId);
 					st.setInt(2, startiItemNum);
 					st.setInt(3, pageMaxItemCount);
 
-				} else {
+				} else {*/
 					// 商品名検索
 					st = con.prepareStatement("SELECT * FROM t_thread WHERE thread_category_id = ? ORDER BY id ASC LIMIT ?,? ");
 					st.setInt(1, categoryId);
 					st.setInt(2, startiItemNum);
 					st.setInt(3, pageMaxItemCount);
-				}
+				/*}*/
 
 				ResultSet rs = st.executeQuery();
 				ArrayList<PostDataBeans> postList = new ArrayList<PostDataBeans>();

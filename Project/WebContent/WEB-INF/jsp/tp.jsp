@@ -19,7 +19,7 @@
    	<span style="border-bottom: solid 1px #FFFFFF;">掲示板</span></a></h1>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="#rank">
     <span style="border-bottom: solid 1px #FFFFFF;">ランキング</span></a>
   </li>
   <li class="nav-item">
@@ -139,12 +139,12 @@
 			</div> --%>
 
 			<div class="box_4">
-				<h2>寿司</h2>
+				<h2>タイトル</h2>
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 
 			<div class="box_5">
-				<h2>スイーツ</h2>
+				<h2>タイトル</h2>
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 
@@ -152,7 +152,7 @@
 
 		<div class="container">
 			<div class="row center">
-				<h5 class=" col s12 light">ランキング</h5>
+				<h5 class=" col s12 light" id="rank">ランキング</h5>
 			</div>
 		</div>
 
@@ -165,12 +165,12 @@
 				</c:forEach>
 
 			<div class="box_4">
-				<h2>寿司</h2>
+				<h2>タイトル</h2>
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 
 			<div class="box_5">
-				<h2>スイーツ</h2>
+				<h2>タイトル</h2>
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 
@@ -191,12 +191,12 @@
 				</c:forEach>
 
 			<div class="box_4">
-				<h2>寿司</h2>
+				<h2>タイトル</h2>
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 
 			<div class="box_5">
-				<h2>スイーツ</h2>
+				<h2>タイトル</h2>
 				<p>ここにコメントここにコメントここにコメントここにコメント</p>
 			</div>
 

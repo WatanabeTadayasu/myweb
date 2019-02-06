@@ -287,46 +287,46 @@ public class UserDAO {
 //        }
 //    }
 
-	/**
-	 * ユーザーIDからユーザー情報を取得する
-	 *
-	 * @param useId
-	 *            ユーザーID
-	 * @return udbList 引数から受け取った値に対応するデータを格納する
-	 * @throws SQLException
-	 *             呼び出し元にcatchさせるためスロー
-	 */
-	public static UserDataBeans getUserDataBeansByUserId(int userId) throws SQLException {
-		UserDataBeans udb = new UserDataBeans();
-		Connection con = null;
-		PreparedStatement st = null;
-		try {
-			con = DBManager.getConnection();
-			st = con.prepareStatement("SELECT id, login_id, login_password, name, birth_date, FROM t_user WHERE id=" + userId);
-			ResultSet rs = st.executeQuery();
-
-			while (rs.next()) {
-				udb.setId(rs.getInt("id"));
-				udb.setLoginId(rs.getString("login_id"));
-				udb.setPassword(rs.getString("login_password"));
-				udb.setName(rs.getString("name"));
-				udb.setBirthdate(rs.getString("birth_date"));
-			}
-
-			st.close();
-
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			throw new SQLException(e);
-		} finally {
-			if (con != null) {
-				con.close();
-			}
-		}
-
-		System.out.println("searching UserDataBeans by userId has been completed");
-		return udb;
-	}
+//	/**
+//	 * ユーザーIDからユーザー情報を取得する
+//	 *
+//	 * @param useId
+//	 *            ユーザーID
+//	 * @return udbList 引数から受け取った値に対応するデータを格納する
+//	 * @throws SQLException
+//	 *             呼び出し元にcatchさせるためスロー
+//	 */
+//	public static UserDataBeans getUserDataBeansByUserId(int userId) throws SQLException {
+//		UserDataBeans udb = new UserDataBeans();
+//		Connection con = null;
+//		PreparedStatement st = null;
+//		try {
+//			con = DBManager.getConnection();
+//			st = con.prepareStatement("SELECT id, login_id, login_password, name, birth_date, FROM t_user WHERE id=" + userId);
+//			ResultSet rs = st.executeQuery();
+//
+//			while (rs.next()) {
+//				udb.setId(rs.getInt("id"));
+//				udb.setLoginId(rs.getString("login_id"));
+//				udb.setPassword(rs.getString("login_password"));
+//				udb.setName(rs.getString("name"));
+//				udb.setBirthdate(rs.getString("birth_date"));
+//			}
+//
+//			st.close();
+//
+//		} catch (SQLException e) {
+//			System.out.println(e.getMessage());
+//			throw new SQLException(e);
+//		} finally {
+//			if (con != null) {
+//				con.close();
+//			}
+//		}
+//
+//		System.out.println("searching UserDataBeans by userId has been completed");
+//		return udb;
+//	}
 
 	/**
 	 * ユーザー情報の更新処理を行う。

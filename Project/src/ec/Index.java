@@ -31,7 +31,7 @@ public class Index extends HttpServlet {
 			ArrayList<PostDataBeans> threadList = PostDAO.getRandThread(3);
 			//投稿情報を速報順で取得
 			ArrayList<PostDataBeans> quickThreadList = PostDAO.getQuickThread(3);
-			//投稿情報を速報順で取得
+			//投稿情報をカウント降順で取得
 			ArrayList<PostDataBeans> rankingThreadList = PostDAO.getItemCountRanking(3);
 
 			//リクエストスコープにセット

@@ -73,8 +73,6 @@ public class ThreadRecordDAO {
 		}
 	}
 
-
-
 	/**
 	 * userIdの重複チェック
 	 * @return bool 重複している

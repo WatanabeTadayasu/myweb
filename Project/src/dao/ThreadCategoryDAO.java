@@ -37,6 +37,7 @@ public class ThreadCategoryDAO {
 				tcdb.setId(rs.getInt("id"));
 				tcdb.setName(rs.getString("name"));
 //				dmdb.setPrice(rs.getInt("price"));
+
 				threadCategoryDataBeansList.add(tcdb);
 			}
 

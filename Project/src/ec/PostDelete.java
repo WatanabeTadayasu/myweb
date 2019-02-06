@@ -32,11 +32,6 @@ public class PostDelete extends HttpServlet {
 //    			//対象のスレッド情報を取得
 //    			PostDataBeans thread = PostDAO.getBuyDataBeansByBuyId(Integer.parseInt(request.getParameter("delete_item_id_list")));
 
-//    			int[] iarray = new int[deleteItemIdList.length];
-//    			for (int i = 0; i < iarray.length; i++) {
-//    			iarray[i] = Integer.parseInt(deleteItemIdList[i]);
-//    			}
-
     			String cartActionMessage = "";
 
     			if (deleteItemIdList != null) {
@@ -51,7 +46,8 @@ public class PostDelete extends HttpServlet {
 //    						}
 //    					}
     				}
-    			}
+    				}
+
     				cartActionMessage = "削除しました";
     				request.setAttribute("cartActionMessage", cartActionMessage);
     				request.getRequestDispatcher("/WEB-INF/jsp/postdeletedone.jsp").forward(request, response);
@@ -60,7 +56,8 @@ public class PostDelete extends HttpServlet {
 
 //    			(deleteItemIdList.length == 0) {
     				cartActionMessage = "削除する投稿が選択されていません";
-
+    				request.setAttribute("cartActionMessage", cartActionMessage);
+    				request.getRequestDispatcher("/WEB-INF/jsp/postdeletedone.jsp").forward(request, response);
     			}
 
 //    			if (deleteItemIdList != null) {
@@ -79,7 +76,7 @@ public class PostDelete extends HttpServlet {
 //    				cartActionMessage = "削除する商品が選択されていません";
 //    			}
 
-    			int id = (int) request.getAttribute("userId");
+    			int id = (int) session.getAttribute("userId");
     			UserDAO UserDAO = new UserDAO();
     			UserDataBeans udb = UserDAO.findByUserInfo(id);
 

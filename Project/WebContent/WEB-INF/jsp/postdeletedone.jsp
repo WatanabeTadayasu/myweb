@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +22,12 @@
 				<div class="card-content">
 					<div class="row">
 						<div class="col s12">
-							<br> <br> <br>
-							<p class="center-align">削除完了しました。</p>
+							<br> <br>
+							<c:if test="${cartActionMessage != null}">
+								<p class="red-text center-align">
+									<span>${cartActionMessage}</span>
+								</p>
+							</c:if>
 							<br> <br> <br>
 						</div>
 					</div>
@@ -32,14 +36,24 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col s12">
-			<p class="center-align">
-				<a href="UserListServlet"
-					class="btn waves-effect waves-light  col s8 offset-s2">戻る</a>
-			</p>
+	<!-- <div class="row">
+		<div class="section"></div>
+		<div class="col s6 offset-s3">
+			<div class="card grey lighten-5">
+				<div class="card-content">
+					<div class="row">
+						<div class="col s12">
+							<br> <br> <br>
+							<p class="center-align">削除完了しました。</p>
+							<br> <br> <br>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
+	</div> -->
+
+<a href="UserListServlet">戻る</a>
 
 	<!-- <p>削除完了しました</p>
 
