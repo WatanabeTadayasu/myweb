@@ -24,12 +24,14 @@
 		</form>
 
 	<div class="container">
+
 		<div class="row center">
 			<h5 class=" col s12 light">検索結果</h5>
 			<p>
 				検索結果${itemCount}件
 			</p>
 		</div>
+
 		<div class="section">
 
 		<!-- <div class="box_d"> -->
@@ -38,10 +40,6 @@
 						<h2><a href="PostDetail?thread_id=${thread.id}">${thread.threadTitle}</a></h2>
 						<h6>${thread.threadText}</h6>
 				</c:forEach>
-				<%-- <c:forEach var="thread" items="${threadList}">
-						<h2>${thread.threadTitle}</h2>
-						<h6>${thread.threadText}</h6>
-				</c:forEach> --%>
 		<!-- </div> -->
 
 			<div class="row">
@@ -49,57 +47,49 @@
 				</c:if>
 			</div>
 
-			<%-- <!--   商品情報   -->
-			<div class="row">
-				<c:forEach var="item" items="${itemList}" varStatus="status">
-				<div class="col s12 m3">
-					<div class="card">
-						<div class="card-image">
-							<a href="Item?item_id=${item.id}&page_num=${pageNum}"><img src="img/${item.fileName}"></a>
-						</div>
-						<div class="card-content">
-							<span class="card-title">${item.name}</span>
-							<p>${item.price}円
-							</p>
-						</div>
-					</div>
-				</div>
-				</c:forEach>
-			</div>
-			<div class="row">
-				<c:if test="${(status.index + 1) % 4 == 0}">
-				</c:if>
-			</div> --%>
-
 		</div>
 
-		<div class="row center">
-			<ul class="pagination">
-				<!-- １ページ戻るボタン  -->
-				<c:choose>
-					<c:when test="${pageNum == 1}">
-						<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
-					</c:when>
-					<c:otherwise>
-						<li class="waves-effect"><a href="SearchTitleResult?search_word=${searchWord}&page_num=${pageNum - 1}"><i class="material-icons">chevron_left</i></a></li>
-					</c:otherwise>
-				</c:choose>
+		<div class="pointer">
+			<div class="row center">
+				<ul class="pagination">
+					<!-- １ページ戻るボタン  -->
+					<c:choose>
+						<c:when test="${pageNum == 1}">
+							<li class="disabled"><a><i class="material-icons"><img
+										src="img/left_sozai.gif" width="20" height="20"> <!-- 左 --></i></a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="waves-effect"><a
+								href="SearchTitleResult?search_word=${searchWord}&page_num=${pageNum - 1}"><i
+									class="material-icons"><img src="img/left_sozai.gif"
+										width="20" height="20"> <!-- 左 --></i></a></li>
+						</c:otherwise>
+					</c:choose>
 
-				<!-- ページインデックス -->
-				<c:forEach begin="${(pageNum - 5) > 0 ? pageNum - 5 : 1}" end="${(pageNum + 5) > pageMax ? pageMax : pageNum + 5}" step="1" varStatus="status">
-					<li <c:if test="${pageNum == status.index }"> class="active" </c:if>><a href="SearchTitleResult?search_word=${searchWord}&page_num=${status.index}">${status.index}</a></li>
-				</c:forEach>
+					<!-- ページインデックス -->
+					<c:forEach begin="${(pageNum - 5) > 0 ? pageNum - 5 : 1}"
+						end="${(pageNum + 5) > pageMax ? pageMax : pageNum + 5}" step="1"
+						varStatus="status">
+						<li
+							<c:if test="${pageNum == status.index }"> class="active" </c:if>><a
+							href="SearchTitleResult?search_word=${searchWord}&page_num=${status.index}">${status.index}</a></li>
+					</c:forEach>
 
-				<!-- 1ページ送るボタン -->
-				<c:choose>
-				<c:when test="${pageNum == pageMax || pageMax == 0}">
-					<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
-				</c:when>
-				<c:otherwise>
-					<li class="waves-effect"><a href="SearchTitleResult?search_word=${searchWord}&page_num=${pageNum + 1}"><i class="material-icons">chevron_right</i></a></li>
-				</c:otherwise>
-				</c:choose>
-			</ul>
+					<!-- 1ページ送るボタン -->
+					<c:choose>
+						<c:when test="${pageNum == pageMax || pageMax == 0}">
+							<li class="disabled"><a><i class="material-icons"><img
+										src="img/right_sozai.gif" width="20" height="20"> <!-- 右 --></i></a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="waves-effect"><a
+								href="SearchTitleResult?search_word=${searchWord}&page_num=${pageNum + 1}"><i
+									class="material-icons"><img src="img/right_sozai.gif"
+										width="20" height="20"> <!-- 右 --></i></a></li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</div>
 		</div>
 
 	</div>

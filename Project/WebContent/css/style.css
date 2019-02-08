@@ -45,6 +45,14 @@
   	padding: 0px;
 
 }
+
+.pagination {
+	text-align: center;
+  	margin: 0px;
+  	padding: 0px;
+
+}
+
 form {/*真ん中の要素*/
 
   padding: 50px;
